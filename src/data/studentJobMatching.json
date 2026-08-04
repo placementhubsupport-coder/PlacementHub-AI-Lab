@@ -1,0 +1,243 @@
+{
+  "kpis": [
+    {
+      "id": "students",
+      "title": "Students Processed",
+      "value": "1,420",
+      "change": "+12.5%",
+      "trend": "up",
+      "color": "blue"
+    },
+    {
+      "id": "matches",
+      "title": "Successful AI Matches",
+      "value": "1,280",
+      "change": "+18.2%",
+      "trend": "up",
+      "color": "emerald"
+    },
+    {
+      "id": "avgScore",
+      "title": "Average Match Score",
+      "value": "91.4%",
+      "change": "+4.1%",
+      "trend": "up",
+      "color": "purple"
+    },
+    {
+      "id": "highConf",
+      "title": "High Confidence Matches",
+      "value": "942",
+      "change": "+15.0%",
+      "trend": "up",
+      "color": "amber"
+    }
+  ],
+  "students": [
+    {
+      "id": "std-1",
+      "name": "Arjun Verma",
+      "email": "arjun.verma@iitm.edu",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=256",
+      "branch": "Computer Science & Engineering",
+      "gradYear": "2026",
+      "cgpa": 9.4,
+      "location": "Bangalore",
+      "jobType": "Full-Time",
+      "primarySkills": ["Python", "PyTorch", "Transformers", "NVIDIA NIM", "FAISS"],
+      "resumeScore": 94,
+      "aiMatchScore": 96.4,
+      "confidence": "High",
+      "status": "Matched",
+      "recommendedJobs": [
+        {
+          "jobId": "job-101",
+          "company": "TechCorp AI Labs",
+          "logo": "⚡",
+          "role": "Senior AI / ML Research Engineer",
+          "location": "Bangalore (Hybrid)",
+          "ctc": "₹28 - ₹34 LPA",
+          "matchScore": 96.4,
+          "semanticSimilarity": 0.964,
+          "confidence": "High",
+          "matchedSkills": ["PyTorch", "Transformers", "NVIDIA NIM", "Vector Search", "Python", "FastAPI"],
+          "missingSkills": ["TensorRT-LLM Optimization", "Distributed Megatron-LM"],
+          "experienceAlignment": "High (95%) — 2 AI Research Internships at Tier-1 Labs",
+          "relevantProjects": [
+            "LLM Vector Retrieval Pipeline with FAISS & LangChain",
+            "Fine-Tuning Llama 3 70B via QLoRA for Code Generation"
+          ],
+          "aiExplanation": {
+            "whyMatch": "Arjun's deep expertise in PyTorch and Transformer architectures aligns 96.4% with TechCorp's AI Engineering requirements. His published project on vector retrieval directly matches TechCorp's high-throughput NIM deployment needs.",
+            "recommendationSummary": "Top tier candidate for immediate technical interview rounds.",
+            "strengths": [
+              "Production-grade PyTorch model deployment experience",
+              "Demonstrated vector database implementation (FAISS)",
+              "Consistent academic excellence (9.4 CGPA)"
+            ],
+            "areasForImprovement": [
+              "Could deepen exposure to TensorRT-LLM model quantization",
+              "Expand Kubernetes cluster orchestration knowledge"
+            ],
+            "suggestedPath": [
+              "Complete NVIDIA TensorRT-LLM optimization workshop",
+              "Deploy a multi-node Kubernetes inference cluster sample"
+            ]
+          }
+        },
+        {
+          "jobId": "job-102",
+          "company": "Cognitive Cloud AI",
+          "logo": "☁️",
+          "role": "Generative AI Systems Engineer",
+          "location": "Hyderabad",
+          "ctc": "₹24 - ₹28 LPA",
+          "matchScore": 91.8,
+          "semanticSimilarity": 0.918,
+          "confidence": "High",
+          "matchedSkills": ["Python", "Transformers", "FastAPI", "Docker", "REST APIs"],
+          "missingSkills": ["GraphQL", "Ray Serve"],
+          "experienceAlignment": "Medium-High (88%)",
+          "relevantProjects": [
+            "FastAPI Microservice for Document Embeddings"
+          ],
+          "aiExplanation": {
+            "whyMatch": "Solid backend microservices background paired with modern Generative AI engineering competence.",
+            "recommendationSummary": "Strong secondary match for GenAI backend role.",
+            "strengths": ["FastAPI architecture", "Docker containerization"],
+            "areasForImprovement": ["Ray Serve distributed inference"],
+            "suggestedPath": ["Learn Ray Serve distributed microservice deployment"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "std-2",
+      "name": "Sneha Rao",
+      "email": "sneha.rao@nitt.edu",
+      "avatar": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=256",
+      "branch": "Artificial Intelligence & Data Science",
+      "gradYear": "2026",
+      "cgpa": 9.1,
+      "location": "Remote",
+      "jobType": "Full-Time",
+      "primarySkills": ["React", "TypeScript", "Next.js", "Node.js", "PostgreSQL"],
+      "resumeScore": 91,
+      "aiMatchScore": 94.2,
+      "confidence": "High",
+      "status": "Shortlisted",
+      "recommendedJobs": [
+        {
+          "jobId": "job-201",
+          "company": "FinEdge Analytics",
+          "logo": "📊",
+          "role": "Full Stack Engineer (AI Products)",
+          "location": "Remote",
+          "ctc": "₹22 - ₹26 LPA",
+          "matchScore": 94.2,
+          "semanticSimilarity": 0.942,
+          "confidence": "High",
+          "matchedSkills": ["React", "TypeScript", "Next.js", "Node.js", "PostgreSQL", "Tailwind CSS"],
+          "missingSkills": ["GraphQL Subscriptions", "Redis Caching"],
+          "experienceAlignment": "High (92%) — Full-Stack Developer Internship at FinTech Startup",
+          "relevantProjects": [
+            "Real-Time SaaS Dashboard for Financial Risk Analytics",
+            "TypeScript & React Micro-frontend Design System"
+          ],
+          "aiExplanation": {
+            "whyMatch": "Sneha's full-stack Next.js and TypeScript mastery perfectly fits FinEdge's AI dashboard product team. Her background building real-time data visualization interfaces matches job criteria.",
+            "recommendationSummary": "Recommended for Final Technical Interview Stage.",
+            "strengths": ["TypeScript design systems", "Next.js SSR optimization", "Clean UI architecture"],
+            "areasForImprovement": ["Backend caching with Redis"],
+            "suggestedPath": ["Implement Redis caching in Express/Node API backend"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "std-3",
+      "name": "Rohan Mehta",
+      "email": "rohan.mehta@bits.edu",
+      "avatar": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=256",
+      "branch": "Electronics & Communication",
+      "gradYear": "2026",
+      "cgpa": 8.7,
+      "location": "Pune",
+      "jobType": "Internship",
+      "primarySkills": ["Python", "Scikit-Learn", "XGBoost", "Pandas", "SQL"],
+      "resumeScore": 82,
+      "aiMatchScore": 87.5,
+      "confidence": "Medium",
+      "status": "Pending",
+      "recommendedJobs": [
+        {
+          "jobId": "job-301",
+          "company": "InnoventLabs",
+          "logo": "💡",
+          "role": "Data Science & MLOps Intern",
+          "location": "Pune",
+          "ctc": "₹60,000 / month",
+          "matchScore": 87.5,
+          "semanticSimilarity": 0.875,
+          "confidence": "Medium",
+          "matchedSkills": ["Python", "Scikit-Learn", "XGBoost", "SQL", "Pandas"],
+          "missingSkills": ["MLflow", "Docker", "Apache Spark"],
+          "experienceAlignment": "Medium (80%) — Academic Data Analysis Projects",
+          "relevantProjects": [
+            "Customer Churn Prediction Model using XGBoost"
+          ],
+          "aiExplanation": {
+            "whyMatch": "Rohan exhibits solid foundation in tabular machine learning models and statistical data processing, suitable for InnoventLabs Data Science Internship.",
+            "recommendationSummary": "Good candidate for Internship entry level.",
+            "strengths": ["Feature engineering", "Predictive modeling"],
+            "areasForImprovement": ["MLOps experiment tracking with MLflow"],
+            "suggestedPath": ["Track XGBoost experiments using MLflow"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "std-4",
+      "name": "Priya Sharma",
+      "email": "priya.sharma@iitm.edu",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=256",
+      "branch": "Computer Science & Engineering",
+      "gradYear": "2026",
+      "cgpa": 9.6,
+      "location": "Bangalore",
+      "jobType": "Full-Time",
+      "primarySkills": ["C++", "System Programming", "CUDA", "PyTorch", "TensorRT"],
+      "resumeScore": 96,
+      "aiMatchScore": 98.1,
+      "confidence": "High",
+      "status": "Matched",
+      "recommendedJobs": [
+        {
+          "jobId": "job-401",
+          "company": "NVIDIA Partner Labs",
+          "logo": "🟢",
+          "role": "CUDA System Kernel & Optimization Engineer",
+          "location": "Bangalore",
+          "ctc": "₹36 - ₹42 LPA",
+          "matchScore": 98.1,
+          "semanticSimilarity": 0.981,
+          "confidence": "High",
+          "matchedSkills": ["C++", "CUDA", "System Programming", "TensorRT", "PyTorch"],
+          "missingSkills": ["Triton Compiler Internals"],
+          "experienceAlignment": "High (98%) — GPU Kernel Optimization Research",
+          "relevantProjects": [
+            "Custom FlashAttention-2 CUDA Kernel Kernel Benchmarks",
+            "C++ Systems Multi-Threaded Memory Manager"
+          ],
+          "aiExplanation": {
+            "whyMatch": "Priya scores 98.1% match for GPU kernel engineering. Her C++ and CUDA background places her in the top 1% of candidate profiles for system optimization.",
+            "recommendationSummary": "Highest priority offer recommendation.",
+            "strengths": ["CUDA programming", "Low-level system optimization", "9.6 CGPA"],
+            "areasForImprovement": ["OpenAI Triton compiler syntax"],
+            "suggestedPath": ["Explore Triton GPU programming language"]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlacementHub – AI Resume Intelligence (Screen 2: Resume Processing)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-light: #E2E8F0;
+      --border-hover: #CBD5E1;
+
+      --text-dark: #0F172A;
+      --text-muted: #475569;
+      --text-dim: #64748B;
+
+      --color-primary: #4F46E5;
+      --color-success: #10B981;
+      --color-sky: #0284C7;
+      --color-amber: #F59E0B;
+
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    .suite-header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #76B900, #4A7A00);
+      color: #FFF;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .screen-nav-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .tab-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover { background: #E2E8F0; color: var(--text-dark); }
+    .tab-btn.active {
+      background: var(--color-primary);
+      color: #FFF;
+      border-color: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    }
+
+    .app-container {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .batch-switcher-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .batch-tag {
+      font-family: var(--font-code);
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: #D1FAE5;
+      color: #047857;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid #A7F3D0;
+    }
+
+    .candidate-select {
+      background: var(--bg-light);
+      border: 1px solid var(--border-light);
+      color: var(--text-dark);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .page-title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--text-dark); }
+
+    .steps-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-left: 4px solid var(--color-success);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-left { display: flex; align-items: flex-start; gap: 16px; }
+    .success-icon-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #D1FAE5;
+      color: #047857;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      font-weight: 800;
+    }
+
+    .step-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text-dark); }
+    .step-explanation { font-size: 0.88rem; color: var(--text-muted); }
+
+    .btn-generate-ai {
+      width: 100%;
+      background: linear-gradient(135deg, #10B981, #059669);
+      color: #FFF;
+      border: 1px solid transparent;
+      padding: 18px 28px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-generate-ai:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); }
+  </style>
+</head>
+<body>
+
+  <!-- Suite Navigation Header -->
+  <header class="suite-header">
+    <div class="brand-title">
+      <span class="brand-badge">PlacementHub</span>
+      <span>AI Resume Intelligence Suite</span>
+    </div>
+    <nav class="screen-nav-tabs">
+      <a href="bulk_processing_dashboard.html" class="tab-btn"><span>📁</span> Bulk CV Dashboard (20 CVs)</a>
+      <a href="workflow.html" class="tab-btn"><span>🔄</span> Workflow</a>
+      <a href="screen1_resume_upload.html" class="tab-btn"><span>1️⃣</span> Screen 1: Upload</a>
+      <a href="screen2_resume_processing.html" class="tab-btn active"><span>2️⃣</span> Screen 2: Processing</a>
+      <a href="screen3_ai_resume_review.html" class="tab-btn"><span>3️⃣</span> Screen 3: AI Review</a>
+      <a href="screen4_tpo_review_workspace.html" class="tab-btn"><span>4️⃣</span> Screen 4: TPO Workbench</a>
+      <a href="screen5_student_feedback.html" class="tab-btn"><span>5️⃣</span> Screen 5: Student View</a>
+      <a href="screen6_final_resume_review.html" class="tab-btn"><span>6️⃣</span> Screen 6: Final Clearance</a>
+    </nav>
+  </header>
+
+  <div class="app-container">
+
+    <!-- Batch Candidate Switcher Bar -->
+    <div class="batch-switcher-bar">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span class="batch-tag">⚡ BATCH MODE: 20 CVs RUNNING</span>
+        <span style="font-size:0.85rem; color:var(--text-muted);">Deterministic Execution: 20/20 Resumes Passed</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px;">
+        <label for="candidateSelect" style="font-size:0.82rem; color:var(--text-muted); font-weight:600;">Active View:</label>
+        <select id="candidateSelect" class="candidate-select" onchange="switchCandidate(this.value)">
+          <option value="STU-001">1/20: Aarav Sharma (B.Tech CSE - 8.9 CGPA)</option>
+          <option value="STU-002">2/20: Priya Patel (B.Tech CSE - 7.2 CGPA)</option>
+          <option value="STU-003">3/20: Rohan Verma (B.Tech ME - 8.5 CGPA)</option>
+          <option value="STU-004">4/20: Ananya Iyer (B.Tech IT - 6.1 CGPA)</option>
+          <option value="STU-005">5/20: Vikram Singh (B.Tech ECE - 9.1 CGPA)</option>
+        </select>
+      </div>
+    </div>
+
+    <header class="header-bar">
+      <div>
+        <h1 class="page-title">Resume Processing</h1>
+        <p class="page-subtitle">Screen 2 of 6 – Deterministic Rule Execution (Batch Execution: 20 CVs)</p>
+      </div>
+    </header>
+
+    <main class="steps-list">
+
+      <section class="step-card">
+        <div class="step-left">
+          <div class="success-icon-badge">✓</div>
+          <div>
+            <h3 class="step-title">File Validation (Batch Total: 20/20 Passed)</h3>
+            <p class="step-explanation">Verified document signature, PDF v1.7 syntax, encryption status, and file size limits across all 20 batch resumes.</p>
+          </div>
+        </div>
+        <div style="color:#047857; font-weight:700; font-family:var(--font-code);">Passed (20 CVs)</div>
+      </section>
+
+      <section class="step-card">
+        <div class="step-left">
+          <div class="success-icon-badge">✓</div>
+          <div>
+            <h3 class="step-title">Resume Parsing (Batch Total: 20/20 Passed)</h3>
+            <p class="step-explanation">Extracted raw text buffers, isolated structural section headers, and tokenized line items for 20 candidates.</p>
+          </div>
+        </div>
+        <div style="color:#047857; font-weight:700; font-family:var(--font-code);">Passed (20 CVs)</div>
+      </section>
+
+      <section class="step-card">
+        <div class="step-left">
+          <div class="success-icon-badge">✓</div>
+          <div>
+            <h3 class="step-title">ATS Checks (Batch Total: 20/20 Passed)</h3>
+            <p class="step-explanation">Evaluated layout compatibility against Applicant Tracking Systems: verified single-column flow and font readability (Avg ATS: 88.5%).</p>
+          </div>
+        </div>
+        <div style="color:#047857; font-weight:700; font-family:var(--font-code);">Passed (20 CVs)</div>
+      </section>
+
+      <section class="step-card">
+        <div class="step-left">
+          <div class="success-icon-badge">✓</div>
+          <div>
+            <h3 class="step-title">Validation (Batch Total: 20/20 Passed)</h3>
+            <p class="step-explanation">Validated email regex, 10-digit phone patterns, degree verification against institutional database across all 20 records.</p>
+          </div>
+        </div>
+        <div style="color:#047857; font-weight:700; font-family:var(--font-code);">Passed (20 CVs)</div>
+      </section>
+
+      <section class="step-card">
+        <div class="step-left">
+          <div class="success-icon-badge">✓</div>
+          <div>
+            <h3 class="step-title">Structured Data Extraction (Batch Total: 20/20 Passed)</h3>
+            <p class="step-explanation">Mapped unformatted text into standard PlacementHub JSON payload array (20 objects persisted in memory).</p>
+          </div>
+        </div>
+        <div style="color:#047857; font-weight:700; font-family:var(--font-code);">Passed (20 CVs)</div>
+      </section>
+
+    </main>
+
+    <div style="margin-top:10px;">
+      <button class="btn-generate-ai" id="btnGenerateAI" onclick="triggerAIReview()">
+        <span>🧠</span>
+        <span>Generate Bulk AI Review (All 20 CVs)</span>
+        <span>→</span>
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    function switchCandidate(id) { console.log('Active view switched to ' + id); }
+    function triggerAIReview() { window.location.href = 'screen3_ai_resume_review.html'; }
+  </script>
+
+</body>
+</html>

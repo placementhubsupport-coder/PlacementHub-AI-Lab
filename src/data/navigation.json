@@ -1,0 +1,60 @@
+{
+  "mainNav": [
+    {
+      "title": "Dashboard",
+      "href": "/",
+      "icon": "LayoutDashboard",
+      "badge": null
+    },
+    {
+      "title": "AI Proof of Concepts",
+      "isSection": true
+    },
+    {
+      "title": "POC 01: Student-Job Match",
+      "href": "/poc-01",
+      "icon": "Sparkles",
+      "badge": "Active"
+    },
+    {
+      "title": "POC 02: Resume Analyzer",
+      "href": "/poc-02",
+      "icon": "FileSearch",
+      "badge": "AI"
+    },
+    {
+      "title": "POC 03: Placement Search",
+      "href": "/poc-03",
+      "icon": "Search",
+      "badge": null
+    },
+    {
+      "title": "POC 04: Placement Copilot",
+      "href": "/poc-04",
+      "icon": "Bot",
+      "badge": "New"
+    },
+    {
+      "title": "POC 05: AI Career Coach",
+      "href": "/poc-05",
+      "icon": "GraduationCap",
+      "badge": null
+    },
+    {
+      "title": "System",
+      "isSection": true
+    },
+    {
+      "title": "NVIDIA NIM Status",
+      "href": "/nim-status",
+      "icon": "Cpu",
+      "badge": "Online"
+    },
+    {
+      "title": "Settings",
+      "href": "/settings",
+      "icon": "Settings",
+      "badge": null
+    }
+  ]
+}

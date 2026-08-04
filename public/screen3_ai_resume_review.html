@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlacementHub – AI Resume Intelligence (Screen 3: AI Resume Review)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-light: #E2E8F0;
+      --border-hover: #CBD5E1;
+
+      --text-dark: #0F172A;
+      --text-muted: #475569;
+      --text-dim: #64748B;
+
+      --color-primary: #4F46E5;
+      --color-sky: #0284C7;
+      --color-success: #10B981;
+      --color-amber: #F59E0B;
+      --color-purple: #9333EA;
+      --color-rose: #EF4444;
+
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    .suite-header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #76B900, #4A7A00);
+      color: #FFF;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .screen-nav-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .tab-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover { background: #E2E8F0; color: var(--text-dark); }
+    .tab-btn.active {
+      background: var(--color-primary);
+      color: #FFF;
+      border-color: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    }
+
+    .app-container {
+      max-width: 1400px;
+      margin: 24px auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .batch-switcher-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .candidate-select {
+      background: var(--bg-light);
+      border: 1px solid var(--border-light);
+      color: var(--text-dark);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .page-title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--text-dark); }
+
+    .two-column-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) { .two-column-layout { grid-template-columns: 1fr; } }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+    }
+
+    .col-header-det { background: #F3E8FF; border: 1px solid #E9D5FF; }
+    .col-header-ai { background: #ECFDF5; border: 1px solid #A7F3D0; }
+
+    .col-title-group h2 { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--text-dark); }
+
+    .card-stack { display: flex; flex-direction: column; gap: 16px; }
+
+    .card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-det { border-left: 4px solid var(--color-purple); }
+    .card-ai { border-left: 4px solid var(--color-success); }
+
+    .card-header-row { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; }
+    .card-title { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--text-dark); display: flex; align-items: center; gap: 8px; }
+
+    .info-list { display: flex; flex-direction: column; gap: 8px; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; padding: 8px 12px; background: var(--bg-light); border: 1px solid var(--border-light); border-radius: 6px; }
+    .info-label { color: var(--text-muted); }
+    .info-val { color: var(--text-dark); font-weight: 700; font-family: var(--font-code); }
+
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+    .extracted-tag { background: #F3E8FF; border: 1px solid #E9D5FF; color: #7E22CE; font-size: 0.78rem; font-family: var(--font-code); font-weight: 600; padding: 4px 10px; border-radius: 4px; }
+    .missing-tag { background: #FEE2E2; border: 1px solid #FCA5A5; color: #991B1B; font-size: 0.78rem; font-family: var(--font-code); font-weight: 700; padding: 4px 10px; border-radius: 4px; }
+
+    .rec-box { background: var(--bg-light); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+
+    .btn-proceed-tpo {
+      background: linear-gradient(135deg, var(--color-amber), #D97706);
+      color: #FFF;
+      border: 1px solid transparent;
+      padding: 16px 28px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .btn-proceed-tpo:hover { transform: translateY(-1px); box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4); }
+  </style>
+</head>
+<body>
+
+  <!-- Suite Navigation Header -->
+  <header class="suite-header">
+    <div class="brand-title">
+      <span class="brand-badge">PlacementHub</span>
+      <span>AI Resume Intelligence Suite</span>
+    </div>
+    <nav class="screen-nav-tabs">
+      <a href="bulk_processing_dashboard.html" class="tab-btn"><span>📁</span> Bulk CV Dashboard (20 CVs)</a>
+      <a href="workflow.html" class="tab-btn"><span>🔄</span> Workflow</a>
+      <a href="screen1_resume_upload.html" class="tab-btn"><span>1️⃣</span> Screen 1: Upload</a>
+      <a href="screen2_resume_processing.html" class="tab-btn"><span>2️⃣</span> Screen 2: Processing</a>
+      <a href="screen3_ai_resume_review.html" class="tab-btn active"><span>3️⃣</span> Screen 3: AI Review</a>
+      <a href="screen4_tpo_review_workspace.html" class="tab-btn"><span>4️⃣</span> Screen 4: TPO Workbench</a>
+      <a href="screen5_student_feedback.html" class="tab-btn"><span>5️⃣</span> Screen 5: Student View</a>
+      <a href="screen6_final_resume_review.html" class="tab-btn"><span>6️⃣</span> Screen 6: Final Clearance</a>
+    </nav>
+  </header>
+
+  <div class="app-container">
+
+    <!-- Batch Candidate Switcher Bar -->
+    <div class="batch-switcher-bar">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="background:#FEE2E2; color:#991B1B; border:1px solid #FCA5A5; font-family:var(--font-code); font-size:0.8rem; font-weight:800; padding:4px 10px; border-radius:20px;">
+          🚨 Low Score Sample Available
+        </span>
+        <span style="font-size:0.85rem; color:var(--text-muted);">Select <strong>Arjun Malhotra (ATS: 42%)</strong> to test 8 intelligence metrics:</span>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px;">
+        <label for="candidateSelect" style="font-size:0.82rem; color:var(--text-muted); font-weight:600;">Inspect Candidate:</label>
+        <select id="candidateSelect" class="candidate-select" onchange="switchCandidate(this.value)">
+          <option value="STU-000">🚨 Arjun Malhotra (B.Tech CSE - ATS: 42% LOW SCORE)</option>
+          <option value="STU-001">1/20: Aarav Sharma (B.Tech CSE - ATS: 96%)</option>
+          <option value="STU-002">2/20: Priya Patel (B.Tech CSE - ATS: 88%)</option>
+          <option value="STU-003">3/20: Rohan Verma (B.Tech ME - ATS: 94%)</option>
+          <option value="STU-004">4/20: Ananya Iyer (B.Tech IT - ATS: 78%)</option>
+          <option value="STU-005">5/20: Vikram Singh (B.Tech ECE - ATS: 97%)</option>
+        </select>
+      </div>
+    </div>
+
+    <header class="header-bar">
+      <div>
+        <h1 class="page-title">AI Resume Review</h1>
+        <p class="page-subtitle">Screen 3 of 6 – 8 AI Intelligence Metrics Analysis</p>
+      </div>
+    </header>
+
+    <main class="two-column-layout">
+
+      <section>
+        <div class="column-header col-header-det">
+          <div class="col-title-group">
+            <span style="font-size:1.2rem;">⚙️</span>
+            <h2>Deterministic & Intelligence Metrics</h2>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card card-det">
+            <div class="card-header-row">
+              <h3 class="card-title"><span>📊</span> 1. ATS Score & 3. Quality Score</h3>
+            </div>
+            <div class="info-list">
+              <div class="info-row"><span class="info-label">Candidate Name:</span><span class="info-val" id="detName">Arjun Malhotra</span></div>
+              <div class="info-row"><span class="info-label">Degree Program:</span><span class="info-val" id="detDegree">B.Tech CSE</span></div>
+              <div class="info-row"><span class="info-label">1. ATS Score:</span><span class="info-val" id="detAts" style="color:#B91C1C;">42% (Critical Fail)</span></div>
+              <div class="info-row"><span class="info-label">3. Resume Quality Score:</span><span class="info-val" id="detQuality" style="color:#B91C1C;">38 / 100 (Urgent Fix)</span></div>
+            </div>
+          </div>
+
+          <div class="card card-det">
+            <div class="card-header-row">
+              <h3 class="card-title"><span>⚠️</span> 4. Grammar Issues & 5. Weak Bullets</h3>
+            </div>
+            <div class="info-list">
+              <div class="info-row"><span class="info-label">4. Grammar Issues & Typos:</span><span class="info-val" id="detGrammar" style="color:#B91C1C;">4 Errors Detected</span></div>
+              <div class="info-row"><span class="info-label">5. Weak / Impactless Bullets:</span><span class="info-val" id="detBullets" style="color:#B45309;">5 Passive Bullets</span></div>
+            </div>
+          </div>
+
+          <div class="card card-det">
+            <div class="card-header-row">
+              <h3 class="card-title"><span>🛠️</span> 2. Missing Skills Analysis</h3>
+            </div>
+            <div class="tag-cloud" id="detMissing">
+              <span class="missing-tag">❌ Missing: React.js</span>
+              <span class="missing-tag">❌ Missing: Docker</span>
+              <span class="missing-tag">❌ Missing: SQL</span>
+              <span class="missing-tag">❌ Missing: REST APIs</span>
+              <span class="missing-tag">❌ Missing: Git</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="column-header col-header-ai">
+          <div class="col-title-group">
+            <span style="font-size:1.2rem;">🧠</span>
+            <h2>AI Assistant Analysis & Recommendations</h2>
+          </div>
+        </div>
+
+        <div class="card-stack">
+          <div class="card card-ai">
+            <div class="card-header-row">
+              <h3 class="card-title"><span>📌</span> 6. Executive Resume Summary</h3>
+            </div>
+            <div style="font-size:0.88rem; color:var(--text-dark); background:var(--bg-light); padding:12px; border-radius:6px; border:1px solid var(--border-light);" id="aiSummary">
+              Low ATS score (42%). Candidate resume relies on 2-column table layout causing parser failure, contains 4 grammar errors, and lacks essential developer skills.
+            </div>
+          </div>
+
+          <div class="card card-ai">
+            <div class="card-header-row">
+              <h3 class="card-title"><span>💻</span> 7. Suggested Projects</h3>
+            </div>
+            <div class="rec-box" id="aiProjects">
+              <div style="font-size:0.85rem; font-weight:600; color:var(--text-dark);">• Fullstack Microservice API with FastAPI</div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--text-dark);">• React Dashboard with JWT Authentication</div>
+            </div>
+          </div>
+
+          <div class="card card-ai">
+            <div class="card-header-row">
+              <h3 class="card-title"><span>📜</span> 8. Suggested Certifications</h3>
+            </div>
+            <div class="rec-box" id="aiCerts">
+              <div style="font-size:0.85rem; font-weight:600; color:var(--text-dark);">• AWS Certified Cloud Practitioner</div>
+              <div style="font-size:0.85rem; font-weight:600; color:var(--text-dark);">• Meta Frontend Developer Professional</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer style="margin-top:10px; display:flex; justify-content:flex-end;">
+      <button class="btn-proceed-tpo" onclick="proceedToScreen4()">
+        <span>✏️</span>
+        <span>Proceed to TPO Workbench (Curate Arjun Malhotra's CV)</span>
+        <span>→</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <script>
+    const cvData = {
+      "STU-000": { name: "Arjun Malhotra", degree: "B.Tech CSE", ats: "42% (Critical Fail)", quality: "38 / 100", grammar: "4 Typos Detected", bullets: "5 Passive Bullets", missing: ["React.js", "Docker", "SQL", "REST APIs", "Git"], summary: "Low ATS score (42%). Candidate resume relies on 2-column table layout causing parser failure, contains 4 grammar errors, and lacks essential developer skills.", projects: ["Fullstack Microservice API with FastAPI", "React Dashboard with JWT Auth"], certs: ["AWS Certified Cloud Practitioner", "Meta Frontend Developer Professional"] },
+      "STU-001": { name: "Aarav Sharma", degree: "B.Tech CSE", ats: "96% (Passed)", quality: "92 / 100", grammar: "0 Typos", bullets: "1 Weak Bullet", missing: ["AWS S3/EC2", "FastAPI"], summary: "Strong PyTorch ML background; needs YOLOv8 latency quantification.", projects: ["Quantized Model Inference Service with ONNX"], certs: ["AWS Machine Learning Specialty"] }
+    };
+
+    function switchCandidate(id) {
+      const data = cvData[id] || { name: "Candidate " + id, degree: "B.Tech Engineering", ats: "88%", quality: "84 / 100", grammar: "1 Typo", bullets: "2 Passive Bullets", missing: ["Docker", "CI/CD"], summary: "Solid foundational project portfolio.", projects: ["Cloud Deployment Pipeline"], certs: ["AWS Cloud Associate"] };
+      
+      document.getElementById('detName').textContent = data.name;
+      document.getElementById('detDegree').textContent = data.degree;
+      document.getElementById('detAts').textContent = data.ats;
+      document.getElementById('detQuality').textContent = data.quality;
+      document.getElementById('detGrammar').textContent = data.grammar;
+      document.getElementById('detBullets').textContent = data.bullets;
+      document.getElementById('aiSummary').textContent = data.summary;
+
+      document.getElementById('detMissing').innerHTML = data.missing.map(m => `<span class="missing-tag">❌ Missing: ${m}</span>`).join('');
+      document.getElementById('aiProjects').innerHTML = data.projects.map(p => `<div style="font-size:0.85rem; font-weight:600; color:var(--text-dark);">• ${p}</div>`).join('');
+      document.getElementById('aiCerts').innerHTML = data.certs.map(c => `<div style="font-size:0.85rem; font-weight:600; color:var(--text-dark);">• ${c}</div>`).join('');
+    }
+
+    function proceedToScreen4() { window.location.href = 'screen4_tpo_review_workspace.html?id=' + document.getElementById('candidateSelect').value; }
+  </script>
+
+</body>
+</html>

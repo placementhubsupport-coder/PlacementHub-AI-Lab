@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlacementHub – AI Resume Intelligence Workflow (Light Theme)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-light: #E2E8F0;
+      --border-hover: #CBD5E1;
+
+      --color-student: #0284C7;
+      --color-system: #7E22CE;
+      --color-ai: #059669;
+      --color-tpo: #D97706;
+      --color-success: #16A34A;
+      --color-primary: #4F46E5;
+
+      --text-dark: #0F172A;
+      --text-muted: #475569;
+      --text-dim: #64748B;
+
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    .suite-header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #76B900, #4A7A00);
+      color: #FFF;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .screen-nav-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .tab-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover { background: #E2E8F0; color: var(--text-dark); }
+    .tab-btn.active {
+      background: var(--color-primary);
+      color: #FFF;
+      border-color: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    }
+
+    .header-container {
+      max-width: 1600px;
+      margin: 24px auto 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .main-title { font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: var(--text-dark); }
+    .subtitle { color: var(--text-muted); font-size: 0.95rem; }
+
+    .workflow-scroll-wrapper {
+      max-width: 1600px;
+      margin: 16px auto 0 auto;
+      width: 100%;
+      overflow-x: auto;
+      padding: 10px 24px 24px 24px;
+    }
+
+    .horizontal-flow { display: flex; align-items: stretch; gap: 0; min-width: min-content; }
+    .step-wrapper { display: flex; align-items: center; }
+
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      width: 270px;
+      min-height: 360px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-card[data-actor="student"] { border-top: 4px solid var(--color-student); }
+    .step-card[data-actor="system"] { border-top: 4px solid var(--color-system); }
+    .step-card[data-actor="ai"] { border-top: 4px solid var(--color-ai); }
+    .step-card[data-actor="tpo"] { border-top: 4px solid var(--color-tpo); }
+    .step-card[data-actor="success"] { border-top: 4px solid var(--color-success); }
+
+    .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .step-number { font-family: var(--font-code); font-size: 0.75rem; font-weight: 700; color: var(--text-dim); }
+
+    .card-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .card-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .card-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.45; }
+
+    .flow-arrow { display: flex; align-items: center; justify-content: center; width: 40px; position: relative; }
+    .arrow-line { height: 2px; width: 100%; background: #CBD5E1; position: relative; }
+  </style>
+</head>
+<body>
+
+  <!-- Suite Navigation Header -->
+  <header class="suite-header">
+    <div class="brand-title">
+      <span class="brand-badge">PlacementHub</span>
+      <span>AI Resume Intelligence Suite</span>
+    </div>
+    <nav class="screen-nav-tabs">
+      <a href="bulk_processing_dashboard.html" class="tab-btn"><span>📁</span> Bulk CV Dashboard (20 CVs)</a>
+      <a href="workflow.html" class="tab-btn active"><span>🔄</span> Workflow</a>
+      <a href="screen1_resume_upload.html" class="tab-btn"><span>1️⃣</span> Screen 1: Upload</a>
+      <a href="screen2_resume_processing.html" class="tab-btn"><span>2️⃣</span> Screen 2: Processing</a>
+      <a href="screen3_ai_resume_review.html" class="tab-btn"><span>3️⃣</span> Screen 3: AI Review</a>
+      <a href="screen4_tpo_review_workspace.html" class="tab-btn"><span>4️⃣</span> Screen 4: TPO Workbench</a>
+      <a href="screen5_student_feedback.html" class="tab-btn"><span>5️⃣</span> Screen 5: Student View</a>
+      <a href="screen6_final_resume_review.html" class="tab-btn"><span>6️⃣</span> Screen 6: Final Clearance</a>
+    </nav>
+  </header>
+
+  <div class="header-container">
+    <h1 class="main-title">End-to-End TPO Feedback Pipeline (Light Theme)</h1>
+    <p class="subtitle">Human-in-the-Loop workflow: AI generates recommendations, TPO retains 100% governance authority.</p>
+  </div>
+
+  <div class="workflow-scroll-wrapper">
+    <div class="horizontal-flow">
+
+      <div class="step-wrapper">
+        <div class="step-card" data-actor="student">
+          <div>
+            <div class="card-top"><span class="step-number">STEP 01</span></div>
+            <span class="card-icon">📤</span>
+            <h3 class="card-title">Student Uploads Resume</h3>
+            <p class="card-desc">Student submits raw resume file (PDF/DOCX) via PlacementHub portal.</p>
+          </div>
+        </div>
+        <div class="flow-arrow"><div class="arrow-line"></div></div>
+      </div>
+
+      <div class="step-wrapper">
+        <div class="step-card" data-actor="system">
+          <div>
+            <div class="card-top"><span class="step-number">STEP 02</span></div>
+            <span class="card-icon">⚙️</span>
+            <h3 class="card-title">Deterministic Processing</h3>
+            <p class="card-desc">Rule-based validation pipeline parses and checks ATS format without AI bias.</p>
+          </div>
+        </div>
+        <div class="flow-arrow"><div class="arrow-line"></div></div>
+      </div>
+
+      <div class="step-wrapper">
+        <div class="step-card" data-actor="ai">
+          <div>
+            <div class="card-top"><span class="step-number">STEP 04</span></div>
+            <span class="card-icon">🧠</span>
+            <h3 class="card-title">AI Review Analysis</h3>
+            <p class="card-desc">Deep LLM engine analyzes content impact, writing verbs, and skill gaps.</p>
+          </div>
+        </div>
+        <div class="flow-arrow"><div class="arrow-line"></div></div>
+      </div>
+
+      <div class="step-wrapper">
+        <div class="step-card" data-actor="tpo">
+          <div>
+            <div class="card-top"><span class="step-number">STEP 07</span></div>
+            <span class="card-icon">✏️</span>
+            <h3 class="card-title">TPO Edits & Approves</h3>
+            <p class="card-desc">TPO modifies phrasing, approves suggestions, or discards non-relevant hints.</p>
+          </div>
+        </div>
+        <div class="flow-arrow"><div class="arrow-line"></div></div>
+      </div>
+
+      <div class="step-wrapper">
+        <div class="step-card" data-actor="success">
+          <div>
+            <div class="card-top"><span class="step-number">STEP 12</span></div>
+            <span class="card-icon">🎓</span>
+            <h3 class="card-title" style="color:var(--color-success);">Approved for Placements</h3>
+            <p class="card-desc">Resume receives official TPO Clearance badge for placement drives.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

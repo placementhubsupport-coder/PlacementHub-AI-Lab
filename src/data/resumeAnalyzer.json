@@ -1,0 +1,103 @@
+{
+  "sampleResumes": [
+    {
+      "id": "res-1",
+      "candidateName": "Arjun Verma",
+      "fileName": "Arjun_Verma_Resume_2026.pdf",
+      "uploadDate": "10 mins ago",
+      "fileSize": "1.8 MB",
+      "targetRole": "AI / ML Engineer",
+      "atsScore": 88,
+      "resumeScore": 92,
+      "skillMatch": 86,
+      "keywordMatch": 90,
+      "summary": "Strong background in PyTorch, LLMs, and NVIDIA NIM deployment. High alignment for Machine Learning & AI Engineering roles.",
+      "missingSkills": [
+        { "name": "TensorRT Model Optimization", "priority": "High", "category": "AI Performance" },
+        { "name": "Kubernetes & Helm Charts", "priority": "Medium", "category": "DevOps / MLOps" },
+        { "name": "Distributed Training (DeepSpeed / Megatron)", "priority": "High", "category": "LLM Scaling" },
+        { "name": "System Design for AI Inference", "priority": "Medium", "category": "Architecture" }
+      ],
+      "suggestions": [
+        {
+          "type": "Action Verb Enhancement",
+          "current": "Worked on fine-tuning Llama models using HuggingFace.",
+          "improved": "Engineered LoRA & QLoRA fine-tuning pipelines for Llama 3 70B models, reducing memory footprint by 40% while maintaining 94% task accuracy.",
+          "impact": "+8 ATS Points"
+        },
+        {
+          "type": "Quantifiable Achievements",
+          "current": "Built a vector search API for student resumes.",
+          "improved": "Architected high-throughput FAISS vector search microservice handling 10,000+ candidate embeddings with <15ms P99 query latency.",
+          "impact": "+6 ATS Points"
+        },
+        {
+          "type": "Keywords Alignment",
+          "current": "Familiar with GPU inference.",
+          "improved": "Optimized GPU model serving throughput using NVIDIA Triton & TensorRT-LLM, achieving 180 tokens/second per GPU.",
+          "impact": "+5 ATS Points"
+        }
+      ],
+      "matchedSkills": [
+        "Python", "PyTorch", "Transformers", "FAISS", "FastAPI", "Docker", "NVIDIA NIM", "Git", "REST APIs", "SQL"
+      ]
+    },
+    {
+      "id": "res-2",
+      "candidateName": "Sneha Rao",
+      "fileName": "Sneha_Rao_FullStack.pdf",
+      "uploadDate": "1 hour ago",
+      "fileSize": "2.1 MB",
+      "targetRole": "Full Stack Engineer",
+      "atsScore": 91,
+      "resumeScore": 94,
+      "skillMatch": 92,
+      "keywordMatch": 89,
+      "summary": "Exceptional React, Node.js, and TypeScript profile with strong database optimization skills.",
+      "missingSkills": [
+        { "name": "GraphQL Subscriptions", "priority": "Low", "category": "API Protocols" },
+        { "name": "Redis Caching Strategies", "priority": "Medium", "category": "Backend Performance" }
+      ],
+      "suggestions": [
+        {
+          "type": "Metrics Emphasis",
+          "current": "Created UI components using React and Tailwind.",
+          "improved": "Developed modular Shadcn & Tailwind component library adopted across 12 product pages, accelerating frontend delivery by 35%.",
+          "impact": "+7 ATS Points"
+        }
+      ],
+      "matchedSkills": [
+        "React", "TypeScript", "Next.js", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Prisma", "Docker"
+      ]
+    },
+    {
+      "id": "res-3",
+      "candidateName": "Rohan Mehta",
+      "fileName": "Rohan_Mehta_DataScience.pdf",
+      "uploadDate": "3 hours ago",
+      "fileSize": "1.4 MB",
+      "targetRole": "Data Scientist",
+      "atsScore": 79,
+      "resumeScore": 82,
+      "skillMatch": 75,
+      "keywordMatch": 80,
+      "summary": "Solid statistical background in Scikit-Learn & Pandas, needs higher alignment for production MLOps.",
+      "missingSkills": [
+        { "name": "MLflow Experiment Tracking", "priority": "High", "category": "MLOps" },
+        { "name": "Apache Spark / PySpark", "priority": "High", "category": "Big Data" },
+        { "name": "Docker Containerization", "priority": "Medium", "category": "Deployment" }
+      ],
+      "suggestions": [
+        {
+          "type": "Production Deployment Impact",
+          "current": "Built machine learning models for churn prediction.",
+          "improved": "Trained XGBoost churn prediction classifier deployed to production via FastAPI, saving $120K in annual customer retention.",
+          "impact": "+10 ATS Points"
+        }
+      ],
+      "matchedSkills": [
+        "Python", "Pandas", "NumPy", "Scikit-Learn", "XGBoost", "Matplotlib", "SQL", "Jupyter"
+      ]
+    }
+  ]
+}

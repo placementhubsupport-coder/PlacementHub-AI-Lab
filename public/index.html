@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlacementHub AI Lab – Intelligent Placement & Search Suite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Governance Disclaimer Banner -->
+    <div class="disclaimer-banner" id="topDisclaimer">
+      <span class="disclaimer-icon">⚠️</span>
+      <span class="disclaimer-text">
+        <strong>Notice:</strong> AI-generated compatibility analysis. Final placement and hiring decisions should remain with the student, employer, and placement team.
+      </span>
+    </div>
+
+    <!-- App Header & Navigation Tabs -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="logo-badge">NVIDIA AI</div>
+        <div>
+          <h1>PlacementHub AI Lab</h1>
+          <p class="subtitle">Placement Intelligence & Search Suite (NIM Powered)</p>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="model-badge">
+          <span class="pulse-dot"></span>
+          meta/llama-3.3-70b-instruct
+        </span>
+      </div>
+    </header>
+
+    <!-- Navigation Tab Bar -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" id="tabMatching" data-target="matchingView">
+        <span class="tab-icon">🤝</span>
+        <span>Student–Job Matching (POC 1)</span>
+      </button>
+      <button class="nav-tab" id="tabResume" data-target="resumeView">
+        <span class="tab-icon">📄</span>
+        <span>AI Resume Analyzer (POC 2)</span>
+      </button>
+      <button class="nav-tab" id="tabSearch" data-target="searchView">
+        <span class="tab-icon">🔍</span>
+        <span>AI Placement Search (POC 3)</span>
+      </button>
+      <button class="nav-tab" id="tabCopilot" data-target="copilotView">
+        <span class="tab-icon">🤖</span>
+        <span>Placement Copilot (POC 4)</span>
+      </button>
+      <button class="nav-tab" id="tabCareerCoach" data-target="careerCoachView">
+        <span class="tab-icon">🎯</span>
+        <span>AI Student Career Coach (POC 5)</span>
+      </button>
+    </nav>
+
+    <!-- MAIN VIEW 1: STUDENT-JOB MATCHING (POC 1) -->
+    <main id="matchingView" class="view-section">
+      <div class="selection-grid">
+        <section class="card glass-card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="icon">🎓</span>
+              <h2>Student Candidate Profile</h2>
+            </div>
+            <div class="select-wrapper">
+              <label for="studentSelect">Select Mock Candidate:</label>
+              <select id="studentSelect" class="custom-select">
+                <option value="" disabled selected>-- Select a Student --</option>
+              </select>
+            </div>
+          </div>
+          <div id="studentDetails" class="details-body">
+            <div class="empty-state"><p>Select a student profile from the dropdown above.</p></div>
+          </div>
+        </section>
+
+        <section class="card glass-card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="icon">💼</span>
+              <h2>Placement Opportunity</h2>
+            </div>
+            <div class="select-wrapper">
+              <label for="jobSelect">Select Mock Job:</label>
+              <select id="jobSelect" class="custom-select">
+                <option value="" disabled selected>-- Select a Job --</option>
+              </select>
+            </div>
+          </div>
+          <div id="jobDetails" class="details-body">
+            <div class="empty-state"><p>Select a job opportunity from the dropdown above.</p></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="action-panel">
+        <button id="analyzeBtn" class="btn-primary" disabled>
+          <span class="btn-icon">⚡</span>
+          <span class="btn-text">Analyze Match</span>
+        </button>
+      </div>
+
+      <section id="resultsSection" class="card glass-card results-card hidden">
+        <div class="results-header">
+          <div class="results-title">
+            <span class="icon">📊</span>
+            <h2>AI Compatibility Analysis Report</h2>
+          </div>
+          <div id="responseMeta" class="meta-tag"></div>
+        </div>
+
+        <div class="results-dashboard">
+          <div class="metrics-row">
+            <div class="metric-card score-card">
+              <span class="metric-label">Overall Match Score</span>
+              <div class="score-display">
+                <span id="scoreValue" class="score-number">0</span>
+                <span class="score-total">/ 100</span>
+              </div>
+              <div class="score-bar-bg">
+                <div id="scoreBarFill" class="score-bar-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="metric-card status-card">
+              <span class="metric-label">Eligibility Assessment</span>
+              <div id="eligibilityBadge" class="badge-eligibility">--</div>
+            </div>
+            <div class="metric-card summary-card">
+              <span class="metric-label">Final AI Recommendation</span>
+              <p id="finalRecommendation" class="recommendation-text">--</p>
+            </div>
+          </div>
+
+          <!-- Why You Match Feature Card -->
+          <div class="why-match-card" id="whyMatchCard">
+            <h3><span>✨</span> You Match Because:</h3>
+            <div id="whyMatchGrid" class="why-match-grid"></div>
+          </div>
+
+          <div class="analysis-grid">
+            <div class="analysis-block">
+              <h3><span class="block-icon">🎯</span> Skills Breakdown</h3>
+              <div class="sub-block"><h4>Matched Skills</h4><div id="matchedSkills" class="tags-container"></div></div>
+              <div class="sub-block"><h4>Missing / Gap Skills</h4><div id="missingSkills" class="tags-container"></div></div>
+            </div>
+
+            <div class="analysis-block">
+              <h3><span class="block-icon">📚</span> Requirements Alignment</h3>
+              <div class="info-group"><span class="info-label">Academic Alignment</span><p id="academicAlignment" class="info-content"></p></div>
+              <div class="info-group"><span class="info-label">Experience Alignment</span><p id="experienceAlignment" class="info-content"></p></div>
+            </div>
+
+            <div class="analysis-block">
+              <h3><span class="block-icon">💡</span> Strengths & Gaps</h3>
+              <div class="info-group"><span class="info-label">Key Strengths</span><ul id="keyStrengths" class="styled-list positive"></ul></div>
+              <div class="info-group"><span class="info-label">Potential Gaps</span><ul id="potentialGaps" class="styled-list warning"></ul></div>
+            </div>
+
+            <div class="analysis-block full-width">
+              <h3><span class="block-icon">📋</span> Strategic Placement Evaluation</h3>
+              <div class="info-group"><span class="info-label">Compatibility Explanation</span><p id="explanationOfCompatibility" class="info-paragraph"></p></div>
+              <div class="info-group"><span class="info-label">Improvement Suggestions</span><ul id="improvementSuggestions" class="styled-list action"></ul></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- MAIN VIEW 2: AI RESUME ANALYZER (POC 2) -->
+    <main id="resumeView" class="view-section hidden">
+      <div class="selection-grid">
+        <section class="card glass-card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="icon">📑</span>
+              <h2>Candidate Resume Data</h2>
+            </div>
+            <div class="select-wrapper">
+              <label for="resumeStudentSelect">Select Candidate Resume:</label>
+              <select id="resumeStudentSelect" class="custom-select">
+                <option value="" disabled selected>-- Select a Resume --</option>
+              </select>
+            </div>
+          </div>
+          <div id="resumeDetails" class="details-body">
+            <div class="empty-state"><p>Select a candidate resume from the dropdown above.</p></div>
+          </div>
+        </section>
+
+        <section class="card glass-card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="icon">🏢</span>
+              <h2>Target Job Specification</h2>
+            </div>
+            <div class="select-wrapper">
+              <label for="resumeJobSelect">Select Target Job:</label>
+              <select id="resumeJobSelect" class="custom-select">
+                <option value="" disabled selected>-- Select a Job --</option>
+              </select>
+            </div>
+          </div>
+          <div id="resumeJobDetails" class="details-body">
+            <div class="empty-state"><p>Select a target job opportunity from the dropdown above.</p></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="action-panel">
+        <button id="analyzeResumeBtn" class="btn-primary" disabled>
+          <span class="btn-icon">🔍</span>
+          <span class="btn-text">Analyze Resume</span>
+        </button>
+      </div>
+
+      <section id="resumeResultsSection" class="card glass-card results-card hidden">
+        <div class="results-header">
+          <div class="results-title">
+            <span class="icon">📈</span>
+            <h2>AI Resume Analysis & Compatibility Report</h2>
+          </div>
+          <div id="resumeResponseMeta" class="meta-tag"></div>
+        </div>
+
+        <div class="hard-eligibility-container">
+          <div class="section-title-bar">
+            <h3>⚙️ Hard Eligibility Check (Deterministic Code Logic)</h3>
+            <span id="hardBadge" class="hard-badge">--</span>
+          </div>
+          <p id="hardSummary" class="hard-summary-text"></p>
+          <div class="hard-checks-grid">
+            <div class="hard-check-item" id="cgpaCheckItem"><span class="check-label">CGPA Requirement</span><span id="cgpaCheckDetail" class="check-detail"></span></div>
+            <div class="hard-check-item" id="degreeCheckItem"><span class="check-label">Degree Match</span><span id="degreeCheckDetail" class="check-detail"></span></div>
+            <div class="hard-check-item" id="expCheckItem"><span class="check-label">Seniority Check</span><span id="expCheckDetail" class="check-detail"></span></div>
+          </div>
+        </div>
+
+        <div class="results-dashboard" style="margin-top: 24px;">
+          <div class="section-title-bar">
+            <h3>🤖 AI Semantic Alignment (NVIDIA NIM Llama-3.3-70B)</h3>
+          </div>
+
+          <div class="metrics-row">
+            <div class="metric-card score-card">
+              <span class="metric-label">Semantic Alignment Score</span>
+              <div class="score-display">
+                <span id="resumeScoreValue" class="score-number">0</span>
+                <span class="score-total">/ 100</span>
+              </div>
+              <div class="score-bar-bg">
+                <div id="resumeScoreBarFill" class="score-bar-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="metric-card summary-card" style="grid-column: span 2;">
+              <span class="metric-label">Relevant Experience Assessment</span>
+              <p id="relevantExperienceText" class="recommendation-text">--</p>
+            </div>
+          </div>
+
+          <div class="analysis-grid">
+            <div class="analysis-block">
+              <h3><span class="block-icon">🎯</span> Skill Match & Gaps</h3>
+              <div class="sub-block"><h4>Matched Skills</h4><div id="resumeMatchedSkills" class="tags-container"></div></div>
+              <div class="sub-block"><h4>Missing Required Skills</h4><div id="resumeMissingRequired" class="tags-container"></div></div>
+              <div class="sub-block"><h4>Missing Preferred Skills</h4><div id="resumeMissingPreferred" class="tags-container"></div></div>
+            </div>
+
+            <div class="analysis-block">
+              <h3><span class="block-icon">🚀</span> Resume Strengths & Emphasized Keywords</h3>
+              <div class="info-group"><span class="info-label">Keywords to Emphasize</span><div id="keywordsToEmphasize" class="tags-container"></div></div>
+              <div class="info-group" style="margin-top: 10px;"><span class="info-label">Relevant Projects</span><ul id="relevantProjectsList" class="styled-list positive"></ul></div>
+            </div>
+
+            <div class="analysis-block">
+              <h3><span class="block-icon">⚖️</span> Strengths & Weaknesses</h3>
+              <div class="info-group"><span class="info-label">Resume Strengths</span><ul id="resumeStrengths" class="styled-list positive"></ul></div>
+              <div class="info-group"><span class="info-label">Resume Weaknesses</span><ul id="resumeWeaknessesGaps" class="styled-list warning"></ul></div>
+            </div>
+
+            <div class="analysis-block">
+              <h3><span class="block-icon">💡</span> Truthful Improvement Suggestions</h3>
+              <div class="info-group"><span class="info-label">Refinements</span><ul id="truthfulSuggestions" class="styled-list action"></ul></div>
+            </div>
+
+            <div class="analysis-block full-width">
+              <h3><span class="block-icon">📝</span> Final Compatibility Explanation</h3>
+              <p id="finalCompatibilityExplanation" class="info-paragraph"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- MAIN VIEW 3: AI PLACEMENT SEARCH (POC 3) -->
+    <main id="searchView" class="view-section hidden">
+      <section class="card glass-card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="icon">💬</span>
+            <h2>Natural-Language Placement Opportunity Search</h2>
+          </div>
+        </div>
+
+        <div class="search-box-container">
+          <label for="searchInput" style="font-size: 0.9rem; color: var(--text-muted); display: block; margin-bottom: 8px;">Enter your placement query in plain English:</label>
+          <div class="search-input-wrapper">
+            <input 
+              type="text" 
+              id="searchInput" 
+              class="custom-search-input" 
+              placeholder="Find AI internships for CSE students with Python skills and CGPA above 8"
+              value="Find AI internships for CSE students with Python skills and CGPA above 8"
+            />
+            <button id="searchBtn" class="btn-primary" style="border-radius: var(--radius-sm); padding: 12px 28px;">
+              <span>Search</span>
+            </button>
+          </div>
+
+          <div class="sample-queries">
+            <span style="font-size: 0.8rem; color: var(--text-dim);">Try sample queries:</span>
+            <button class="sample-chip" data-query="Find AI/ML roles requiring Python and PyTorch.">Exact AI</button>
+            <button class="sample-chip" data-query="Show jobs I can apply to with a 7.5 CGPA in CSE.">7.5 CGPA CSE</button>
+            <button class="sample-chip" data-query="Find server-side roles for someone who builds APIs with Express and Node.">Server-Side Express</button>
+            <button class="sample-chip" data-query="I want frontend opportunities.">Frontend</button>
+            <button class="sample-chip" data-query="Find internships for CSE students with CGPA above 8 who know Python and SQL.">Multi-Constraint</button>
+            <button class="sample-chip" data-query="I'm interested in working with machine learning but don't want a senior role.">Non-Senior ML</button>
+            <button class="sample-chip" data-query="Find quantum computing internships requiring Rust and CUDA.">Quantum / Rust</button>
+            <button class="sample-chip" data-query="Show me good software jobs.">Ambiguous Query</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Search Results Area -->
+      <section id="searchResultsSection" class="card glass-card results-card hidden">
+        <div class="results-header">
+          <div class="results-title">
+            <span class="icon">🔎</span>
+            <h2>Search Intent & Opportunity Results</h2>
+          </div>
+          <div id="searchResponseMeta" class="meta-tag"></div>
+        </div>
+
+        <!-- 1. Original Query Display -->
+        <div class="query-display-box">
+          <span class="query-label">Original User Query:</span>
+          <p id="displayOriginalQuery" class="query-text"></p>
+        </div>
+
+        <!-- 2. AI-Interpreted Search Intent Card -->
+        <div class="intent-card">
+          <h3>🤖 AI-Interpreted Search Intent (NVIDIA Llama-3.3-70B)</h3>
+          <div class="intent-grid">
+            <div class="intent-box">
+              <label>Role / Domain</label>
+              <div id="intentRole" class="intent-value"></div>
+            </div>
+            <div class="intent-box">
+              <label>Extracted Skills</label>
+              <div id="intentSkills" class="intent-value"></div>
+            </div>
+            <div class="intent-box">
+              <label>Target Degree</label>
+              <div id="intentDegree" class="intent-value"></div>
+            </div>
+            <div class="intent-box">
+              <label>Min Candidate CGPA</label>
+              <div id="intentCgpa" class="intent-value"></div>
+            </div>
+            <div class="intent-box">
+              <label>Opportunity Type</label>
+              <div id="intentType" class="intent-value"></div>
+            </div>
+            <div class="intent-box">
+              <label>Experience Level</label>
+              <div id="intentLevel" class="intent-value"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Count Header -->
+        <div class="results-count-bar">
+          <span id="resultsCountBadge" class="results-badge">Found 0 Matching Opportunities</span>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Filtered & ranked deterministically by local application engine</span>
+        </div>
+
+        <!-- 4. Matching Opportunities List -->
+        <div id="opportunitiesList" class="opportunities-list"></div>
+      </section>
+    </main>
+
+    <!-- MAIN VIEW 4: PLACEMENT COPILOT (POC 4) -->
+    <main id="copilotView" class="view-section hidden">
+      <section class="card glass-card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="icon">🤖</span>
+            <h2>Placement Officer AI Copilot Workspace</h2>
+          </div>
+          <p class="subtitle">AI Operational Assistant for Risk Detection, Employer Recommendations, Drive Health & Communications</p>
+        </div>
+
+        <!-- Copilot Operational Stats Bar -->
+        <div class="metrics-row" style="margin-bottom: 20px;">
+          <div class="metric-card" style="padding: 14px 18px;">
+            <span class="metric-label">Batch Size</span>
+            <span style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #2563EB;">7 Students</span>
+          </div>
+          <div class="metric-card" style="padding: 14px 18px;">
+            <span class="metric-label">Placed Rate</span>
+            <span style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: #16A34A;">43% (3 / 7)</span>
+          </div>
+          <div class="metric-card" style="padding: 14px 18px;">
+            <span class="metric-label">Drive Health Status</span>
+            <span style="font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800; color: #D97706;">2 Need Attention</span>
+          </div>
+        </div>
+
+        <!-- Sample Copilot Prompt Chips -->
+        <div class="search-box-container">
+          <label style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Suggested Officer Queries:</label>
+          <div class="sample-queries">
+            <button class="sample-chip copilot-chip" data-query="Who needs immediate attention?">🚨 Who needs immediate attention?</button>
+            <button class="sample-chip copilot-chip" data-query="Which students are likely to remain unplaced?">⚠️ Student Risk Detection</button>
+            <button class="sample-chip copilot-chip" data-query="Which companies should we invite for Mechanical students?">🏢 Employer Recommendations</button>
+            <button class="sample-chip copilot-chip" data-query="Which department is falling behind in placement rate?">📊 Department Insights</button>
+            <button class="sample-chip copilot-chip" data-query="Which drives need immediate attention?">🩺 Drive Health Audit</button>
+            <button class="sample-chip copilot-chip" data-query="Draft an email to unplaced students for resume review">✉️ Draft Announcement</button>
+            <button class="sample-chip copilot-chip" data-query="What is the overall placement rate and batch summary?">📈 Report Copilot</button>
+          </div>
+
+          <div class="search-input-wrapper" style="margin-top: 12px;">
+            <input type="text" id="copilotInput" class="custom-search-input" placeholder="Ask Placement Copilot anything (e.g. 'Who needs immediate attention?' or 'Draft Amazon drive announcement')...">
+            <button id="copilotSendBtn" onclick="window.handleAskCopilot && window.handleAskCopilot()" class="btn-primary" style="padding: 12px 28px;">
+              <span>Ask Copilot</span>
+              <span>⚡</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Copilot Response Output Area -->
+      <section id="copilotResultsSection" class="card glass-card results-card hidden">
+        <div class="results-header">
+          <div class="results-title">
+            <span class="icon">💬</span>
+            <h2 id="copilotResponseHeadline">Copilot Response</h2>
+          </div>
+          <div id="copilotResponseMeta" class="meta-tag"></div>
+        </div>
+
+        <div id="copilotSummaryBox" class="query-display-box" style="border-left-color: #2563EB; background: #EFF6FF;">
+          <div class="query-label" style="color: #1E40AF;">AI Executive Summary</div>
+          <div id="copilotSummaryText" class="query-text" style="color: #1E293B; font-weight: 500; line-height: 1.6;"></div>
+        </div>
+
+        <!-- Dynamic Copilot Response Cards Grid -->
+        <div id="copilotCardsContainer" class="opportunities-list" style="margin-bottom: 24px;"></div>
+
+        <!-- Communication Draft Container (If Applicable) -->
+        <div id="copilotDraftContainer" class="why-match-card hidden" style="background: #F0FDF4; border-color: #BBF7D0;">
+          <h3 style="color: #15803D;"><span>✉️</span> Generated Communication Draft</h3>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+            <div><strong>Target Audience:</strong> <span id="draftAudienceText"></span></div>
+            <div><strong>Subject:</strong> <span id="draftSubjectText" style="font-weight: 600;"></span></div>
+            <div style="margin-top: 8px;">
+              <textarea id="draftBodyText" class="custom-search-input" rows="8" style="width: 100%; font-family: monospace; font-size: 0.9rem; background: #FFFFFF; color: #0F172A; cursor: text;" readonly></textarea>
+            </div>
+            <button id="copyDraftBtn" class="sample-chip" style="align-self: flex-start; background: #16A34A; color: #FFFFFF; border: none; padding: 8px 18px; font-weight: 700; margin-top: 6px;">📋 Copy Draft to Clipboard</button>
+          </div>
+        </div>
+
+        <!-- Next Recommended TPO Actions -->
+        <div class="analysis-block full-width">
+          <h3><span>🚀</span> Recommended Officer Next Actions</h3>
+          <ul id="copilotActionsList" class="styled-list action"></ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- MAIN VIEW 5: AI STUDENT CAREER COACH (POC 5) -->
+    <main id="careerCoachView" class="view-section hidden">
+      <div class="selection-grid">
+        <!-- 1. Student Profile Card -->
+        <section class="card glass-card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="icon">🎓</span>
+              <h2>1. Student Candidate Profile</h2>
+            </div>
+            <div class="select-wrapper">
+              <label for="coachStudentSelect">Select Candidate Profile:</label>
+              <select id="coachStudentSelect" class="custom-select">
+                <option value="" disabled selected>-- Select a Student --</option>
+              </select>
+            </div>
+          </div>
+          <div id="coachStudentDetails" class="details-body">
+            <div class="empty-state"><p>Select a student profile to load career intelligence.</p></div>
+          </div>
+        </section>
+
+        <!-- 2. Career Goal Selection Card -->
+        <section class="card glass-card">
+          <div class="card-header">
+            <div class="card-title">
+              <span class="icon">🎯</span>
+              <h2>2. Target Career Goal</h2>
+            </div>
+            <p class="subtitle">Select the student's target role to evaluate placement readiness & skill gaps.</p>
+          </div>
+          <div class="details-body" style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="select-wrapper" style="width: 100%;">
+              <label for="coachRoleSelect">Target Role:</label>
+              <select id="coachRoleSelect" class="custom-select">
+                <option value="Software Engineer">Software Engineer</option>
+                <option value="Backend Developer" selected>Backend Developer</option>
+                <option value="Frontend Developer">Frontend Developer</option>
+                <option value="Full Stack Developer">Full Stack Developer</option>
+                <option value="AI Engineer">AI Engineer</option>
+                <option value="Data Analyst">Data Analyst</option>
+                <option value="Product Manager">Product Manager</option>
+                <option value="Cyber Security">Cyber Security</option>
+                <option value="DevOps Engineer">DevOps Engineer</option>
+              </select>
+            </div>
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; padding: 14px; border-radius: var(--radius-sm);">
+              <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Coaching Focus Strategy:</label>
+              <p id="coachRoleFocusText" style="font-size: 0.88rem; color: var(--text-main); margin-top: 4px;">
+                Evaluates microservice architecture, API design, Node.js/Java core skills, database normalization, and cloud deployment readiness.
+              </p>
+            </div>
+            <button id="coachAnalyzeBtn" class="btn-primary" style="margin-top: auto; padding: 14px 20px; font-weight: 700;" disabled>
+              <span class="btn-icon">⚡</span>
+              <span class="btn-text">Generate Placement Readiness & AI Roadmap</span>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- CAREER COACH RESULTS DASHBOARD -->
+      <section id="coachResultsSection" class="card glass-card results-card hidden" style="margin-top: 20px;">
+        <div class="results-header">
+          <div class="results-title">
+            <span class="icon">📊</span>
+            <h2>AI Career Readiness & Growth Report</h2>
+          </div>
+          <div id="coachResponseMeta" class="meta-tag"></div>
+        </div>
+
+        <!-- Executive Summary Banner -->
+        <div id="coachSummaryBox" class="query-display-box" style="border-left-color: #16A34A; background: #F0FDF4; margin-bottom: 20px;">
+          <div class="query-label" style="color: #15803D;">Executive Career Assessment Summary</div>
+          <div id="coachExecutiveSummary" class="query-text" style="color: #0F172A; font-weight: 500; line-height: 1.6;"></div>
+        </div>
+
+        <!-- 3. Placement Readiness Visual Score -->
+        <div class="metrics-row" style="margin-bottom: 24px;">
+          <div class="metric-card score-card" style="flex: 1.2;">
+            <span class="metric-label">3. Visual Placement Readiness Score</span>
+            <div class="score-display">
+              <span id="coachReadinessScore" class="score-number">0%</span>
+              <span class="score-total">/ 100%</span>
+            </div>
+            <div class="score-bar-bg" style="margin-top: 10px;">
+              <div id="coachReadinessBarFill" class="score-bar-fill" style="width: 0%; background: linear-gradient(90deg, #16A34A, #2563EB);"></div>
+            </div>
+          </div>
+          <div class="metric-card summary-card" style="flex: 2;">
+            <span class="metric-label">Readiness Assessment Explanation</span>
+            <p id="coachReadinessExplanation" class="recommendation-text" style="font-size: 0.95rem; color: #1E293B; line-height: 1.5;">--</p>
+          </div>
+        </div>
+
+        <div class="analysis-grid">
+          <!-- 4. Strengths Card -->
+          <div class="analysis-block">
+            <h3><span class="block-icon">✨</span> 4. Key Profile Strengths</h3>
+            <ul id="coachStrengthsList" class="styled-list positive"></ul>
+          </div>
+
+          <!-- 5. Improvement Areas Card -->
+          <div class="analysis-block">
+            <h3><span class="block-icon">⚠️</span> 5. Profile Improvement Areas</h3>
+            <ul id="coachImprovementList" class="styled-list warning"></ul>
+          </div>
+
+          <!-- 7. Skill Gap Analysis Comparison Card -->
+          <div class="analysis-block full-width">
+            <h3><span class="block-icon">⚖️</span> 7. Skill Gap Analysis (Target vs Current Profile)</h3>
+            <div class="skill-gap-comparison-grid">
+              <div class="skill-column required-col">
+                <h4>Target Role Required Skills</h4>
+                <div id="coachRequiredSkills" class="tags-container"></div>
+              </div>
+              <div class="skill-column current-col">
+                <h4>Verified Current Skills</h4>
+                <div id="coachCurrentSkills" class="tags-container"></div>
+              </div>
+              <div class="skill-column missing-col">
+                <h4>Missing / Gap Skills</h4>
+                <div id="coachMissingSkills" class="tags-container"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Personalized Career Roadmap Timeline -->
+          <div class="analysis-block full-width">
+            <h3><span class="block-icon">🗺️</span> 6. Personalized Career Milestone Roadmap</h3>
+            <div id="coachRoadmapTimeline" class="roadmap-timeline"></div>
+          </div>
+
+          <!-- 8. Resume Recommendations Card -->
+          <div class="analysis-block">
+            <h3><span class="block-icon">📝</span> 8. Actionable Resume Suggestions</h3>
+            <ul id="coachResumeAdviceList" class="styled-list action"></ul>
+          </div>
+
+          <!-- 9. Recommended Companies Card -->
+          <div class="analysis-block">
+            <h3><span class="block-icon">🏢</span> 9. Recommended Target Companies</h3>
+            <div id="coachRecommendedCompanies" class="recommended-companies-list"></div>
+          </div>
+        </div>
+
+        <!-- 10. AI Chat Area -->
+        <div class="analysis-block full-width" style="margin-top: 24px; background: #F8FAFC; border: 1px solid var(--bg-card-border); padding: 20px; border-radius: var(--radius-md);">
+          <h3><span class="block-icon">💬</span> 10. AI Student Career Coach Assistant</h3>
+          <p class="subtitle" style="margin-bottom: 12px;">Ask any question about candidate preparation, portfolio project ideas, or placement strategy.</p>
+          
+          <div class="suggested-prompts-container">
+            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Suggested Coach Prompts:</label>
+            <div class="sample-queries" style="margin-top: 6px;">
+              <button class="sample-chip coach-chip" data-prompt="How can I improve my placement chances">🚀 How can I improve my placement chances</button>
+              <button class="sample-chip coach-chip" data-prompt="What should I learn next">📚 What should I learn next</button>
+              <button class="sample-chip coach-chip" data-prompt="Review my current profile">📋 Review my current profile</button>
+              <button class="sample-chip coach-chip" data-prompt="Suggest a 30-day preparation plan">📅 Suggest a 30-day preparation plan</button>
+              <button class="sample-chip coach-chip" data-prompt="Which companies should I target">🏢 Which companies should I target</button>
+              <button class="sample-chip coach-chip" data-prompt="What projects should I build">💻 What projects should I build</button>
+              <button class="sample-chip coach-chip" data-prompt="How can I improve my resume">📄 How can I improve my resume</button>
+            </div>
+          </div>
+
+          <div class="search-input-wrapper" style="margin-top: 14px;">
+            <input type="text" id="coachChatInput" class="custom-search-input" placeholder="Ask AI Career Coach (e.g., 'What backend project should I build to impress recruiters?')...">
+            <button id="coachChatSendBtn" class="btn-primary" style="padding: 12px 24px;">
+              <span>Ask Coach</span>
+              <span>⚡</span>
+            </button>
+          </div>
+
+          <div id="coachChatResponseBox" class="chat-response-box hidden" style="margin-top: 16px;">
+            <div class="chat-badge">AI Career Coach Response</div>
+            <p id="coachChatAnswerText" class="chat-text"></p>
+          </div>
+        </div>
+
+        <!-- Governance Disclaimer Notice -->
+        <div class="disclaimer-banner" style="margin-top: 24px; background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF;">
+          <span class="disclaimer-icon">ℹ️</span>
+          <span style="font-size: 0.85rem;">
+            <strong>AI Ethics Disclaimer:</strong> The AI Student Career Coach provides guidance and recommendations only. It does not guarantee placement, calculate official academic eligibility, or make hiring decisions.
+          </span>
+        </div>
+      </section>
+    </main>
+
+    <!-- Global Loading State Overlay -->
+    <div id="loadingOverlay" class="loading-container hidden">
+      <div class="nvidia-spinner"></div>
+      <h3 id="loadingTitle">Evaluating Natural Language Query...</h3>
+      <p id="loadingSubtitle">Executing high-dimensional intent extraction using NVIDIA Llama-3.3-70B Instruct</p>
+    </div>
+
+    <!-- Global Error Alert -->
+    <div id="errorAlert" class="error-alert hidden">
+      <span class="error-icon">❌</span>
+      <span id="errorMessage" class="error-text"></span>
+    </div>
+
+    <!-- Footer Disclaimer -->
+    <div class="disclaimer-footer" id="bottomDisclaimer">
+      <span class="disclaimer-icon">ℹ️</span>
+      <span id="aiDisclaimerText">
+        AI-generated compatibility analysis. Final placement and hiring decisions should remain with the student, employer, and placement team.
+      </span>
+    </div>
+
+    <footer class="app-footer">
+      <p>PlacementHub AI Lab • Independent Research Proof-of-Concept • NVIDIA NIM Infrastructure</p>
+    </footer>
+  </div>
+
+  <script src="app.js?v=debug2026"></script>
+</body>
+</html>

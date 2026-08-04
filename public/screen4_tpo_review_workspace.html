@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlacementHub – AI Resume Intelligence (Screen 4: TPO Review Workspace)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: #F8FAFC;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F1F5F9;
+      --border-light: #E2E8F0;
+      --border-hover: #CBD5E1;
+
+      --text-dark: #0F172A;
+      --text-muted: #475569;
+      --text-dim: #64748B;
+
+      --color-primary: #4F46E5;
+      --color-tpo: #F59E0B;
+      --color-success: #10B981;
+      --color-sky: #0284C7;
+      --color-rose: #EF4444;
+
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-code: 'JetBrains Mono', monospace;
+
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    .suite-header {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-light);
+      padding: 12px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, #76B900, #4A7A00);
+      color: #FFF;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    .screen-nav-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .tab-btn {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover { background: #E2E8F0; color: var(--text-dark); }
+    .tab-btn.active {
+      background: var(--color-primary);
+      color: #FFF;
+      border-color: var(--color-primary);
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    }
+
+    .app-container {
+      max-width: 1550px;
+      margin: 24px auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .batch-switcher-bar {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .candidate-select {
+      background: var(--bg-light);
+      border: 1px solid var(--border-light);
+      color: var(--text-dark);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .page-title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--text-dark); }
+
+    .workspace-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.35fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (max-width: 1200px) { .workspace-grid { grid-template-columns: 1fr; } }
+
+    .panel-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text-dark); }
+
+    .feedback-item-card {
+      background: var(--bg-light);
+      border: 1px solid var(--border-light);
+      border-left: 4px solid var(--color-primary);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-act {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-approve { background: var(--color-success); color: #FFF; }
+    .btn-send { background: linear-gradient(135deg, var(--color-tpo), #D97706); color: #FFF; }
+  </style>
+</head>
+<body>
+
+  <!-- Suite Navigation Header -->
+  <header class="suite-header">
+    <div class="brand-title">
+      <span class="brand-badge">PlacementHub</span>
+      <span>AI Resume Intelligence Suite</span>
+    </div>
+    <nav class="screen-nav-tabs">
+      <a href="bulk_processing_dashboard.html" class="tab-btn"><span>📁</span> Bulk CV Dashboard (20 CVs)</a>
+      <a href="workflow.html" class="tab-btn"><span>🔄</span> Workflow</a>
+      <a href="screen1_resume_upload.html" class="tab-btn"><span>1️⃣</span> Screen 1: Upload</a>
+      <a href="screen2_resume_processing.html" class="tab-btn"><span>2️⃣</span> Screen 2: Processing</a>
+      <a href="screen3_ai_resume_review.html" class="tab-btn"><span>3️⃣</span> Screen 3: AI Review</a>
+      <a href="screen4_tpo_review_workspace.html" class="tab-btn active"><span>4️⃣</span> Screen 4: TPO Workbench</a>
+      <a href="screen5_student_feedback.html" class="tab-btn"><span>5️⃣</span> Screen 5: Student View</a>
+      <a href="screen6_final_resume_review.html" class="tab-btn"><span>6️⃣</span> Screen 6: Final Clearance</a>
+    </nav>
+  </header>
+
+  <div class="app-container">
+
+    <!-- Batch Candidate Switcher Bar -->
+    <div class="batch-switcher-bar">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="background:#FEE2E2; color:#991B1B; border:1px solid #FCA5A5; font-family:var(--font-code); font-size:0.8rem; font-weight:800; padding:4px 10px; border-radius:20px;">
+          🚨 Low Score Sample Selected
+        </span>
+        <button class="btn-act btn-approve" style="padding:6px 14px; font-size:0.82rem;" onclick="bulkApproveAllDrafts()">
+          <span>✅</span> Bulk Approve All 20 Staged Drafts
+        </button>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px;">
+        <label for="candidateSelect" style="font-size:0.82rem; color:var(--text-muted); font-weight:600;">Curate Candidate:</label>
+        <select id="candidateSelect" class="candidate-select" onchange="switchCandidate(this.value)">
+          <option value="STU-000">🚨 Arjun Malhotra (ATS: 42% LOW SCORE)</option>
+          <option value="STU-001">1/20: Aarav Sharma (STU-001)</option>
+          <option value="STU-002">2/20: Priya Patel (STU-002)</option>
+          <option value="STU-003">3/20: Rohan Verma (STU-003)</option>
+        </select>
+      </div>
+    </div>
+
+    <header class="header-bar">
+      <div>
+        <h1 class="page-title">TPO Review Workspace</h1>
+        <p class="page-subtitle">Screen 4 of 6 – Curation Workbench (8 Intelligence Metrics Active)</p>
+      </div>
+    </header>
+
+    <main class="workspace-grid">
+
+      <section class="panel-card">
+        <h3 class="panel-title"><span>📄</span> Active Resume Preview</h3>
+        <div style="background:var(--bg-light); border:1px solid var(--border-light); padding:14px; border-radius:6px; font-size:0.82rem; height:380px; overflow-y:auto;">
+          <h2 style="color:#991B1B; font-size:1.05rem; font-weight:800;" id="resName">Arjun Malhotra</h2>
+          <p id="resMeta" style="color:var(--text-muted);">Email: arjun.malhotra@placementhub.edu | B.Tech CSE (5.4 CGPA)</p>
+          
+          <div style="background:#FEE2E2; border:1px solid #FCA5A5; color:#991B1B; padding:8px 10px; border-radius:6px; font-size:0.78rem; font-weight:700; margin:8px 0;" id="resAtsTag">
+            🚨 1. ATS Score: 42% Fail • 3. Quality Score: 38 / 100 • 4. Grammar Typos: 4 • 5. Weak Bullets: 5
+          </div>
+
+          <div style="color:var(--color-sky); font-weight:700;">TECHNICAL SKILLS</div>
+          <p id="resSkills" style="color:var(--text-dark);">HTML, Basic C++</p>
+
+          <div style="color:#991B1B; font-weight:700; margin-top:6px;">2. MISSING CRITICAL SKILLS</div>
+          <p id="resMissing" style="color:#991B1B; font-weight:600;">❌ Missing: React.js, Docker, SQL, REST APIs, Git</p>
+
+          <div style="color:var(--color-sky); font-weight:700; margin-top:10px;">EXPERIENCE & PROJECTS</div>
+          <p id="resProj" style="color:var(--text-dark);">• Was working on making websites.<br>• Responsible for backend stuff.</p>
+        </div>
+      </section>
+
+      <section class="panel-card">
+        <h3 class="panel-title"><span>🤖</span> AI Draft Curation (8 Metrics Fixes)</h3>
+
+        <div class="feedback-item-card" style="border-left-color:#EF4444;">
+          <div style="font-size:0.78rem; color:#B91C1C; font-weight:800;">1. ATS SCORE & 2. MISSING SKILLS FIX</div>
+          <div style="font-size:0.88rem; color:var(--text-dark); font-weight:600;" id="rec1">
+            "Remove 2-column table layout and add missing core developer skills: React.js, Docker, SQL, REST APIs, Git."
+          </div>
+          <div style="display:flex; gap:6px; margin-top:6px;">
+            <button style="background:#D1FAE5; color:#047857; border:1px solid #A7F3D0; padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;" onclick="this.textContent='✓ Accepted'">✓ Accept</button>
+            <button style="background:#FEF3C7; color:#B45309; border:1px solid #FDE68A; padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;">✏️ Edit</button>
+            <button style="background:#FEE2E2; color:#B91C1C; border:1px solid #FCA5A5; padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;">✕ Remove</button>
+          </div>
+        </div>
+
+        <div class="feedback-item-card" style="border-left-color:#F59E0B;">
+          <div style="font-size:0.78rem; color:#B45309; font-weight:800;">4. GRAMMAR ISSUES & 5. WEAK BULLETS FIX</div>
+          <div style="font-size:0.88rem; color:var(--text-dark); font-weight:600;" id="rec2">
+            "Fix 4 grammar typos and replace passive phrase 'was working on making' with active verb 'Engineered fullstack web applications using...'"
+          </div>
+          <div style="display:flex; gap:6px; margin-top:6px;">
+            <button style="background:#D1FAE5; color:#047857; border:1px solid #A7F3D0; padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;" onclick="this.textContent='✓ Accepted'">✓ Accept</button>
+            <button style="background:#FEF3C7; color:#B45309; border:1px solid #FDE68A; padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;">✏️ Edit</button>
+            <button style="background:#FEE2E2; color:#B91C1C; border:1px solid #FCA5A5; padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;">✕ Remove</button>
+          </div>
+        </div>
+
+        <div class="feedback-item-card" style="border-left-color:#4F46E5;">
+          <div style="font-size:0.78rem; color:#4F46E5; font-weight:800;">7. SUGGESTED PROJECTS & 8. CERTIFICATIONS</div>
+          <div style="font-size:0.88rem; color:var(--text-dark); font-weight:600;" id="rec3">
+            "Recommend building: 'Fullstack Microservice API with FastAPI' and completing 'AWS Certified Cloud Practitioner'."
+          </div>
+          <div style="display:flex; gap:6px; margin-top:6px;">
+            <button style="background:#D1FAE5; color:#047857; border:1px solid #A7F3D0; padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;" onclick="this.textContent='✓ Accepted'">✓ Accept</button>
+            <button style="background:#FEF3C7; color:#B45309; border:1px solid #FDE68A; padding:4px 10px; border-radius:4px; font-size:0.75rem; font-weight:700; cursor:pointer;">✏️ Edit</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel-card">
+        <h3 class="panel-title"><span>📬</span> Batch Dispatch Actions</h3>
+        <button class="btn-act btn-approve" style="width:100%; justify-content:center;" onclick="approveFeedback()">
+          <span>✓</span> Approve Active Candidate Feedback
+        </button>
+        <button class="btn-act btn-send" style="width:100%; justify-content:center;" onclick="sendBatchFeedback()">
+          <span>📨</span> Send Feedback to Student (Screen 5) →
+        </button>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script>
+    const cvs = {
+      "STU-000": { name: "Arjun Malhotra", meta: "Email: arjun.malhotra@placementhub.edu | B.Tech CSE (5.4 CGPA)", atsTag: "🚨 1. ATS Score: 42% Fail • 3. Quality Score: 38 / 100 • 4. Grammar Typos: 4 • 5. Weak Bullets: 5", skills: "HTML, Basic C++", missing: "❌ Missing: React.js, Docker, SQL, REST APIs, Git", proj: "• Was working on making websites.<br>• Responsible for backend stuff.", rec1: "Remove 2-column table layout and add missing core developer skills: React.js, Docker, SQL, REST APIs, Git.", rec2: "Fix 4 grammar typos and replace passive phrase 'was working on making' with active verb 'Engineered fullstack web applications using...'", rec3: "Recommend building: 'Fullstack Microservice API with FastAPI' and completing 'AWS Certified Cloud Practitioner'." },
+      "STU-001": { name: "Aarav Sharma", meta: "Email: aarav.sharma@placementhub.edu | B.Tech CSE (8.9 CGPA)", atsTag: "✓ 1. ATS Score: 96% Passed • 3. Quality Score: 92 / 100 • 4. Grammar Typos: 0", skills: "Python, PyTorch, SQL, Docker", missing: "❌ Missing: AWS S3/EC2, FastAPI", proj: "Real-time Object Detection with YOLOv8 & PyTorch", rec1: "Quantify YOLOv8 latency reduction by 35%.", rec2: "Rephrase passive verbs to 'Engineered'.", rec3: "Recommend: 'Quantized Model Inference Service' & 'AWS Machine Learning Specialty'." }
+    };
+
+    function switchCandidate(id) {
+      const c = cvs[id] || { name: "Student " + id, meta: "Email: student@placementhub.edu | B.Tech (8.0 CGPA)", atsTag: "✓ ATS Score: 88%", skills: "C++, Python, SQL", missing: "❌ Missing: Docker", proj: "Project baseline descriptions", rec1: "Add quantitative impact metrics.", rec2: "Rephrase bullet points.", rec3: "Recommend Cloud Certifications." };
+      document.getElementById('resName').textContent = c.name;
+      document.getElementById('resMeta').textContent = c.meta;
+      document.getElementById('resAtsTag').textContent = c.atsTag;
+      document.getElementById('resSkills').textContent = c.skills;
+      document.getElementById('resMissing').textContent = c.missing;
+      document.getElementById('resProj').innerHTML = c.proj;
+      document.getElementById('rec1').textContent = '"' + c.rec1 + '"';
+      document.getElementById('rec2').textContent = '"' + c.rec2 + '"';
+      document.getElementById('rec3').textContent = '"' + c.rec3 + '"';
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const targetId = params.get('id');
+      if (targetId) {
+        const select = document.getElementById('candidateSelect');
+        select.value = targetId;
+        switchCandidate(targetId);
+      }
+    });
+
+    function bulkApproveAllDrafts() { alert('✅ Successfully Bulk Approved AI Staged Drafts across all 20 candidate resumes!'); }
+    function approveFeedback() { alert('✓ Feedback approved for active student!'); }
+    function sendBatchFeedback() { window.location.href = 'screen5_student_feedback.html?id=' + document.getElementById('candidateSelect').value; }
+  </script>
+
+</body>
+</html>
