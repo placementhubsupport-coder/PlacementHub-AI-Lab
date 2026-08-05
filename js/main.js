@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (statusIndicator) {
     statusIndicator.style.cursor = 'pointer';
     statusIndicator.addEventListener('click', () => {
-      showToast('All PlacementHub AI Lab services (Embedding, LLM, Vector Index) are operating normally.', 'success', 3500);
+      showToast('All PlacementHub AI Solutions services (Embedding, LLM, Vector Index) are operating normally.', 'success', 3500);
     });
   }
 });

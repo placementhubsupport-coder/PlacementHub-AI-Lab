@@ -460,7 +460,7 @@ function initReportActions() {
       await asyncSimulateApiCall(null, 1200);
       hideLoadingOverlay(document.body);
 
-      const reportContent = `PlacementHub AI Lab — ATS Resume Audit Report
+      const reportContent = `PlacementHub AI Solutions — ATS Resume Audit Report
 Candidate: ${candName}
 Resume File: ${activeRes.fileName}
 Target Role: ${activeRes.targetRole}
@@ -481,7 +481,7 @@ ${activeRes.missingKeywords.map(m => ` - ${m}`).join('\n')}
 AI RECOMMENDATIONS:
 ${activeRes.suggestions.map(s => ` * ${s.suggested}`).join('\n')}
 ==================================================
-CONFIRMED BY PLACEMENTHUB AI LAB ENGINE`;
+CONFIRMED BY PLACEMENTHUB AI SOLUTIONS ENGINE`;
 
       const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8;' });
       const link = document.createElement('a');

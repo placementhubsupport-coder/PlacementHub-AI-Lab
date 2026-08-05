@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PlacementHub AI Lab Placement Assistant — Conversational AI copilot for campus placement decisions and candidate audits.">
-  <title>PlacementHub AI Lab — Placement Assistant</title>
+  <meta name="description" content="PlacementHub AI Solutions Placement Copilot — Conversational AI copilot for campus placement decisions and candidate audits.">
+  <title>PlacementHub AI Solutions — Placement Copilot</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='65' font-size='50' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>PH</text></svg>">
   <link rel="stylesheet" href="wireframe.css">
 </head>
@@ -13,7 +13,7 @@
   <nav class="wf-nav">
     <div class="wf-nav-brand">
       <span class="wf-logo-badge">PH</span>
-      <span class="wf-nav-title">PlacementHub AI Lab</span>
+      <span class="wf-nav-title">PlacementHub AI Solutions</span>
     </div>
     <div class="wf-nav-search">
       <input type="text" class="wf-input" placeholder="Search sessions or candidates… (⌘K)">
@@ -21,7 +21,7 @@
     <div class="wf-nav-actions">
       <span class="wf-status-indicator">
         <span class="wf-status-dot"></span>
-        AI Assistant · Ready
+        Placement Copilot · Ready
       </span>
     </div>
   </nav>
@@ -46,6 +46,7 @@
       <!-- Session header — title + model + overflow -->
       <div style="height: 48px; border-bottom: 1px solid var(--border-subtle); padding: 0 var(--space-md); display: flex; align-items: center; justify-content: space-between; background: var(--bg-surface); flex-shrink: 0;">
         <div style="display: flex; align-items: center; gap: var(--space-sm);">
+          <div class="wf-breadcrumb" style="margin-bottom: 0; margin-right: 4px;">PlacementHub AI Solutions ›</div>
           <span style="font-size: 13px; font-weight: 600;" id="session-title-header">Placement Copilot</span>
           <span style="font-size: 12px; color: var(--text-muted);" id="session-model-header">PlacementHub Neural Agent</span>
           <span class="wf-badge wf-badge-dark" id="session-status-badge">Ready</span>
@@ -61,7 +62,7 @@
         
         <!-- Empty State Container -->
         <div id="chat-empty-state" style="border: 2px dashed var(--border-medium); border-radius: var(--radius-lg); padding: var(--space-xl); margin: auto; max-width: 520px; text-align: center; display: flex; flex-direction: column; gap: var(--space-md);">
-          <strong style="font-size: 16px;">Ask Placement Assistant</strong>
+          <strong style="font-size: 16px;">Ask Placement Copilot</strong>
           <p style="font-size: 13px; color: var(--text-muted);">Match candidates, review resumes, or search drives — all in one AI conversation.</p>
           <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;" id="chat-prompt-chips">
             <span class="wf-prompt-chip">Find the best candidates for this drive</span>
@@ -124,10 +125,11 @@
 
         <!-- Quick actions -->
         <div class="wf-sidebar-section">
-          <div class="wf-sidebar-label">Jump to Tool</div>
+          <div class="wf-sidebar-label">Jump to Solution</div>
           <div style="display: flex; flex-direction: column; gap: 6px;">
+            <a href="index.html" class="wf-btn wf-btn-xs" style="text-align: left;">Home →</a>
             <a href="poc1-student-job-matching.html" class="wf-btn wf-btn-xs" style="text-align: left;">Candidate Matching →</a>
-            <a href="poc2-resume-analyzer.html" class="wf-btn wf-btn-xs" style="text-align: left;">Resume Review →</a>
+            <a href="poc2-resume-analyzer.html" class="wf-btn wf-btn-xs" style="text-align: left;">Resume Analyzer →</a>
             <a href="poc3-placement-search.html" class="wf-btn wf-btn-xs" style="text-align: left;">Placement Search →</a>
             <a href="poc5-career-coach.html" class="wf-btn wf-btn-xs" style="text-align: left;">Career Coach →</a>
           </div>
@@ -139,20 +141,10 @@
   </div>
 
   <footer class="wf-doc-footer">
-    PlacementHub AI Lab — Wireframe Suite v2 — React + Shadcn UI
+    PlacementHub AI Solutions — Interactive AI Solutions Showcase
   </footer>
 
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/placement-copilot.js"></script>
-</body>
-</html>
-
-  </div>
-
-  <footer class="wf-doc-footer">
-    PlacementHub AI Lab — Wireframe Suite v2 — React + Shadcn UI
-  </footer>
-
-  <script type="module" src="js/main.js"></script>
 </body>
 </html>

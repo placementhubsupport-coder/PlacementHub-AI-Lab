@@ -200,16 +200,16 @@ export function initCmdKPalette() {
     const dialogHTML = `
       <div class="wf-modal-dialog wf-cmd-k-dialog" id="wf-cmd-k-dialog" style="max-width: 540px; padding: 0;">
         <div class="wf-cmd-k-header">
-          <input type="text" class="wf-cmd-k-input" id="wf-cmd-k-input" placeholder="Search candidates, drives, or tools... (Esc to cancel)" autofocus>
+          <input type="text" class="wf-cmd-k-input" id="wf-cmd-k-input" placeholder="Search candidates, drives, or solutions... (Esc to cancel)" autofocus>
         </div>
         <div class="wf-cmd-k-results" id="wf-cmd-k-results">
-          <div class="wf-cmd-k-section-title">Quick Links</div>
-          <a href="dashboard.html" class="wf-cmd-k-item"><span>📊</span> Dashboard Overview</a>
-          <a href="poc1-student-job-matching.html" class="wf-cmd-k-item"><span>🎯</span> Candidate Matching Tool</a>
-          <a href="poc2-resume-analyzer.html" class="wf-cmd-k-item"><span>📄</span> Resume Review & ATS Tool</a>
-          <a href="poc3-placement-search.html" class="wf-cmd-k-item"><span>🔍</span> Natural Language Placement Search</a>
-          <a href="poc4-placement-copilot.html" class="wf-cmd-k-item"><span>🤖</span> Placement Assistant Copilot</a>
-          <a href="poc5-career-coach.html" class="wf-cmd-k-item"><span>🎓</span> AI Student Career Coach</a>
+          <div class="wf-cmd-k-section-title">AI Solutions</div>
+          <a href="index.html" class="wf-cmd-k-item"><span>🏠</span> Home Showcase</a>
+          <a href="poc1-student-job-matching.html" class="wf-cmd-k-item"><span>🎯</span> Candidate Matching</a>
+          <a href="poc2-resume-analyzer.html" class="wf-cmd-k-item"><span>📄</span> Resume Analyzer</a>
+          <a href="poc3-placement-search.html" class="wf-cmd-k-item"><span>🔍</span> Placement Search</a>
+          <a href="poc4-placement-copilot.html" class="wf-cmd-k-item"><span>🤖</span> Placement Copilot</a>
+          <a href="poc5-career-coach.html" class="wf-cmd-k-item"><span>🎓</span> Career Coach</a>
         </div>
         <div class="wf-cmd-k-footer">
           <span>Navigate with <kbd>↑</kbd> <kbd>↓</kbd> · Press <kbd>Enter</kbd> to open · <kbd>Esc</kbd> to close</span>
@@ -245,13 +245,13 @@ export function initCmdKPalette() {
       const query = e.target.value.trim().toLowerCase();
       if (!query) {
         resultsContainer.innerHTML = `
-          <div class="wf-cmd-k-section-title">Quick Links</div>
-          <a href="dashboard.html" class="wf-cmd-k-item"><span>📊</span> Dashboard Overview</a>
-          <a href="poc1-student-job-matching.html" class="wf-cmd-k-item"><span>🎯</span> Candidate Matching Tool</a>
-          <a href="poc2-resume-analyzer.html" class="wf-cmd-k-item"><span>📄</span> Resume Review & ATS Tool</a>
-          <a href="poc3-placement-search.html" class="wf-cmd-k-item"><span>🔍</span> Natural Language Placement Search</a>
-          <a href="poc4-placement-copilot.html" class="wf-cmd-k-item"><span>🤖</span> Placement Assistant Copilot</a>
-          <a href="poc5-career-coach.html" class="wf-cmd-k-item"><span>🎓</span> AI Student Career Coach</a>
+          <div class="wf-cmd-k-section-title">AI Solutions</div>
+          <a href="index.html" class="wf-cmd-k-item"><span>🏠</span> Home Showcase</a>
+          <a href="poc1-student-job-matching.html" class="wf-cmd-k-item"><span>🎯</span> Candidate Matching</a>
+          <a href="poc2-resume-analyzer.html" class="wf-cmd-k-item"><span>📄</span> Resume Analyzer</a>
+          <a href="poc3-placement-search.html" class="wf-cmd-k-item"><span>🔍</span> Placement Search</a>
+          <a href="poc4-placement-copilot.html" class="wf-cmd-k-item"><span>🤖</span> Placement Copilot</a>
+          <a href="poc5-career-coach.html" class="wf-cmd-k-item"><span>🎓</span> Career Coach</a>
         `;
         return;
       }

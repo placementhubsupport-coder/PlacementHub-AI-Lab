@@ -142,7 +142,7 @@ function initHeader() {
       hideLoadingOverlay(document.body);
 
       const readiness = calculateOverallReadiness();
-      const report = `PlacementHub AI Lab — Career Readiness Report
+      const report = `PlacementHub AI Solutions — Career Readiness Report
 Candidate: Arjun Verma (B.Tech CSE, CGPA 9.4)
 Date: ${new Date().toLocaleString()}
 Overall Placement Readiness: ${readiness}%
@@ -154,7 +154,7 @@ ${state.stages.map(s => ` [${s.status === 'completed' ? '✓' : ' '}] Stage ${s.
 SKILL MATRIX GAPS:
 ${state.skills.map(sk => ` - ${sk.name} (Required: ${sk.req}, Gap: ${sk.gap})`).join('\n')}
 ==================================================
-PLACEMENTHUB CAREER COACH ENGINE`;
+PLACEMENTHUB AI SOLUTIONS CAREER COACH ENGINE`;
 
       const blob = new Blob([report], { type: 'text/plain;charset=utf-8;' });
       const link = document.createElement('a');

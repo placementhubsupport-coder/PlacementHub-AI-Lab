@@ -1,5 +1,5 @@
 /* ========================================================================
-   PlacementHub AI Lab — Pure Grayscale Low-Fidelity Design System v3
+   PlacementHub AI Solutions — Pure Grayscale Design System v3
    Shadcn UI Architectural Blueprint & Modern SaaS Layout Utilities
    ======================================================================== */
 
@@ -305,10 +305,24 @@ a { color: inherit; text-decoration: none; }
   gap: var(--space-md);
 }
 
+/* Grid Layout Utilities */
+.wf-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
 /* Split Pane Layouts */
 .wf-split-pane        { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); }
 .wf-split-pane-30-70  { display: grid; grid-template-columns: 340px 1fr; gap: var(--space-xl); }
 .wf-split-pane-70-30  { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-xl); }
+
+@media (max-width: 1024px) {
+  .wf-split-pane-30-70,
+  .wf-split-pane-70-30 {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ========================================================================
    COMPONENTS

@@ -536,7 +536,7 @@ function generateIntelligentResponse(userQuery) {
 
   // Default response
   return {
-    text: `Processed query against PlacementHub AI Lab database.\n\nEvaluated candidate pool (${mockCandidates.length} students), active drives (${mockDrives.length} listings), and resume benchmarks.\n\nWould you like me to run skill matching, review specific candidate resumes, or search upcoming placement drives?`,
+    text: `Processed query against PlacementHub AI Solutions database.\n\nEvaluated candidate pool (${mockCandidates.length} students), active drives (${mockDrives.length} listings), and resume benchmarks.\n\nWould you like me to run skill matching, review specific candidate resumes, or search upcoming placement drives?`,
     toolCall: {
       name: 'Placement AI Knowledge Engine',
       status: 'Done',

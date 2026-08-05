@@ -1,30 +1,24 @@
-# PlacementHub AI Lab — Interactive SaaS Prototype Platform
+# PlacementHub AI Solutions — Interactive AI Solutions Showcase
 
-> **Production-Ready Pure Static HTML & Vanilla JS Frontend**
+> **Production-Ready Pure Static HTML & Vanilla JS Showcase**
 > Built with HTML5, Vanilla CSS, and Vanilla JavaScript (ES Modules). Zero build step or server runtime required — 100% compatible with GitHub Pages and Vercel static hosting.
 
 ---
 
 ## 🚀 Overview
 
-**PlacementHub AI Lab** is a high-fidelity, interactive SaaS web application demonstrating an AI-powered campus recruitment operations and student career coaching platform.
+**PlacementHub AI Solutions** is a high-fidelity, interactive showcase web application demonstrating AI-powered campus recruitment, candidate evaluation, placement operations, and student career coaching solutions.
 
-The prototype converts static wireframe designs into a state-driven, interactive user experience using realistic mock datasets, simulated AI API response latencies, dynamic filter pipelines, `localStorage` persistence, and rich contextual feedback.
+The showcase presents interactive solution prototypes using realistic mock datasets, simulated AI API response latencies, dynamic filter pipelines, `localStorage` persistence, and rich contextual feedback.
 
 ---
 
-## ⚡ Key Features & Proofs of Concept (POCs)
+## ⚡ Key AI Solutions
 
-### 1. Home Portal (`index.html`)
-- Root entry point presenting the platform overview, operational metrics summary, and direct links to all 5 AI tools and the operations dashboard.
+### 1. Home Showcase Portal (`index.html`)
+- Hero introduction and central directory highlighting the five specialized AI solutions for PlacementHub. Includes an About section detailing the prototype purpose.
 
-### 2. Operations Dashboard (`dashboard.html`)
-- **Dynamic KPI Summary**: Live indicators for Total Candidates (1,248), Placements (94), Active Drives (42), and AI Match Confidence (96.4%).
-- **Simulated Data Refresh**: Header action button triggers a 1.2s loading overlay and updates metrics dynamically.
-- **Interactive Activity Feed**: Live text search, tool category dropdowns (*Matching*, *Resume*, *Search*, *Copilot*), status filtering, removable filter chips, and paginated navigation.
-- **Placement Trends Analytics**: Interactive chart switcher toggling between *Placements Count*, *Resume Score Averages*, and *Response Times*.
-
-### 3. Candidate Matching (`poc1-student-job-matching.html`)
+### 2. Candidate Matching (`poc1-student-job-matching.html`)
 - **AI Skill Alignment Matrix**: Ranks 148 candidates against job requirements with match confidence progress bars.
 - **Real-Time Filter Pipeline**: Search candidates by name/skills, filter by department (*CSE*, *IT*, *ECE*), target role (*AI Research*, *Full Stack*, *Backend*), and minimum score thresholds (≥90%, ≥80%, ≥70%).
 - **Contextual Bulk Action Toolbar**: Multi-select checkboxes reveal a high-contrast dark toolbar with **Compare**, **Shortlist**, **Export to CSV**, and **Clear selection** actions.
@@ -32,7 +26,7 @@ The prototype converts static wireframe designs into a state-driven, interactive
 - **Candidate Detail Drawer Sheet**: Opens a Right Drawer displaying candidate profile tabs (*Why matched*, *Matched Skills*, *Gaps & Missing*, *Score Details*).
 - **Compare Candidates Modal**: Side-by-side criteria evaluation matrix with an automated AI recommendation engine.
 
-### 4. Resume Review & ATS Scorer (`poc2-resume-analyzer.html`)
+### 3. Resume Analyzer (`poc2-resume-analyzer.html`)
 - **Left-Pane Selection List**: Interactive candidate resume cards displaying ATS score badges (`Score 94/100`), file size, and timestamp.
 - **Target Role Recalculator**: Changing the *"Compare against"* dropdown (*TechCorp AI Research*, *FinEdge Full Stack*, *DataScale Backend*) triggers a 1s simulated AI recalculation of ATS keyword scores.
 - **AI Writing Suggestions Workflow**: Interactive cards supporting:
@@ -42,7 +36,7 @@ The prototype converts static wireframe designs into a state-driven, interactive
 - **Resume Upload Simulation**: Drag & drop modal dialog for uploading new candidate resumes with automated keyword extraction and list insertion.
 - **Report Actions**: Download text ATS audit reports (`Resume_Review_Report_[Name].txt`) or export CSV score matrices.
 
-### 5. Natural Language Placement Search (`poc3-placement-search.html`)
+### 4. Natural Language Placement Search (`poc3-placement-search.html`)
 - **Plain English Search Engine**: Translates natural language queries (e.g. *"Find remote React internships in Pune with stipend above ₹20K and PPO opportunity"*) into structured filter parameters.
 - **AI Interpretation Summary**: Displays a chip summary (*"🤖 AI understood query: Filtered React drives in Pune & Remote with stipend ≥ ₹20,000/mo and PPO."*).
 - **Editable AI Filter Chips**: Interactive filter chips (*Role*, *Location*, *Min Stipend*, *Offer Type*) with instant `×` clear handlers.
@@ -51,14 +45,14 @@ The prototype converts static wireframe designs into a state-driven, interactive
 - **Drive Detail Right Drawer**: Opens complete job description, 3-round selection process steps, and *"Apply Candidates to Drive"* action.
 - **`localStorage` Saved Searches**: Save queries and active filters to browser storage with a dedicated saved searches management modal.
 
-### 6. Placement Copilot (`poc4-placement-copilot.html`)
+### 5. Placement Copilot (`poc4-placement-copilot.html`)
 - **Conversational AI Workspace**: ChatGPT/Claude/Copilot-style chat interface for campus recruitment operations.
 - **Streaming Character Animation**: Natural text streaming with typing indicators and simulated API tool execution cards (`⚡ Tool Executed: Match & Resume Review`).
 - **Session Management**: Session sidebar grouping conversations into *Today* and *Previous 7 days*, with `+ New Session`, clear chat, and delete actions.
-- **Cross-POC Inline CTAs**: AI responses include direct action buttons (*"Open Candidate Matching →"*, *"Review Resume →"*, *"View Drives →"*) that navigate directly to corresponding POC pages.
+- **Cross-Solution Inline CTAs**: AI responses include direct action buttons (*"Open Candidate Matching →"*, *"Review Resume →"*, *"View Drives →"*) that navigate directly to corresponding solution pages.
 - **Collapsible Context Rail**: Right sidebar displaying active candidate details, linked context files, and quick navigation links.
 
-### 7. AI Student Career Coach (`poc5-career-coach.html`)
+### 6. AI Student Career Coach (`poc5-career-coach.html`)
 - **6-Stage Readiness Roadmap**: Clickable stage stepper (*1. Baseline*, *2. Resume*, *3. Technical*, *4. System Design*, *5. Practice Interviews*, *6. Placement Clearance*) with locked/unlocked state progression.
 - **Active Stage Workspace**: Interactive checklist tasks that dynamically update the overall readiness score (e.g. `92.4%`).
 - **7-Day Weekly Planner**: Interactive day grid for tracking daily practice tasks.
@@ -82,14 +76,14 @@ The prototype converts static wireframe designs into a state-driven, interactive
 ## 📂 Repository Structure
 
 ```text
-PlacementHub-AI-Lab/
-├── index.html                                 # Root Homepage Portal
-├── dashboard.html                             # Operations Dashboard
-├── poc1-student-job-matching.html             # POC 1: Candidate Matching
-├── poc2-resume-analyzer.html                  # POC 2: Resume Review & ATS Scorer
-├── poc3-placement-search.html                 # POC 3: Natural Language Placement Search
-├── poc4-placement-copilot.html                # POC 4: Placement Copilot Assistant
-├── poc5-career-coach.html                     # POC 5: AI Student Career Coach
+PlacementHub-AI-Solutions/
+├── index.html                                 # Showcase Landing Page
+├── poc1-student-job-matching.html             # Candidate Matching Solution
+├── poc2-resume-analyzer.html                  # Resume Analyzer Solution
+├── poc3-placement-search.html                 # Placement Search Solution
+├── poc4-placement-copilot.html                # Placement Copilot Solution
+├── poc5-career-coach.html                     # Career Coach Solution
+├── dashboard.html                             # Legacy Standalone Analytics
 ├── wireframe.css                              # Shared Core Design System & CSS Rules
 ├── vercel.json                                # Vercel Static Deployment Configuration
 ├── LICENSE                                    # License File
@@ -99,9 +93,8 @@ PlacementHub-AI-Lab/
 └── js/
     ├── main.js                                # Global Navigation & Cmd+K Palette Initialization
     ├── components.js                          # Toast, Modal, Drawer & Cmd+K Module
-    ├── dashboard.js                           # Dashboard Controller
     ├── candidate-matching.js                  # Candidate Matching Controller
-    ├── resume-analyzer.js                     # Resume Review Controller
+    ├── resume-analyzer.js                     # Resume Analyzer Controller
     ├── placement-search.js                    # Placement Search Controller
     ├── placement-copilot.js                   # Placement Copilot Controller
     └── career-coach.js                        # Career Coach Controller
@@ -134,7 +127,7 @@ Navigate to `http://localhost:8000` in your browser.
 1. Log in to [Vercel](https://vercel.com).
 2. Import your GitHub repository.
 3. Leave **Build Command** and **Output Directory** blank (Vercel automatically serves standard static HTML/JS repositories).
-4. Click **Deploy**. Every page (`/index.html`, `/dashboard.html`, `/poc1-student-job-matching.html`, etc.) is directly accessible with zero 404 errors.
+4. Click **Deploy**. Every page (`/index.html`, `/poc1-student-job-matching.html`, etc.) is directly accessible with zero 404 errors.
 
 ### Deploying to GitHub Pages
 1. Push the repository to GitHub.
