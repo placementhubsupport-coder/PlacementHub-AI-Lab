@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PlacementHub AI Lab Career Coach — AI-guided 6-stage student placement readiness roadmap and interview preparation platform.">
+  <title>PlacementHub AI Lab — Career Coach</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='65' font-size='50' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>PH</text></svg>">
+  <link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+
+  <nav class="wf-nav">
+    <div class="wf-nav-brand">
+      <span class="wf-logo-badge">PH</span>
+      <span class="wf-nav-title">PlacementHub AI Lab</span>
+    </div>
+    <div class="wf-nav-search">
+      <input type="text" class="wf-input" placeholder="Search candidates or skills… (⌘K)">
+    </div>
+    <div class="wf-nav-actions">
+      <span class="wf-status-indicator">
+        <span class="wf-status-dot"></span>
+        Career Coach · Active
+      </span>
+    </div>
+  </nav>
+
+  <div class="app-shell">
+
+    <aside class="wf-sidebar">
+
+      <!-- Candidate context card -->
+      <div class="wf-sidebar-section">
+        <div class="wf-sidebar-label">Student</div>
+        <div class="wf-card" style="background: var(--bg-muted);">
+          <div class="wf-card-body" style="padding: 10px;">
+            <strong style="font-size: 13px; display: block;">Arjun Verma</strong>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">AI Research Eng · TechCorp</div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 1px;">B.Tech CSE · 9.4 CGPA · Score 94</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section controller: each link loads a different section in the main area -->
+      <!-- [spec: sidebar links switch main content — one section visible at a time, Linear settings pattern] -->
+      <div class="wf-sidebar-section">
+        <div class="wf-sidebar-label">Sections</div>
+        <ul class="wf-sidebar-nav">
+          <li><a href="poc5-career-coach.html" class="wf-sidebar-link active">Roadmap &amp; Active Stage</a></li>
+          <li><a href="#skills-to-improve" class="wf-sidebar-link">Skills to Improve</a></li>
+          <li><a href="#planner" class="wf-sidebar-link">7-Day Plan</a></li>
+          <li><a href="#mock-qa" class="wf-sidebar-link">Practice Interviews</a></li>
+        </ul>
+      </div>
+
+      <div class="wf-sidebar-section">
+        <div class="wf-sidebar-label">Platform</div>
+        <ul class="wf-sidebar-nav">
+          <li><a href="index.html" class="wf-sidebar-link">Home</a></li>
+          <li><a href="dashboard.html" class="wf-sidebar-link">Dashboard</a></li>
+          <li><a href="poc1-student-job-matching.html" class="wf-sidebar-link">Candidate Matching</a></li>
+          <li><a href="poc2-resume-analyzer.html" class="wf-sidebar-link">Resume Review</a></li>
+          <li><a href="poc3-placement-search.html" class="wf-sidebar-link">Placement Search</a></li>
+          <li><a href="poc4-placement-copilot.html" class="wf-sidebar-link">Placement Assistant</a></li>
+          <li><a href="poc5-career-coach.html" class="wf-sidebar-link active">Career Coach</a></li>
+        </ul>
+      </div>
+
+      <details class="wf-sidebar-spec">
+        <summary>Page Spec ↓</summary>
+        <pre class="wf-spec-tree"><!-- poc5-career-coach -->
+CareerCoachPage
+├── GlobalNav
+├── SectionControllerSidebar
+├── PageHeader
+│   └── MiniStepper + ReadinessScore
+├── SECTION: Roadmap + ActiveStage
+│   ├── StageStepper × 6 (PRIMARY)
+│   └── ActiveStageWorkspace
+│       ├── SubtaskChecklist
+│       ├── WeekGridPlanner (7-day)
+│       └── CompletionCriteria
+├── SECTION: SkillsToImprove
+│   └── Table: Skill | Required | Current | Gap | Action
+├── SECTION: PracticeInterviews
+│   └── Accordion: Q → Attempt → Grade
+└── RecommendedCourses
+    (inline in Action column of skills table)
+[DOCUMENTATION ONLY]</pre>
+      </details>
+    </aside>
+
+    <main class="wf-main-content">
+
+      <!-- Page Header -->
+      <header class="wf-page-header">
+        <div>
+          <div class="wf-breadcrumb">PlacementHub AI Lab › Tools › Career Coach</div>
+          <h1 class="wf-page-title">Career Coach</h1>
+          <!-- Readiness as compact status strip -->
+          <div class="wf-page-status" id="readiness-status-strip">
+            <span class="wf-badge wf-badge-dark" id="readiness-badge">Stage 3 Active</span>
+            <span id="readiness-text-content">Readiness: 92.4% · Technical preparation in progress · Mock Interviews: 4/5 passed</span>
+          </div>
+          <!-- Mini stepper -->
+          <div class="wf-mini-stepper" id="mini-stepper-container" style="margin-top: 10px;">
+            <!-- Dynamically rendered -->
+          </div>
+        </div>
+        <div class="wf-page-actions">
+          <button class="wf-btn" id="btn-export-progress">Export Progress Report</button>
+        </div>
+      </header>
+
+      <!-- PRIMARY: 6-Stage Readiness Roadmap -->
+      <section class="wf-card" style="border: 2px solid var(--border-medium);">
+        <div class="wf-card-header" style="padding: 14px 20px;">
+          <div>
+            <h2 class="wf-card-title" style="font-size: 18px; letter-spacing: -0.3px;">6-Stage Readiness Roadmap</h2>
+            <p class="wf-card-desc">Click a stage to load its workspace below</p>
+          </div>
+          <span class="wf-badge wf-badge-dark" id="roadmap-header-badge">Stage 3 Active</span>
+        </div>
+        <div class="wf-card-body" style="padding: 16px 20px;">
+          <div class="wf-timeline-prominent" id="roadmap-stages-container">
+            <!-- Dynamically rendered 6 stages -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ACTIVE STAGE WORKSPACE -->
+      <section class="wf-card" id="active-stage-workspace">
+        <div class="wf-card-header">
+          <div>
+            <h3 class="wf-card-title" id="stage-workspace-title">Stage 3 — Technical Preparation</h3>
+            <p class="wf-card-desc" id="stage-workspace-desc">Tasks, 7-day plan, and completion criteria for the active stage</p>
+          </div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <span class="wf-badge wf-badge-outline" id="stage-workspace-badge">In Progress</span>
+            <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-mark-stage-complete">Mark Stage Complete ✓</button>
+          </div>
+        </div>
+        <div class="wf-card-body">
+          <div class="wf-split-pane">
+
+            <!-- Sub-task checklist -->
+            <div>
+              <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Tasks &amp; Checklist</div>
+              <div id="stage-checklist-container" style="display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
+                <!-- Dynamically rendered checkboxes -->
+              </div>
+              <div style="margin-top: 12px; padding: 8px; background: var(--bg-muted); border-radius: var(--radius-sm); font-size: 12px; color: var(--text-muted);" id="stage-completion-criteria">
+                <strong>To complete this stage:</strong> Complete all tasks above and achieve ≥80% readiness score.
+              </div>
+            </div>
+
+            <!-- 7-Day Plan as week grid -->
+            <div id="planner">
+              <div style="font-size: 11px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Weekly Planner</div>
+              <div class="wf-week-grid" id="week-grid-container">
+                <!-- Dynamically rendered 7-day planner -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Skills to Improve -->
+      <section class="wf-card" id="skills-to-improve">
+        <div class="wf-card-header">
+          <div>
+            <h3 class="wf-card-title">Skills Matrix &amp; Gaps</h3>
+            <p class="wf-card-desc">Sorted by gap severity · Action column links to recommended courses</p>
+          </div>
+          <div style="display: flex; gap: var(--space-sm); align-items: center;">
+            <select class="wf-select" id="sort-skills-select" style="height: 28px; font-size: 12px;">
+              <option value="gap-desc">Sort: Gap Severity</option>
+              <option value="name-asc">Sort: Skill Name</option>
+            </select>
+          </div>
+        </div>
+        <div class="wf-card-body" style="padding: 0;">
+          <div class="wf-table-container" style="border: none; border-radius: 0;">
+            <table class="wf-skill-table">
+              <thead>
+                <tr>
+                  <th>Skill</th>
+                  <th>Required</th>
+                  <th>Current Level</th>
+                  <th>Gap Severity</th>
+                  <th>Action Target</th>
+                </tr>
+              </thead>
+              <tbody id="skills-matrix-tbody">
+                <!-- Dynamically rendered -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Practice Interviews (Q&A accordion) -->
+      <section class="wf-card" id="mock-qa">
+        <div class="wf-card-header">
+          <div>
+            <h3 class="wf-card-title">Practice Interviews</h3>
+            <p class="wf-card-desc">Type your answer before revealing the benchmark — attempt then grade</p>
+          </div>
+          <div style="display: flex; gap: var(--space-sm);">
+            <a href="poc4-placement-copilot.html" class="wf-btn wf-btn-sm wf-btn-primary">Start full interview via Assistant →</a>
+          </div>
+        </div>
+        <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-md);">
+
+          <!-- Q1: attempt + grade flow -->
+          <div class="wf-card" style="padding: 12px; border: 1px solid var(--border-medium);">
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">
+              Q1 (GPU Architecture) — Explain SRAM vs HBM on NVIDIA Hopper Architecture
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div>
+                <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.4px;">Your answer:</div>
+                <textarea class="wf-textarea" id="qa-textarea-1" placeholder="Write your answer before seeing the benchmark…" style="min-height: 60px;"></textarea>
+                <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-submit-qa-1" style="margin-top: 6px;">Submit for AI Grading</button>
+              </div>
+              <div id="qa-grade-result-1" style="display: none; background: var(--bg-muted); padding: 10px; border-radius: var(--radius-sm); margin-top: 6px; font-size: 12px;">
+                <strong style="color: var(--text-primary); display: block; margin-bottom: 4px;">🤖 AI Grade: <span id="qa-score-1">92 / 100</span> (Strong Match)</strong>
+                <div style="font-family: var(--font-mono); margin-bottom: 6px;" id="qa-feedback-1">
+                  Correctly identified SRAM shared memory latency (~1 cycle) vs HBM3 (80GB+, ~200 cycles). Excellent domain knowledge on GPU tensor cores.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q2: System Design -->
+          <div class="wf-card" style="padding: 12px; border: 1px solid var(--border-medium);">
+            <div style="font-size: 14px; font-weight: 700; margin-bottom: 8px;">
+              Q2 (System Design) — Design a high-throughput vector retrieval API with FAISS
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div>
+                <textarea class="wf-textarea" id="qa-textarea-2" placeholder="Write your answer here..." style="min-height: 60px;"></textarea>
+                <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-submit-qa-2" style="margin-top: 6px;">Submit for AI Grading</button>
+              </div>
+              <div id="qa-grade-result-2" style="display: none; background: var(--bg-muted); padding: 10px; border-radius: var(--radius-sm); margin-top: 6px; font-size: 12px;">
+                <strong style="color: var(--text-primary); display: block; margin-bottom: 4px;">🤖 AI Grade: <span id="qa-score-2">88 / 100</span></strong>
+                <div style="font-family: var(--font-mono);" id="qa-feedback-2">
+                  Good indexing strategy using IVF-PQ. Suggested adding a Redis cache layer for high QPS endpoints.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Recommended Courses -->
+      <section class="wf-card" id="course-tensorrt">
+        <div class="wf-card-header">
+          <h3 class="wf-card-title">Recommended Learning Modules</h3>
+          <span style="font-size: 12px; color: var(--text-muted);">Linked from Skills Matrix</span>
+        </div>
+        <div class="wf-card-body">
+          <div class="wf-grid-2">
+
+            <div class="wf-card">
+              <div class="wf-card-header" style="padding: 10px 12px;">
+                <strong style="font-size: 13px;">NVIDIA DLI: TensorRT-LLM Quantization</strong>
+              </div>
+              <div class="wf-card-body" style="padding: 10px 12px;">
+                <div style="font-size: 12px; color: var(--text-muted);">6 hrs · NVIDIA Academy · Free</div>
+                <div style="margin-top: 8px;">
+                  <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.4px;">Progress</div>
+                  <div class="wf-progress-track"><div class="wf-progress-fill" id="course-progress-bar-1" style="width: 40%;"></div></div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;" id="course-status-1">40% · In progress</div>
+                </div>
+              </div>
+              <div class="wf-card-footer" style="padding: 8px 12px;">
+                <button class="wf-btn wf-btn-sm wf-btn-primary btn-toggle-course" data-course-id="c1">Complete Module ✓</button>
+              </div>
+            </div>
+
+            <div class="wf-card">
+              <div class="wf-card-header" style="padding: 10px 12px;">
+                <strong style="font-size: 13px;">Advanced Graph Algorithms &amp; Network Flows</strong>
+              </div>
+              <div class="wf-card-body" style="padding: 10px 12px;">
+                <div style="font-size: 12px; color: var(--text-muted);">12 hrs · Coursera</div>
+                <div style="margin-top: 8px;">
+                  <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.4px;">Progress</div>
+                  <div class="wf-progress-track"><div class="wf-progress-fill" id="course-progress-bar-2" style="width: 75%;"></div></div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;" id="course-status-2">75% · Almost completed</div>
+                </div>
+              </div>
+              <div class="wf-card-footer" style="padding: 8px 12px;">
+                <button class="wf-btn wf-btn-sm wf-btn-primary btn-toggle-course" data-course-id="c2">Complete Module ✓</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- CELEBRATION MODAL: Placement Ready -->
+  <div class="wf-modal-dialog" id="modal-placement-ready">
+    <div class="wf-card-header" style="background: var(--bg-dark-tile); color: white;">
+      <h3 class="wf-card-title" style="color: white;">🎉 Placement Ready!</h3>
+      <button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger" style="color: white;">✕</button>
+    </div>
+    <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-md); text-align: center; padding: 24px;">
+      <div style="font-size: 48px;">🏆</div>
+      <h2 style="font-size: 20px; font-weight: 700;">Congratulations, Arjun Verma!</h2>
+      <p style="font-size: 13px; color: var(--text-muted);">You have successfully completed all 6 stages of the PlacementHub Career Readiness Roadmap.</p>
+      
+      <div class="wf-card" style="background: var(--bg-muted); padding: 14px; text-align: left;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span>Final Placement Readiness:</span><strong style="color: var(--text-primary);">100% (Cleared)</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span>Resume Audit Score:</span><strong>94 / 100</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span>Mastered Skills:</span><strong>PyTorch, Transformers, FAISS, TensorRT, React</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span>Top Matched Drives:</span><strong>TechCorp AI Labs (96.4%), PuneTech (96.8%)</strong>
+        </div>
+      </div>
+    </div>
+    <div class="wf-card-footer" style="justify-content: center; gap: var(--space-sm);">
+      <a href="poc1-student-job-matching.html" class="wf-btn wf-btn-sm wf-btn-primary">Go to Candidate Matching →</a>
+      <button class="wf-btn wf-btn-sm modal-close-trigger">Close</button>
+    </div>
+  </div>
+
+  <footer class="wf-doc-footer">
+    PlacementHub AI Lab — Wireframe Suite v2 — React + Shadcn UI
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/career-coach.js"></script>
+</body>
+</html>
+
+    </main>
+  </div>
+
+  <footer class="wf-doc-footer">
+    PlacementHub AI Lab — Wireframe Suite v2 — React + Shadcn UI
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

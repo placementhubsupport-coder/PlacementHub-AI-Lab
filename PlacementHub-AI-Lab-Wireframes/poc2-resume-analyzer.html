@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PlacementHub AI Lab Resume Review — AI ATS scoring, keyword gap analysis, and interactive phrasing suggestions.">
+  <title>PlacementHub AI Lab — Resume Review</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='65' font-size='50' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>PH</text></svg>">
+  <link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+
+  <nav class="wf-nav">
+    <div class="wf-nav-brand">
+      <span class="wf-logo-badge">PH</span>
+      <span class="wf-nav-title">PlacementHub AI Lab</span>
+    </div>
+    <div class="wf-nav-search">
+      <input type="text" class="wf-input" placeholder="Search resumes or candidates… (⌘K)">
+    </div>
+    <div class="wf-nav-actions">
+      <span class="wf-status-indicator">
+        <span class="wf-status-dot"></span>
+        Resume analysis · Online
+      </span>
+    </div>
+  </nav>
+
+  <div class="app-shell">
+
+    <aside class="wf-sidebar">
+      <div class="wf-sidebar-section">
+        <div class="wf-sidebar-label">Platform</div>
+        <ul class="wf-sidebar-nav">
+          <li><a href="index.html" class="wf-sidebar-link">Home</a></li>
+          <li><a href="dashboard.html" class="wf-sidebar-link">Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="wf-sidebar-section">
+        <div class="wf-sidebar-label">Tools</div>
+        <ul class="wf-sidebar-nav">
+          <li><a href="poc1-student-job-matching.html" class="wf-sidebar-link">Candidate Matching</a></li>
+          <li><a href="poc2-resume-analyzer.html" class="wf-sidebar-link active">Resume Review</a></li>
+          <li><a href="poc3-placement-search.html" class="wf-sidebar-link">Placement Search</a></li>
+          <li><a href="poc4-placement-copilot.html" class="wf-sidebar-link">Placement Assistant</a></li>
+          <li><a href="poc5-career-coach.html" class="wf-sidebar-link">Career Coach</a></li>
+        </ul>
+      </div>
+      <details class="wf-sidebar-spec">
+        <summary>Page Spec ↓</summary>
+        <pre class="wf-spec-tree"><!-- poc2-resume-analyzer -->
+ResumeReviewPage
+├── GlobalNav
+├── AppSidebar
+├── PageHeader
+└── SplitPane (340px / 1fr)
+    ├── LEFT: ResumeList (primary)
+    │   ├── "+ Upload Resume" affordance
+    │   ├── ResumeListItem ×n
+    │   └── EmptyState (no uploads)
+    └── RIGHT: ReviewPane
+        ├── EmptyState (no resume selected)
+        ├── CandidateStickyHeader
+        ├── ScoreMetricsGrid ×4
+        ├── SkillsPanel (2-col)
+        └── SuggestionsWorkflow
+            └── Apply / Copy / Dismiss
+[DOCUMENTATION ONLY]</pre>
+      </details>
+    </aside>
+
+    <main class="wf-main-content">
+
+      <header class="wf-page-header">
+        <div>
+          <div class="wf-breadcrumb">PlacementHub AI Lab › Tools › Resume Review</div>
+          <h1 class="wf-page-title">Resume Review</h1>
+          <p class="wf-page-desc">AI-powered resume scoring against job requirements with keyword analysis and phrasing suggestions.</p>
+        </div>
+        <div class="wf-page-actions">
+          <button class="wf-btn" id="btn-export-results">Export Results</button>
+          <button class="wf-btn wf-btn-primary" id="btn-download-report">Download Report</button>
+        </div>
+      </header>
+
+      <!-- 30/70 Split Pane -->
+      <div class="wf-split-pane-30-70">
+
+        <!-- LEFT PANE: Resume List -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+
+          <div class="wf-card">
+            <div class="wf-card-header">
+              <h3 class="wf-card-title">Resumes</h3>
+              <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-upload-resume">+ Upload Resume</button>
+            </div>
+
+            <!-- Search Filter Bar -->
+            <div style="padding: 8px 12px; border-bottom: 1px solid var(--border-subtle);">
+              <input type="text" class="wf-input" id="resume-search-input" placeholder="Search candidate or resume..." style="height: 30px; font-size: 11px;">
+            </div>
+
+            <!-- Compare against selector -->
+            <div style="padding: 8px 12px; border-bottom: 1px solid var(--border-subtle);">
+              <label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Compare against</label>
+              <select class="wf-select" id="compare-target-select" style="width: 100%;">
+                <option value="TechCorp — AI Research Engineer">TechCorp — AI Research Engineer</option>
+                <option value="FinEdge — Full Stack Developer">FinEdge — Full Stack Developer</option>
+                <option value="DataScale — Backend Engineer">DataScale — Backend Engineer</option>
+              </select>
+            </div>
+
+            <!-- Resume list container -->
+            <div id="resume-list-container" style="display: flex; flex-direction: column;">
+              <!-- Dynamically rendered -->
+            </div>
+            <div class="wf-card-footer">
+              <span style="font-size: 12px; color: var(--text-muted);" id="resume-list-footer-text">3 resumes · 1 selected</span>
+            </div>
+          </div>
+
+          <!-- EMPTY STATE (no resumes uploaded yet) -->
+          <div class="wf-card" id="empty-resume-list-card" style="display: none;">
+            <div class="wf-card-header">
+              <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">No resumes found</span>
+            </div>
+            <div class="wf-card-body">
+              <div class="wf-dropzone-prominent" style="text-align: center; padding: 16px;">
+                <strong style="font-size: 14px;">No matching resumes</strong>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Upload a new resume to evaluate</p>
+                <button class="wf-btn wf-btn-sm open-upload-trigger" style="margin-top: 8px;">Upload Resume</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT PANE: Review -->
+        <div style="display: flex; flex-direction: column; gap: var(--space-lg);" id="right-review-pane">
+
+          <!-- EMPTY STATE — no resume selected -->
+          <div class="wf-card" id="empty-review-state-card" style="display: none;">
+            <div class="wf-card-body">
+              <div class="wf-empty-state" style="text-align: center; padding: 40px;">
+                <span class="wf-empty-state-title" style="font-size: 16px; font-weight: 700; display: block; margin-bottom: 6px;">Select a resume to begin review</span>
+                <p class="wf-empty-state-desc" style="font-size: 12px; color: var(--text-muted); max-width: 360px; margin: 0 auto 16px auto;">Choose a candidate resume from the left pane or upload a new file to trigger AI scoring.</p>
+                <button class="wf-btn wf-btn-sm wf-btn-primary open-upload-trigger">Upload Resume</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACTIVE STATE: Candidate sticky sub-header -->
+          <div class="wf-card" id="active-candidate-header-card" style="background: var(--bg-muted);">
+            <div class="wf-card-body" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); padding: 12px 16px;">
+              <div>
+                <div style="font-size: 12px; color: var(--text-muted);">Reviewing candidate</div>
+                <strong style="font-size: 15px;" id="cand-name-header">Arjun Verma</strong>
+                <span style="font-size: 12px; color: var(--text-secondary); margin-left: 8px;" id="cand-target-header">vs TechCorp — AI Research Engineer</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-sm);">
+                <div style="display: flex; gap: 2px;">
+                  <a href="#score-metrics" class="wf-btn wf-btn-xs">Scores</a>
+                  <a href="#skills" class="wf-btn wf-btn-xs">Skills</a>
+                  <a href="#suggestions" class="wf-btn wf-btn-xs">Suggestions</a>
+                </div>
+                <span style="font-size: 14px; font-weight: 700; font-family: var(--font-mono);" id="cand-score-header">94 / 100</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score Metrics Grid -->
+          <section class="wf-kpi-grid" id="score-metrics">
+            <div class="wf-kpi-card">
+              <div class="wf-kpi-header"><span class="wf-kpi-label">Overall Score</span></div>
+              <div class="wf-kpi-value" id="metric-overall-val">94</div>
+              <div class="wf-progress-track"><div class="wf-progress-fill" id="metric-overall-bar" style="width: 94%;"></div></div>
+            </div>
+            <div class="wf-kpi-card">
+              <div class="wf-kpi-header"><span class="wf-kpi-label">Keyword Match</span></div>
+              <div class="wf-kpi-value" id="metric-keyword-val">95%</div>
+              <div class="wf-progress-track"><div class="wf-progress-fill" id="metric-keyword-bar" style="width: 95%;"></div></div>
+            </div>
+            <div class="wf-kpi-card">
+              <div class="wf-kpi-header"><span class="wf-kpi-label">Format &amp; Structure</span></div>
+              <div class="wf-kpi-value" id="metric-format-val">98%</div>
+              <div class="wf-progress-track"><div class="wf-progress-fill" id="metric-format-bar" style="width: 98%;"></div></div>
+            </div>
+            <div class="wf-kpi-card">
+              <div class="wf-kpi-header"><span class="wf-kpi-label">Experience Detail</span></div>
+              <div class="wf-kpi-value" id="metric-exp-val">88%</div>
+              <div class="wf-progress-track"><div class="wf-progress-fill" id="metric-exp-bar" style="width: 88%;"></div></div>
+            </div>
+          </section>
+
+          <!-- Skills Panel -->
+          <div class="wf-grid-2" id="skills">
+            <div class="wf-card">
+              <div class="wf-card-header">
+                <h3 class="wf-card-title">Skills Found</h3>
+                <span style="font-size: 12px; color: var(--text-muted);" id="skills-found-count">6 detected</span>
+              </div>
+              <div class="wf-card-body" style="display: flex; flex-wrap: wrap; gap: 4px;" id="skills-found-container">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+            <div class="wf-card">
+              <div class="wf-card-header">
+                <h3 class="wf-card-title">Missing Keywords</h3>
+                <span style="font-size: 12px; color: var(--text-muted);" id="missing-keywords-count">3 not found</span>
+              </div>
+              <div class="wf-card-body" style="display: flex; flex-wrap: wrap; gap: 4px;" id="missing-keywords-container">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Phrasing Suggestions -->
+          <section class="wf-card" id="suggestions">
+            <div class="wf-card-header">
+              <div>
+                <h3 class="wf-card-title">AI Writing Suggestions</h3>
+                <p class="wf-card-desc">Click Apply to update the resume draft with the improved phrasing</p>
+              </div>
+            </div>
+            <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-md);" id="suggestions-container">
+              <!-- Dynamically rendered -->
+            </div>
+          </section>
+
+          <!-- Status strip -->
+          <div style="padding: 10px 14px; background: var(--bg-muted); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+            <span style="color: var(--text-secondary);" id="suggestions-status-strip">94 / 100 · 3 suggestions to review</span>
+            <div style="display: flex; gap: 8px;">
+              <a href="poc5-career-coach.html" class="wf-btn wf-btn-sm" style="text-decoration: none;">Career Coach →</a>
+              <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-share-student">Share with Student</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- MODAL: Upload Resume -->
+  <div class="wf-modal-dialog" id="modal-upload-resume">
+    <div class="wf-card-header">
+      <h3 class="wf-card-title">Upload Candidate Resume</h3>
+      <button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
+    </div>
+    <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-md);">
+      <div>
+        <label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Candidate Name</label>
+        <input type="text" class="wf-input" id="upload-cand-name-input" placeholder="e.g. Neha Singh">
+      </div>
+      <div>
+        <label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Target Role</label>
+        <select class="wf-select" id="upload-target-role-select" style="width: 100%;">
+          <option value="TechCorp — AI Research Engineer">TechCorp — AI Research Engineer</option>
+          <option value="FinEdge — Full Stack Developer">FinEdge — Full Stack Developer</option>
+          <option value="DataScale — Backend Engineer">DataScale — Backend Engineer</option>
+        </select>
+      </div>
+      <div id="upload-dropzone" style="border: 2px dashed var(--border-medium); padding: var(--space-lg); text-align: center; border-radius: var(--radius-md); cursor: pointer; background: var(--bg-muted);">
+        <strong style="font-size: 14px;">Drag & drop PDF or DOCX file</strong>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">File size limit 10 MB. Automatic ATS keyword extraction.</p>
+        <button class="wf-btn wf-btn-sm" style="margin-top: 8px;">Select Resume File</button>
+      </div>
+    </div>
+    <div class="wf-card-footer" style="justify-content: flex-end; gap: var(--space-sm);">
+      <button class="wf-btn wf-btn-sm modal-close-trigger">Cancel</button>
+      <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-confirm-upload">Upload & Run AI Audit</button>
+    </div>
+  </div>
+
+  <footer class="wf-doc-footer">
+    PlacementHub AI Lab — Wireframe Suite v2 — React + Shadcn UI
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/resume-analyzer.js"></script>
+</body>
+</html>

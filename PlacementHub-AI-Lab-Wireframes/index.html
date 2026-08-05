@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PlacementHub AI Lab — Home portal and tool directory for AI-driven campus placement operations and student career readiness.">
+  <title>PlacementHub AI Lab — Home</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='65' font-size='50' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>PH</text></svg>">
+  <link rel="stylesheet" href="wireframe.css">
+</head>
+<body>
+
+  <nav class="wf-nav">
+    <div class="wf-nav-brand">
+      <span class="wf-logo-badge">PH</span>
+      <span class="wf-nav-title">PlacementHub AI Lab</span>
+    </div>
+    <div class="wf-nav-search">
+      <input type="text" class="wf-input" placeholder="Search candidates, drives, or events… (⌘K)">
+    </div>
+    <div class="wf-nav-actions">
+      <span class="wf-status-indicator">
+        <span class="wf-status-dot"></span>
+        All systems operational
+      </span>
+    </div>
+  </nav>
+
+  <div class="app-shell">
+
+    <aside class="wf-sidebar">
+      <div class="wf-sidebar-section">
+        <div class="wf-sidebar-label">Platform</div>
+        <ul class="wf-sidebar-nav">
+          <li><a href="index.html" class="wf-sidebar-link active">Home</a></li>
+          <li><a href="dashboard.html" class="wf-sidebar-link">Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="wf-sidebar-section">
+        <div class="wf-sidebar-label">Tools</div>
+        <ul class="wf-sidebar-nav">
+          <li><a href="poc1-student-job-matching.html" class="wf-sidebar-link">Candidate Matching</a></li>
+          <li><a href="poc2-resume-analyzer.html" class="wf-sidebar-link">Resume Review</a></li>
+          <li><a href="poc3-placement-search.html" class="wf-sidebar-link">Placement Search</a></li>
+          <li><a href="poc4-placement-copilot.html" class="wf-sidebar-link">Placement Assistant</a></li>
+          <li><a href="poc5-career-coach.html" class="wf-sidebar-link">Career Coach</a></li>
+        </ul>
+      </div>
+
+      <!-- Page spec: documentation only -->
+      <details class="wf-sidebar-spec">
+        <summary>Page Spec ↓</summary>
+        <pre class="wf-spec-tree"><!-- poc: poc1-student-job-matching | poc2-resume-analyzer | poc3-placement-search | poc4-placement-copilot | poc5-career-coach -->
+HomePage
+├── GlobalNav
+├── AppSidebar (primary nav)
+├── PageHeader
+├── PlatformKPIGrid ×4
+└── ToolDirectoryGrid ×6
+[DOCUMENTATION ONLY]</pre>
+      </details>
+    </aside>
+
+    <main class="wf-main-content">
+
+      <header class="wf-page-header">
+        <div>
+          <div class="wf-breadcrumb">PlacementHub AI Lab › Home</div>
+          <h1 class="wf-page-title">PlacementHub AI Lab</h1>
+          <p class="wf-page-desc">AI-powered placement operations platform for recruitment officers, coordinators, and administrators.</p>
+        </div>
+        <div class="wf-page-actions">
+          <a href="dashboard.html" class="wf-btn wf-btn-primary">Go to Dashboard</a>
+        </div>
+      </header>
+
+      <!-- Platform KPI Summary — real operational metrics -->
+      <section class="wf-kpi-grid">
+        <div class="wf-kpi-card">
+          <div class="wf-kpi-header">
+            <span class="wf-kpi-label">Total Candidates</span>
+            <span class="wf-badge wf-badge-outline">+12% this month</span>
+          </div>
+          <div class="wf-kpi-value">1,248</div>
+          <div class="wf-kpi-subtext">Registered for 2026 batch</div>
+        </div>
+        <div class="wf-kpi-card">
+          <div class="wf-kpi-header">
+            <span class="wf-kpi-label">Placements This Month</span>
+          </div>
+          <div class="wf-kpi-value">94</div>
+          <div class="wf-kpi-subtext">Confirmed offers · 2026 batch</div>
+        </div>
+        <div class="wf-kpi-card">
+          <div class="wf-kpi-header">
+            <span class="wf-kpi-label">Active Drives</span>
+            <span class="wf-badge wf-badge-outline">8 new</span>
+          </div>
+          <div class="wf-kpi-value">42</div>
+          <div class="wf-kpi-subtext">Open for applications</div>
+        </div>
+        <div class="wf-kpi-card">
+          <div class="wf-kpi-header">
+            <span class="wf-kpi-label">Avg Match Score</span>
+          </div>
+          <div class="wf-kpi-value">96.4%</div>
+          <div class="wf-kpi-subtext">AI confidence · 148 evaluations</div>
+        </div>
+      </section>
+
+      <!-- Tool Directory -->
+      <section>
+        <div style="margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: space-between;">
+          <h2 style="font-size: 18px; font-weight: 700; letter-spacing: -0.2px;">Tools</h2>
+          <span style="font-size: 12px; color: var(--text-muted);">5 AI tools available</span>
+        </div>
+
+        <div class="wf-grid-3">
+
+          <article class="wf-card">
+            <div class="wf-card-header">
+              <div>
+                <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Dashboard</span>
+                <h3 class="wf-card-title" style="margin-top: 2px;">Operations Dashboard</h3>
+              </div>
+            </div>
+            <div class="wf-card-body">
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Platform-wide KPIs, placement trend analytics, system health, and real-time candidate activity feed.</p>
+            </div>
+            <div class="wf-card-footer">
+              <a href="dashboard.html" class="wf-btn wf-btn-sm wf-btn-primary">Open Dashboard</a>
+            </div>
+          </article>
+
+          <article class="wf-card">
+            <div class="wf-card-header">
+              <div>
+                <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Tool 1 of 5</span>
+                <h3 class="wf-card-title" style="margin-top: 2px;">Candidate Matching</h3>
+              </div>
+            </div>
+            <div class="wf-card-body">
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">AI-powered ranking of candidates against job requirements. Bulk shortlist, compare, and export top matches.</p>
+            </div>
+            <div class="wf-card-footer">
+              <a href="poc1-student-job-matching.html" class="wf-btn wf-btn-sm wf-btn-primary">Match Candidates</a>
+            </div>
+          </article>
+
+          <article class="wf-card">
+            <div class="wf-card-header">
+              <div>
+                <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Tool 2 of 5</span>
+                <h3 class="wf-card-title" style="margin-top: 2px;">Resume Review</h3>
+              </div>
+            </div>
+            <div class="wf-card-body">
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">ATS scoring, keyword gap analysis, and AI-suggested phrasing improvements for candidate resumes.</p>
+            </div>
+            <div class="wf-card-footer">
+              <a href="poc2-resume-analyzer.html" class="wf-btn wf-btn-sm wf-btn-primary">Review Resumes</a>
+            </div>
+          </article>
+
+          <article class="wf-card">
+            <div class="wf-card-header">
+              <div>
+                <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Tool 3 of 5</span>
+                <h3 class="wf-card-title" style="margin-top: 2px;">Placement Search</h3>
+              </div>
+            </div>
+            <div class="wf-card-body">
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Search placement drives in plain English. AI applies relevant filters automatically — edit chips to refine results.</p>
+            </div>
+            <div class="wf-card-footer">
+              <a href="poc3-placement-search.html" class="wf-btn wf-btn-sm wf-btn-primary">Search Drives</a>
+            </div>
+          </article>
+
+          <article class="wf-card">
+            <div class="wf-card-header">
+              <div>
+                <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Tool 4 of 5</span>
+                <h3 class="wf-card-title" style="margin-top: 2px;">Placement Assistant</h3>
+              </div>
+            </div>
+            <div class="wf-card-body">
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">Conversational AI assistant for matching, resume audits, search, and placement decisions — all in one session.</p>
+            </div>
+            <div class="wf-card-footer">
+              <a href="poc4-placement-copilot.html" class="wf-btn wf-btn-sm wf-btn-primary">Open Assistant</a>
+            </div>
+          </article>
+
+          <article class="wf-card">
+            <div class="wf-card-header">
+              <div>
+                <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Tool 5 of 5</span>
+                <h3 class="wf-card-title" style="margin-top: 2px;">Career Coach</h3>
+              </div>
+            </div>
+            <div class="wf-card-body">
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">AI-guided 6-stage readiness program for students. Tracks skill gaps, daily tasks, and mock interview progress.</p>
+            </div>
+            <div class="wf-card-footer">
+              <a href="poc5-career-coach.html" class="wf-btn wf-btn-sm wf-btn-primary">Open Career Coach</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="wf-doc-footer">
+    PlacementHub AI Lab — Wireframe Suite v2 — React + Shadcn UI
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
