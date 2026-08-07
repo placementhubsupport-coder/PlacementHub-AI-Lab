@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+<meta name="description"content="PlacementHub AI Solutions — AI Student Participation Analyst. Active AI diagnostic workspace identifying participation anomalies, predicting student drop-off risks, and executing closed-loop committee interventions.">
+<title>PlacementHub AI Solutions — AI Student Participation Analyst</title>
+<link rel="icon"href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'viewBox='0 0 100 100'><rect width='100'height='100'rx='20'fill='%23111827'/><text x='50'y='65'font-size='50'font-weight='bold'font-family='sans-serif'fill='%23ffffff'text-anchor='middle'>PH</text></svg>">
+<link rel="stylesheet"href="wireframe.css">
+</head>
+<body>
+
+<nav class="wf-nav">
+<div class="wf-nav-brand">
+<span class="wf-logo-badge">PH</span>
+<span class="wf-nav-title">PlacementHub AI Solutions</span>
+</div>
+<div class="wf-nav-search">
+<input type="text"class="wf-input"placeholder="Ask AI analyst or search student engagement… (⌘K)">
+</div>
+<div class="wf-nav-actions">
+<span class="wf-status-indicator">
+<span class="wf-status-dot"></span>
+ AI Participation Analyst Engine · Standby
+</span>
+</div>
+</nav>
+
+<div class="app-shell">
+
+<aside class="wf-sidebar">
+<div class="wf-sidebar-section">
+<ul class="wf-sidebar-nav">
+<li><a href="index.html"class="wf-sidebar-link">Home</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Intelligence Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc1-student-job-matching.html"class="wf-sidebar-link">Candidate Matching</a></li>
+<li><a href="poc2-resume-analyzer.html"class="wf-sidebar-link">Resume Review</a></li>
+<li><a href="poc3-placement-search.html"class="wf-sidebar-link">Placement Search</a></li>
+<li><a href="poc6-student-participation.html"class="wf-sidebar-link active">Student Participation</a></li>
+<li><a href="poc7-hiring-performance.html"class="wf-sidebar-link">Hiring Performance</a></li>
+<li><a href="poc8-placement-analytics.html"class="wf-sidebar-link">Placement Analytics</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Operations Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc4-placement-copilot.html"class="wf-sidebar-link">Placement Assistant</a></li>
+<li><a href="poc9-document-processing.html"class="wf-sidebar-link">Document Processing</a></li>
+<li><a href="poc10-communication-assistant.html"class="wf-sidebar-link">Communication Assistant</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Analyst Index</div>
+<div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
+ 420 students tracked · 34 PPOs
+</div>
+</div>
+
+<details class="wf-sidebar-spec">
+<summary>Page Spec ↓</summary>
+<pre class="wf-spec-tree"><!-- poc6-student-participation -->
+AIStudentParticipationAnalyst
+├── GlobalNav
+├── AppSidebar
+├── PageHeader
+├── StrategicAIQueryWorkspace
+├── KPISummary ×5
+├── AIEmptyPromptState [INITIAL]
+├── AIStepperTerminalCard [PROGRESSIVE WORKFLOW]
+└── AIResultsWorkspace [HIDDEN UNTIL ANALYSIS]
+ ├── RootCauseDiagnosticCanvas
+ ├── PredictiveRiskCohortMatrix
+ ├── SupportingParticipationFunnel
+ ├── ClosedLoopRecommendations
+ └── ExecutiveBriefGenerator
+[DOCUMENTATION ONLY]</pre>
+</details>
+</aside>
+
+<main class="wf-main-content">
+
+<header class="wf-page-header">
+<div>
+<div class="wf-breadcrumb">PlacementHub AI Solutions › Student Participation Analytics</div>
+<h1 class="wf-page-title">Student Participation Analytics</h1>
+<p class="wf-page-desc">Track student engagement, analyze participation funnels, evaluate PPO conversions, and generate AI executive summaries.</p>
+</div>
+<div class="wf-page-actions">
+<button class="wf-btn wf-btn-primary"id="btn-run-ai-summary">Generate AI Report</button>
+<button class="wf-btn wf-btn-secondary" id="btn-export-participation-csv">Export Analytics CSV</button>
+</div>
+</header>
+
+<!-- KPI Summary Cards (Visible Immediately — Deterministic Layer 1) -->
+<section class="wf-kpi-grid"style="grid-template-columns: repeat(5, 1fr); margin-bottom: var(--space-lg);">
+<div class="wf-kpi-card">
+<div class="wf-kpi-header"><span class="wf-kpi-label">Registered Students</span></div>
+<div class="wf-kpi-value"id="kpi-total-registered">420</div>
+<div class="wf-kpi-subtext">2026 Graduating Batch</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header">
+<span class="wf-kpi-label">OA Attendance</span>
+<span class="wf-badge wf-badge-dark">94.2%</span>
+</div>
+<div class="wf-kpi-value"id="kpi-assessment-rate">94.2%</div>
+<div class="wf-kpi-subtext">Online tests completed</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header"><span class="wf-kpi-label">Interview Conversion</span></div>
+<div class="wf-kpi-value"id="kpi-interview-rate">68.5%</div>
+<div class="wf-kpi-subtext">OA to interview conversion</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header"><span class="wf-kpi-label">Offer Acceptance</span></div>
+<div class="wf-kpi-value"id="kpi-acceptance-rate">88.4%</div>
+<div class="wf-kpi-subtext">Offers accepted</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header">
+<span class="wf-kpi-label">PPOs Issued</span>
+<span class="wf-badge wf-badge-outline">34 PPOs</span>
+</div>
+<div class="wf-kpi-value"id="kpi-ppo-count">34</div>
+<div class="wf-kpi-subtext">Pre-placement offers</div>
+</div>
+</section>
+
+<!-- Split Layout: Analytics Dashboard Left (70%), AI Report Assistant Right (30%) -->
+<div class="wf-split-pane-70-30">
+
+<!-- LEFT COLUMN (70%): Deterministic Analytics Dashboard Workspace (Layer 1) -->
+<div style="display: flex; flex-direction: column; gap: var(--space-lg);">
+
+<!-- 1. Participation Stage Funnel -->
+<section class="wf-card"style="padding: var(--space-lg);">
+<div class="wf-card-header"style="border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Institutional Participation Funnel</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Stage conversion metrics across 420 active candidates</p>
+</div>
+<span class="wf-badge wf-badge-dark">Conversion Rate: 31.0%</span>
+</div>
+
+<div id="participation-funnel-container">
+<!-- JS Populated Funnel -->
+</div>
+</section>
+
+<!-- 2. Participation Analytics Data Table -->
+<section class="wf-card"style="padding: 0;">
+<div class="wf-card-header"style="padding: var(--space-md); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Student Participation Analytics Ledger</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Filterable student engagement breakdown and activity records</p>
+</div>
+<span class="wf-badge wf-badge-outline">420 Records</span>
+</div>
+
+<!-- Toolbar Controls -->
+<div class="wf-toolbar"style="border: none; border-bottom: 1px solid var(--border-subtle); border-radius: 0; padding: var(--space-sm) var(--space-md);">
+<div class="wf-toolbar-row">
+<div class="wf-toolbar-group">
+<input type="text"class="wf-input"id="participation-search-input"placeholder="Search student name or roll no..."style="width: 220px;">
+<select class="wf-select"id="participation-dept-filter">
+<option value="ALL">All Departments</option>
+<option value="CSE">CSE</option>
+<option value="ECE">ECE</option>
+<option value="ME">ME</option>
+<option value="IT">IT</option>
+</select>
+<select class="wf-select"id="participation-risk-filter">
+<option value="ALL">All Risk Levels</option>
+<option value="High Risk">High Risk</option>
+<option value="Medium Risk">Medium Risk</option>
+<option value="Low Risk">Low Risk</option>
+</select>
+</div>
+</div>
+</div>
+
+<div class="wf-table-container">
+<table class="wf-table">
+<thead>
+<tr>
+<th>Student Name</th>
+<th>Dept</th>
+<th>CGPA</th>
+<th>Risk Score</th>
+<th>Predicted Stage</th>
+<th>Participation Status</th>
+<th style="text-align: right;">Action</th>
+</tr>
+</thead>
+<tbody id="predictive-cohort-tbody">
+<!-- JS Populated -->
+</tbody>
+</table>
+</div>
+</section>
+
+</div>
+
+<!-- RIGHT COLUMN (30%): AI Report Assistant Side Panel (Layer 2) -->
+<aside style="display: flex; flex-direction: column; gap: var(--space-md);">
+
+<!-- AI Report Controls Card -->
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-surface); border: 1px solid var(--border-medium);">
+<div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-xs); margin-bottom: var(--space-sm);">
+<div style="display: flex; align-items: center; gap: 6px;">
+<span style="font-size: 16px;"></span>
+<strong style="font-size: 14px; color: var(--text-primary);">AI Report Assistant</strong>
+</div>
+<span class="wf-badge wf-badge-dark"style="font-size: 10px;">Copilot Enabled</span>
+</div>
+<p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: var(--space-sm);">
+ Request automated executive summaries, trend explanations, and committee recommendations.
+</p>
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<button class="wf-btn wf-btn-sm wf-btn-primary"id="btn-gen-exec-summary">Generate Executive Summary</button>
+<button class="wf-btn wf-btn-sm wf-btn-secondary"id="btn-explain-trends">Explain Participation Trends</button>
+<button class="wf-btn wf-btn-sm wf-btn-secondary"id="btn-recommend-actions">Recommend Actions</button>
+</div>
+</section>
+
+<!-- Animated AI Stepper Terminal (Initially Hidden) -->
+<section class="wf-card"id="ai-stepper-card"style="display: none; padding: var(--space-md); background: var(--bg-dark-neutral); color: var(--text-inverse); border: 1px solid var(--border-dark-neutral);">
+<div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-dark-hover); padding-bottom: var(--space-xs); margin-bottom: var(--space-sm);">
+<span style="font-size: 12px; font-weight: 600; font-family: var(--font-mono);"id="stepper-status-title">Reading participation records...</span>
+<span style="font-size: 11px; color: var(--text-inverse-muted); font-family: var(--font-mono);"id="stepper-timer">0.0s</span>
+</div>
+<div id="stepper-steps-list"style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-family: var(--font-mono);">
+<!-- Dynamic progressive steps inserted here -->
+</div>
+</section>
+
+<!-- AI Report Assistant Output Box -->
+<section class="wf-card"id="ai-report-output-panel"style="padding: var(--space-md); display: none;">
+<!-- JS Populated AI Generated Report -->
+</section>
+
+<!-- Committee Brief Exporter Card -->
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-muted); border: 1px solid var(--border-medium);">
+<h4 style="font-size: 13px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">Automated Committee Brief</h4>
+<p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: var(--space-md);">
+ Export official 100% formatted executive committee brief with evidence lineage.
+</p>
+<button class="wf-btn wf-btn-sm wf-btn-primary"style="width: 100%;"id="btn-generate-exec-brief">
+ Download Committee Brief (.txt)
+</button>
+</section>
+
+</aside>
+
+</div>
+
+</main>
+</div>
+
+<script type="module"src="js/main.js"></script>
+<script type="module"src="js/student-participation.js"></script>
+</body>
+</html>

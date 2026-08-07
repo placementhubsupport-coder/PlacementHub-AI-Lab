@@ -1,150 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PlacementHub AI Solutions Placement Copilot — Conversational AI copilot for campus placement decisions and candidate audits.">
-  <title>PlacementHub AI Solutions — Placement Copilot</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='65' font-size='50' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>PH</text></svg>">
-  <link rel="stylesheet" href="wireframe.css">
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+<meta name="description"content="PlacementHub AI Solutions Placement Copilot — Conversational AI copilot for campus placement decisions and candidate audits.">
+<title>PlacementHub AI Solutions — Placement Copilot</title>
+<link rel="icon"href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'viewBox='0 0 100 100'><rect width='100'height='100'rx='20'fill='%23111827'/><text x='50'y='65'font-size='50'font-weight='bold'font-family='sans-serif'fill='%23ffffff'text-anchor='middle'>PH</text></svg>">
+<link rel="stylesheet"href="wireframe.css">
 </head>
 <body>
 
-  <nav class="wf-nav">
-    <div class="wf-nav-brand">
-      <span class="wf-logo-badge">PH</span>
-      <span class="wf-nav-title">PlacementHub AI Solutions</span>
-    </div>
-    <div class="wf-nav-search">
-      <input type="text" class="wf-input" placeholder="Search sessions or candidates… (⌘K)">
-    </div>
-    <div class="wf-nav-actions">
-      <span class="wf-status-indicator">
-        <span class="wf-status-dot"></span>
-        Placement Copilot · Ready
-      </span>
-    </div>
-  </nav>
+<nav class="wf-nav">
+<div class="wf-nav-brand">
+<span class="wf-logo-badge">PH</span>
+<span class="wf-nav-title">PlacementHub AI Solutions</span>
+</div>
+<div class="wf-nav-search">
+<input type="text"class="wf-input"placeholder="Search sessions or candidates… (⌘K)">
+</div>
+<div class="wf-nav-actions">
+<span class="wf-status-indicator">
+<span class="wf-status-dot"></span>
+ Placement Copilot · Ready
+</span>
+</div>
+</nav>
 
-  <!-- 3-Column Chat Shell -->
-  <div class="app-shell" style="height: calc(100vh - 52px);">
+<!-- 4-Column Enterprise Shell with Global Sidebar -->
+<div class="app-shell"style="height: calc(100vh - 52px);">
 
-    <!-- LEFT COLUMN: Sessions Sidebar (220px) -->
-    <aside class="wf-sidebar" style="width: 220px; min-width: 220px; padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-md);">
+<!-- COLUMN 1: Global Navigation Sidebar (200px) -->
+<aside class="wf-sidebar"style="width: 200px; min-width: 200px; border-right: 1px solid var(--border-subtle);">
+<div class="wf-sidebar-section">
+<ul class="wf-sidebar-nav">
+<li><a href="index.html"class="wf-sidebar-link">Home</a></li>
+</ul>
+</div>
 
-      <button class="wf-btn wf-btn-primary" id="btn-new-session" style="width: 100%; font-weight: 600;">+ New Session</button>
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Intelligence Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc1-student-job-matching.html"class="wf-sidebar-link">Candidate Matching</a></li>
+<li><a href="poc2-resume-analyzer.html"class="wf-sidebar-link">Resume Review</a></li>
+<li><a href="poc3-placement-search.html"class="wf-sidebar-link">Placement Search</a></li>
+<li><a href="poc6-student-participation.html"class="wf-sidebar-link">Student Participation</a></li>
+<li><a href="poc7-hiring-performance.html"class="wf-sidebar-link">Hiring Performance</a></li>
+<li><a href="poc8-placement-analytics.html"class="wf-sidebar-link">Placement Analytics</a></li>
+</ul>
+</div>
 
-      <!-- Sessions grouped by recency -->
-      <div id="sessions-nav-container" style="display: flex; flex-direction: column; gap: var(--space-md);">
-        <!-- Dynamically rendered sessions -->
-      </div>
-    </aside>
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Operations Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc4-placement-copilot.html"class="wf-sidebar-link active">Placement Assistant</a></li>
+<li><a href="poc9-document-processing.html"class="wf-sidebar-link">Document Processing</a></li>
+<li><a href="poc10-communication-assistant.html"class="wf-sidebar-link">Communication Assistant</a></li>
+</ul>
+</div>
 
-    <!-- CENTER COLUMN: Chat -->
-    <main style="flex: 1; display: flex; flex-direction: column; height: 100%; overflow: hidden; border-right: 1px solid var(--border-subtle);">
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Copilot Info</div>
+<div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
+ Conversational agent ready
+</div>
+</div>
+</aside>
 
-      <!-- Session header — title + model + overflow -->
-      <div style="height: 48px; border-bottom: 1px solid var(--border-subtle); padding: 0 var(--space-md); display: flex; align-items: center; justify-content: space-between; background: var(--bg-surface); flex-shrink: 0;">
-        <div style="display: flex; align-items: center; gap: var(--space-sm);">
-          <div class="wf-breadcrumb" style="margin-bottom: 0; margin-right: 4px;">PlacementHub AI Solutions ›</div>
-          <span style="font-size: 13px; font-weight: 600;" id="session-title-header">Placement Copilot</span>
-          <span style="font-size: 12px; color: var(--text-muted);" id="session-model-header">PlacementHub Neural Agent</span>
-          <span class="wf-badge wf-badge-dark" id="session-status-badge">Ready</span>
-        </div>
-        <div style="display: flex; gap: var(--space-sm);">
-          <button class="wf-btn wf-btn-sm wf-btn-ghost" id="btn-clear-session">Clear chat</button>
-          <button class="wf-btn wf-btn-sm wf-btn-ghost" id="btn-delete-session" style="color: var(--text-muted);">Delete</button>
-        </div>
-      </div>
+<!-- COLUMN 2: Sessions Sub-Pane (200px) -->
+<div style="width: 200px; min-width: 200px; border-right: 1px solid var(--border-subtle); padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-md); background: var(--bg-surface);">
+<button class="wf-btn wf-btn-primary"id="btn-new-session"style="width: 100%; font-weight: 600;">+ New Session</button>
+<input type="text"class="wf-input"id="session-search-input"placeholder="Search sessions..."style="font-size: 11px; height: 28px;">
 
-      <!-- Message Stream -->
-      <div id="chat-message-stream" style="flex: 1; overflow-y: auto; padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-md); background: var(--bg-page);">
-        
-        <!-- Empty State Container -->
-        <div id="chat-empty-state" style="border: 2px dashed var(--border-medium); border-radius: var(--radius-lg); padding: var(--space-xl); margin: auto; max-width: 520px; text-align: center; display: flex; flex-direction: column; gap: var(--space-md);">
-          <strong style="font-size: 16px;">Ask Placement Copilot</strong>
-          <p style="font-size: 13px; color: var(--text-muted);">Match candidates, review resumes, or search drives — all in one AI conversation.</p>
-          <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;" id="chat-prompt-chips">
-            <span class="wf-prompt-chip">Find the best candidates for this drive</span>
-            <span class="wf-prompt-chip">Review Arjun Verma's resume</span>
-            <span class="wf-prompt-chip">Create a placement strategy for CSE students</span>
-            <span class="wf-prompt-chip">Compare shortlisted candidates</span>
-            <span class="wf-prompt-chip">Which students are ready for Google interviews?</span>
-          </div>
-        </div>
+<!-- Sessions grouped by recency -->
+<div id="sessions-nav-container"style="display: flex; flex-direction: column; gap: var(--space-md); overflow-y: auto;">
+<!-- Dynamically rendered sessions -->
+</div>
+</div>
 
-      </div>
+<!-- COLUMN 3: Main Chat Content -->
+<main style="flex: 1; display: flex; flex-direction: column; height: 100%; overflow: hidden; border-right: 1px solid var(--border-subtle);">
 
-      <!-- Composer -->
-      <div style="border-top: 1px solid var(--border-subtle); padding: var(--space-sm) var(--space-md); background: var(--bg-surface); flex-shrink: 0; display: flex; flex-direction: column; gap: 6px;">
-        <div style="display: flex; gap: var(--space-sm);">
-          <textarea class="wf-textarea" id="chat-input-textarea" placeholder="Ask about a candidate, resume, or placement drive…" style="height: 52px; min-height: 52px; resize: none;"></textarea>
-          <button class="wf-btn wf-btn-primary" id="btn-send-chat" style="height: 52px; padding: 0 20px; align-self: flex-end; font-weight: 600;">Send</button>
-          <button class="wf-btn wf-btn-ghost" id="btn-stop-chat" style="height: 52px; padding: 0 16px; align-self: flex-end; font-weight: 600; display: none;">Stop</button>
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted);">
-          <span>Press Enter to send · Shift+Enter for newline</span>
-          <span style="font-size: 11px; color: var(--text-muted);">AI Assistant v2.4</span>
-        </div>
-      </div>
+<!-- Session header — title + model + overflow -->
+<div style="height: 48px; border-bottom: 1px solid var(--border-subtle); padding: 0 var(--space-md); display: flex; align-items: center; justify-content: space-between; background: var(--bg-surface); flex-shrink: 0;">
+<div style="display: flex; align-items: center; gap: var(--space-sm);">
+<div class="wf-breadcrumb"style="margin-bottom: 0; margin-right: 4px;">PlacementHub AI Solutions ›</div>
+<span style="font-size: 13px; font-weight: 600;"id="session-title-header">Placement Copilot</span>
+<span style="font-size: 12px; color: var(--text-muted);"id="session-model-header">PlacementHub Neural Agent</span>
+<span class="wf-badge wf-badge-dark"id="session-status-badge">Ready</span>
+</div>
+<div style="display: flex; gap: var(--space-sm);">
+<button class="wf-btn wf-btn-sm wf-btn-ghost"id="btn-rename-session">Rename</button>
+<button class="wf-btn wf-btn-sm wf-btn-ghost"id="btn-clear-session">Clear chat</button>
+<button class="wf-btn wf-btn-sm wf-btn-ghost"id="btn-delete-session"style="color: var(--text-muted);">Delete</button>
+</div>
+</div>
 
-    </main>
+<!-- Message Stream -->
+<div id="chat-message-stream"style="flex: 1; overflow-y: auto; padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-md); background: var(--bg-page);">
+ 
+<!-- Empty State Container -->
+<div id="chat-empty-state"style="border: 2px dashed var(--border-medium); border-radius: var(--radius-lg); padding: var(--space-xl); margin: auto; max-width: 520px; text-align: center; display: flex; flex-direction: column; gap: var(--space-md);">
+<strong style="font-size: 16px;">Ask Placement Copilot</strong>
+<p style="font-size: 13px; color: var(--text-muted);">Match candidates, review resumes, or search drives — all in one AI conversation.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;"id="chat-prompt-chips">
+<span class="wf-prompt-chip">Find the best candidates for this drive</span>
+<span class="wf-prompt-chip">Review Arjun Verma's resume</span>
+<span class="wf-prompt-chip">Create a placement strategy for CSE students</span>
+<span class="wf-prompt-chip">Compare shortlisted candidates</span>
+<span class="wf-prompt-chip">Which students are ready for Google interviews?</span>
+</div>
+</div>
 
-    <!-- RIGHT COLUMN: Collapsible Context Rail -->
-    <aside class="wf-context-rail expanded" id="context-rail-aside" style="width: 260px; min-width: 260px; border-left: 1px solid var(--border-subtle); background: var(--bg-surface); display: flex; flex-direction: column;">
+</div>
 
-      <!-- Collapse toggle -->
-      <div class="wf-context-rail-toggle" id="btn-toggle-context-rail" style="padding: 10px 14px; border-bottom: 1px solid var(--border-subtle); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--bg-muted);">
-        <span style="font-size: 12px; font-weight: 600;">Active Context ‹</span>
-        <span style="font-size: 11px; color: var(--text-muted);" id="context-rail-state-text">Expanded</span>
-      </div>
+<!-- Composer -->
+<div style="border-top: 1px solid var(--border-subtle); padding: var(--space-sm) var(--space-md); background: var(--bg-surface); flex-shrink: 0; display: flex; flex-direction: column; gap: 6px;">
+<div style="display: flex; gap: var(--space-sm);">
+<textarea class="wf-textarea"id="chat-input-textarea"placeholder="Ask about a candidate, resume, or placement drive…"style="height: 52px; min-height: 52px; resize: none;"></textarea>
+<button class="wf-btn wf-btn-primary"id="btn-send-chat"style="height: 52px; padding: 0 20px; align-self: flex-end; font-weight: 600;">Send</button>
+<button class="wf-btn wf-btn-ghost"id="btn-stop-chat"style="height: 52px; padding: 0 16px; align-self: flex-end; font-weight: 600; display: none;">Stop</button>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted);">
+<span>Press Enter to send · Shift+Enter for newline</span>
+<span style="font-size: 11px; color: var(--text-muted);">AI Assistant v2.4</span>
+</div>
+</div>
 
-      <div style="padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-md); overflow-y: auto;" id="context-rail-content">
+</main>
 
-        <!-- Active candidate context -->
-        <div class="wf-sidebar-section">
-          <div class="wf-sidebar-label">Active Candidate</div>
-          <div class="wf-card" style="background: var(--bg-muted);" id="ctx-cand-card">
-            <div class="wf-card-body" style="padding: 10px;">
-              <strong style="font-size: 13px; display: block;" id="ctx-cand-name">Arjun Verma</strong>
-              <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;" id="ctx-cand-role">AI Research Eng · TechCorp</div>
-              <div style="font-size: 12px; color: var(--text-muted); margin-top: 1px;" id="ctx-cand-sub">B.Tech CSE · 9.4 CGPA · Score 94</div>
-            </div>
-          </div>
-        </div>
+<!-- COLUMN 4: Collapsible Context Rail -->
+<aside class="wf-context-rail expanded"id="context-rail-aside"style="width: 240px; min-width: 240px; border-left: 1px solid var(--border-subtle); background: var(--bg-surface); display: flex; flex-direction: column;">
 
-        <!-- Linked files -->
-        <div class="wf-sidebar-section">
-          <div class="wf-sidebar-label">Linked Context Files</div>
-          <div style="font-size: 12px; color: var(--text-secondary); padding: 4px 0; display: flex; flex-direction: column; gap: 4px;" id="ctx-linked-files">
-            <div>📄 Arjun_Verma_Resume.pdf</div>
-            <div>📄 TechCorp_JD_2026.pdf</div>
-            <div>📄 Placement_Drive_Index.json</div>
-          </div>
-        </div>
+<!-- Collapse toggle -->
+<div class="wf-context-rail-toggle"id="btn-toggle-context-rail"style="padding: 10px 14px; border-bottom: 1px solid var(--border-subtle); cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--bg-muted);">
+<span style="font-size: 12px; font-weight: 600;">Active Context ‹</span>
+<span style="font-size: 11px; color: var(--text-muted);"id="context-rail-state-text">Expanded</span>
+</div>
 
-        <!-- Quick actions -->
-        <div class="wf-sidebar-section">
-          <div class="wf-sidebar-label">Jump to Solution</div>
-          <div style="display: flex; flex-direction: column; gap: 6px;">
-            <a href="index.html" class="wf-btn wf-btn-xs" style="text-align: left;">Home →</a>
-            <a href="poc1-student-job-matching.html" class="wf-btn wf-btn-xs" style="text-align: left;">Candidate Matching →</a>
-            <a href="poc2-resume-analyzer.html" class="wf-btn wf-btn-xs" style="text-align: left;">Resume Analyzer →</a>
-            <a href="poc3-placement-search.html" class="wf-btn wf-btn-xs" style="text-align: left;">Placement Search →</a>
-            <a href="poc5-career-coach.html" class="wf-btn wf-btn-xs" style="text-align: left;">Career Coach →</a>
-          </div>
-        </div>
+<div style="padding: var(--space-md); display: flex; flex-direction: column; gap: var(--space-md); overflow-y: auto;"id="context-rail-content">
 
-      </div>
-    </aside>
+<!-- Active candidate context -->
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Active Candidate</div>
+<div class="wf-card"style="background: var(--bg-muted);"id="ctx-cand-card">
+<div class="wf-card-body"style="padding: 10px;">
+<strong style="font-size: 13px; display: block;"id="ctx-cand-name">Arjun Verma</strong>
+<div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;"id="ctx-cand-role">AI Research Eng · TechCorp</div>
+<div style="font-size: 12px; color: var(--text-muted); margin-top: 1px;"id="ctx-cand-sub">B.Tech CSE · 9.4 CGPA · Score 94</div>
+</div>
+</div>
+</div>
 
-  </div>
+<!-- Linked files -->
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Linked Context Files</div>
+<div style="font-size: 12px; color: var(--text-secondary); padding: 4px 0; display: flex; flex-direction: column; gap: 4px;"id="ctx-linked-files">
+<div>Arjun_Verma_Resume.pdf</div>
+<div>TechCorp_JD_2026.pdf</div>
+<div>Placement_Drive_Index.json</div>
+</div>
+</div>
 
-  <footer class="wf-doc-footer">
-    PlacementHub AI Solutions — Interactive AI Solutions Showcase
-  </footer>
+<!-- Quick actions -->
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Jump to Solution</div>
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<a href="index.html"class="wf-btn wf-btn-xs"style="text-align: left;">Home →</a>
+<a href="poc1-student-job-matching.html"class="wf-btn wf-btn-xs"style="text-align: left;">Candidate Matching →</a>
+<a href="poc2-resume-analyzer.html"class="wf-btn wf-btn-xs"style="text-align: left;">Resume Analyzer →</a>
+<a href="poc3-placement-search.html"class="wf-btn wf-btn-xs"style="text-align: left;">Placement Search →</a>
+<a href="poc6-student-participation.html"class="wf-btn wf-btn-xs"style="text-align: left;">Student Participation →</a>
+<a href="poc7-hiring-performance.html"class="wf-btn wf-btn-xs"style="text-align: left;">Hiring Performance →</a>
+<a href="poc8-placement-analytics.html"class="wf-btn wf-btn-xs"style="text-align: left;">Placement Analytics →</a>
+</div>
+</div>
 
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/placement-copilot.js"></script>
+</div>
+</aside>
+
+</div>
+
+<script type="module"src="js/main.js"></script>
+<script type="module"src="js/placement-copilot.js"></script>
 </body>
 </html>

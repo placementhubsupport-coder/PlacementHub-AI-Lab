@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+<meta name="description"content="PlacementHub AI Solutions — AI Placement Analytics & Predictions. Predict placement outcomes, identify at-risk students, forecast recruiter demand, and generate executive recommendations using AI.">
+<title>PlacementHub AI Solutions — AI Placement Analytics & Predictions</title>
+<link rel="icon"href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'viewBox='0 0 100 100'><rect width='100'height='100'rx='20'fill='%23111827'/><text x='50'y='65'font-size='50'font-weight='bold'font-family='sans-serif'fill='%23ffffff'text-anchor='middle'>PH</text></svg>">
+<link rel="stylesheet"href="wireframe.css">
+</head>
+<body>
+
+<nav class="wf-nav">
+<div class="wf-nav-brand">
+<span class="wf-logo-badge">PH</span>
+<span class="wf-nav-title">PlacementHub AI Solutions</span>
+</div>
+<div class="wf-nav-search">
+<input type="text"class="wf-input"placeholder="Ask AI analyst or search placement predictions… (⌘K)">
+</div>
+<div class="wf-nav-actions">
+<span class="wf-status-indicator">
+<span class="wf-status-dot"></span>
+ AI Data Analyst Engine · Standby
+</span>
+</div>
+</nav>
+
+<div class="app-shell">
+
+<aside class="wf-sidebar">
+<div class="wf-sidebar-section">
+<ul class="wf-sidebar-nav">
+<li><a href="index.html"class="wf-sidebar-link">Home</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Intelligence Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc1-student-job-matching.html"class="wf-sidebar-link">Candidate Matching</a></li>
+<li><a href="poc2-resume-analyzer.html"class="wf-sidebar-link">Resume Review</a></li>
+<li><a href="poc3-placement-search.html"class="wf-sidebar-link">Placement Search</a></li>
+<li><a href="poc6-student-participation.html"class="wf-sidebar-link">Student Participation</a></li>
+<li><a href="poc7-hiring-performance.html"class="wf-sidebar-link">Hiring Performance</a></li>
+<li><a href="poc8-placement-analytics.html"class="wf-sidebar-link active">Placement Analytics</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Operations Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc4-placement-copilot.html"class="wf-sidebar-link">Placement Assistant</a></li>
+<li><a href="poc9-document-processing.html"class="wf-sidebar-link">Document Processing</a></li>
+<li><a href="poc10-communication-assistant.html"class="wf-sidebar-link">Communication Assistant</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Analytics Index</div>
+<div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
+ 420 students · 91% health
+</div>
+</div>
+
+<details class="wf-sidebar-spec">
+<summary>Page Spec ↓</summary>
+<pre class="wf-spec-tree"><!-- poc8-placement-analytics -->
+AIPlacementAnalyticsAndPredictions
+├── GlobalNav
+├── AppSidebar
+├── PageHeader
+├── StrategicAIQueryWorkspace
+├── AIEmptyPromptState [INITIAL]
+├── AIStepperTerminalCard [PROGRESSIVE WORKFLOW]
+└── AIResultsWorkspace [HIDDEN UNTIL ANALYSIS]
+ ├── ExecutiveAISummary
+ ├── AIRootCauseAnalysis
+ ├── StudentPlacementPredictionsTable
+ ├── SalaryPredictionCards
+ ├── CompanyHiringForecastTable
+ ├── BranchForecastCards
+ ├── HighRiskStudentsCards
+ ├── AIRecommendationsEngine
+ └── ExecutiveReportExporter [TXT/PDF]
+[DOCUMENTATION ONLY]</pre>
+</details>
+</aside>
+
+<main class="wf-main-content">
+
+<header class="wf-page-header">
+<div>
+<div class="wf-breadcrumb">PlacementHub AI Solutions › AI Placement Analytics & Predictions</div>
+<h1 class="wf-page-title">AI Placement Analytics & Predictions</h1>
+<p class="wf-page-desc">Predict placement outcomes, identify at-risk students, forecast recruiter demand, and generate executive recommendations using AI.</p>
+</div>
+<div class="wf-page-actions">
+<button class="wf-btn wf-btn-primary"id="btn-run-predictive-analysis">Run Predictive Analysis</button>
+<button class="wf-btn wf-btn-secondary"onclick="document.getElementById('btn-download-exec-report').click()">Export Executive Report</button>
+</div>
+</header>
+
+<!-- SECTION 1: Strategic AI Analytics Workspace -->
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-surface); border: 1px solid var(--border-medium);">
+<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
+<span style="font-size: 16px;"></span>
+<strong style="font-size: 13px; color: var(--text-primary);">Ask Placement Analytics AI</strong>
+</div>
+<div style="display: flex; gap: var(--space-sm); margin-bottom: var(--space-sm);">
+<input type="text"id="ai-analytics-query-input"class="wf-input"placeholder="Ask Placement Analytics AI e.g. 'Which students are likely to remain unplaced?'..."style="flex: 1; font-weight: 500;">
+<button class="wf-btn wf-btn-primary"id="btn-submit-analytics-query">Analyze</button>
+</div>
+<div style="display: flex; align-items: center; gap: var(--space-xs); flex-wrap: wrap;"id="ai-analytics-query-chips">
+<!-- JS Populated Preset Query Chips -->
+</div>
+</section>
+
+<!-- Animated AI Stepper Terminal Card (Initially Hidden, shown during re-analysis) -->
+<section class="wf-card" id="ai-analytics-stepper-card" style="display: none; padding: var(--space-md); background: var(--bg-dark-neutral); color: var(--text-inverse); border: 1px solid var(--border-dark-neutral); margin-bottom: var(--space-lg);">
+  <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-dark-hover); padding-bottom: var(--space-xs); margin-bottom: var(--space-sm);">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span class="wf-status-dot" style="background: #22c55e;"></span>
+      <span style="font-size: 13px; font-weight: 600; font-family: var(--font-mono);" id="analytics-stepper-status-title">AI Placement Analytics Engine Executing...</span>
+    </div>
+    <span style="font-size: 11px; color: var(--text-inverse-muted); font-family: var(--font-mono);" id="analytics-stepper-timer">0.0s</span>
+  </div>
+  <div id="analytics-stepper-steps-list" style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-family: var(--font-mono);">
+    <!-- Dynamic progressive steps inserted here -->
+  </div>
+</section>
+
+<!-- Main Results Workspace (Visible on Page Load — Enterprise BI Standard) -->
+<div id="ai-analytics-results-workspace" style="display: block; opacity: 1; transition: opacity 0.4s ease;">
+ 
+<!-- SECTION 2: Executive AI Summary Hero Card -->
+<section class="wf-card"id="section-exec-summary"style="padding: var(--space-lg); margin-bottom: var(--space-lg);">
+<!-- JS Populated Executive Summary -->
+</section>
+
+<!-- Interactive Counterfactual Scenario Modeler -->
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-muted); border: 1px solid var(--border-medium); margin-bottom: var(--space-lg);">
+<div style="display: flex; align-items: center; justify-content: space-between;">
+<div>
+<strong style="font-size: 14px; color: var(--text-primary);">Interactive AI Counterfactual Scenario Modeler</strong>
+<p style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">Simulate intervention impacts on overall placement rates and branch forecasts</p>
+</div>
+<button class="wf-btn wf-btn-sm wf-btn-primary"id="btn-simulate-sql-scenario">
+ Simulate Scenario: "30 ME Students Complete SQL Bootcamp"
+</button>
+</div>
+</section>
+
+<!-- SECTION 3: AI Root Cause Analysis -->
+<section class="wf-card"id="section-root-cause"style="padding: var(--space-lg); margin-bottom: var(--space-lg);">
+<!-- JS Populated Root Cause Analysis -->
+</section>
+
+<!-- SECTION 4: Student Placement Prediction Table -->
+<section class="wf-card"style="padding: 0; margin-bottom: var(--space-lg);">
+<div class="wf-card-header"style="padding: var(--space-md); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Student Placement Probability Predictions</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">AI-calculated placement likelihood, predicted package, and recommended interventions</p>
+</div>
+<span class="wf-badge wf-badge-dark">Predictive Neural Model</span>
+</div>
+
+<!-- Table Filter Toolbar -->
+<div class="wf-toolbar"style="border: none; border-bottom: 1px solid var(--border-subtle); border-radius: 0; padding: var(--space-sm) var(--space-md);">
+<div class="wf-toolbar-row">
+<div class="wf-toolbar-group">
+<input type="text"class="wf-input"id="student-pred-search"placeholder="Search student name, roll no, domain..."style="width: 260px;">
+<select class="wf-select"id="student-pred-risk-filter">
+<option value="ALL">All Risk Levels</option>
+<option value="High Risk">High Risk Only</option>
+<option value="Moderate Risk">Moderate Risk</option>
+<option value="Low Risk">Low Risk</option>
+</select>
+<select class="wf-select"id="student-pred-dept-filter">
+<option value="ALL">All Departments</option>
+<option value="CSE">CSE</option>
+<option value="IT">IT</option>
+<option value="ECE">ECE</option>
+<option value="ME">ME</option>
+</select>
+</div>
+</div>
+</div>
+
+<div class="wf-table-container">
+<table class="wf-table">
+<thead>
+<tr>
+<th>Student Name</th>
+<th>CGPA</th>
+<th>Placement Probability</th>
+<th>Expected Package</th>
+<th>Likely Domain</th>
+<th>Risk Level</th>
+<th>AI Recommendation</th>
+<th style="text-align: right;">Action</th>
+</tr>
+</thead>
+<tbody id="student-predictions-tbody">
+<!-- JS Populated -->
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- SECTION 5: Salary Prediction Cards -->
+<section class="wf-card"style="padding: var(--space-lg); margin-bottom: var(--space-lg);">
+<div class="wf-card-header"style="border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Salary & CTC Growth Forecast</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">AI predicted compensation distributions across graduating batch</p>
+</div>
+<span class="wf-badge wf-badge-dark">+9.2% YoY Growth</span>
+</div>
+
+<div id="section-salary-forecast">
+<!-- JS Populated Salary Forecast -->
+</div>
+</section>
+
+<!-- SECTION 6: Company Hiring Forecast Table -->
+<section class="wf-card"style="padding: 0; margin-bottom: var(--space-lg);">
+<div class="wf-card-header"style="padding: var(--space-md); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Company Hiring & Panel Demand Forecast</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Predicted applicant funnels, expected offers, and required interview panel capacity</p>
+</div>
+<span class="wf-badge wf-badge-outline">42 Drives Forecasted</span>
+</div>
+
+<div class="wf-table-container">
+<table class="wf-table">
+<thead>
+<tr>
+<th>Company Partner</th>
+<th>Expected Applicants</th>
+<th>Expected Shortlist</th>
+<th>Expected Interviews</th>
+<th>Expected Offers</th>
+<th>Panels Required</th>
+<th style="text-align: right;">Status</th>
+</tr>
+</thead>
+<tbody id="company-forecast-tbody">
+<!-- JS Populated -->
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- Split Pane 50/50: Branch Forecast Left, High-Risk Students Right -->
+<div class="wf-split-pane"style="grid-template-columns: 1fr 1fr; margin-bottom: var(--space-lg);">
+
+<!-- SECTION 7: Branch Forecast -->
+<div>
+<div style="margin-bottom: var(--space-md);">
+<h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0;">Department Placement Forecast</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Branch-wise placement likelihood and underlying drivers</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: var(--space-md);"id="branch-forecast-container">
+<!-- JS Populated Branch Cards -->
+</div>
+</div>
+
+<!-- SECTION 8: High-Risk Students -->
+<div>
+<div style="margin-bottom: var(--space-md);">
+<h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0;">High-Risk Candidate Intervention Desk</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Students requiring immediate academic & skill intervention</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: var(--space-md);"id="high-risk-cards-container">
+<!-- JS Populated Risk Cards -->
+</div>
+</div>
+
+</div>
+
+<!-- Split Pane 70/30: AI Recommendations Left, Executive Report Exporter Right -->
+<div class="wf-split-pane-70-30">
+
+<!-- SECTION 9: AI Recommendations Engine -->
+<section class="wf-card"style="padding: var(--space-lg);">
+<div class="wf-card-header"style="border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">AI Actionable Recommendation Engine</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Quantified interventions with estimated placement gains and confidence ratings</p>
+</div>
+<span class="wf-badge wf-badge-dark">Action Engine Active</span>
+</div>
+
+<div id="ai-analytics-recommendations-list">
+<!-- JS Populated Recommendations -->
+</div>
+</section>
+
+<!-- SECTION 11: Executive Report Exporter -->
+<aside>
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-muted); border: 1px solid var(--border-medium);">
+<div style="display: flex; align-items: center; gap: 6px; margin-bottom: var(--space-xs);">
+<span style="font-size: 16px;"></span>
+<h4 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin: 0;">Executive Report Generator</h4>
+</div>
+<p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: var(--space-md);">
+ Generates an official, audited Board Executive Report containing Health Index, Predictions, Risk Analysis, and Action Memos.
+</p>
+<button class="wf-btn wf-btn-sm wf-btn-primary"style="width: 100%; font-weight: 600;"id="btn-download-exec-report">
+ Download Executive Report (.txt)
+</button>
+<a href="poc6-student-participation.html"class="wf-btn wf-btn-sm wf-btn-secondary"style="width: 100%; margin-top: 6px; text-decoration: none; text-align: center;">Investigate Participation →</a>
+<a href="poc4-placement-copilot.html"class="wf-btn wf-btn-sm wf-btn-secondary"style="width: 100%; margin-top: 6px; text-decoration: none; text-align: center;">Ask Copilot →</a>
+</section>
+</aside>
+
+</div>
+
+</div>
+
+</main>
+</div>
+
+<script type="module"src="js/main.js"></script>
+<script type="module"src="js/placement-analytics.js"></script>
+</body>
+</html>

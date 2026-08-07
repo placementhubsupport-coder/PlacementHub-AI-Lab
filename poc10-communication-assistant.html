@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+<meta name="description"content="PlacementHub AI Solutions — AI Communication Assistant. Plan, generate, schedule, track, and optimize multi-channel placement communications using AI.">
+<title>PlacementHub AI Solutions — AI Communication Assistant</title>
+<link rel="icon"href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'viewBox='0 0 100 100'><rect width='100'height='100'rx='20'fill='%23111827'/><text x='50'y='65'font-size='50'font-weight='bold'font-family='sans-serif'fill='%23ffffff'text-anchor='middle'>PH</text></svg>">
+<link rel="stylesheet"href="wireframe.css">
+</head>
+<body>
+
+<nav class="wf-nav">
+<div class="wf-nav-brand">
+<span class="wf-logo-badge">PH</span>
+<span class="wf-nav-title">PlacementHub AI Solutions</span>
+</div>
+<div class="wf-nav-search">
+<input type="text"class="wf-input"placeholder="Search communication operations or templates… (⌘K)">
+</div>
+<div class="wf-nav-actions">
+<span class="wf-status-indicator">
+<span class="wf-status-dot"></span>
+ Communication AI Operations Center · Standby
+</span>
+</div>
+</nav>
+
+<div class="app-shell">
+
+<aside class="wf-sidebar">
+<div class="wf-sidebar-section">
+<ul class="wf-sidebar-nav">
+<li><a href="index.html"class="wf-sidebar-link">Home</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Intelligence Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc1-student-job-matching.html"class="wf-sidebar-link">Candidate Matching</a></li>
+<li><a href="poc2-resume-analyzer.html"class="wf-sidebar-link">Resume Review</a></li>
+<li><a href="poc3-placement-search.html"class="wf-sidebar-link">Placement Search</a></li>
+<li><a href="poc6-student-participation.html"class="wf-sidebar-link">Student Participation</a></li>
+<li><a href="poc7-hiring-performance.html"class="wf-sidebar-link">Hiring Performance</a></li>
+<li><a href="poc8-placement-analytics.html"class="wf-sidebar-link">Placement Analytics</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Operations Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc4-placement-copilot.html"class="wf-sidebar-link">Placement Assistant</a></li>
+<li><a href="poc9-document-processing.html"class="wf-sidebar-link">Document Processing</a></li>
+<li><a href="poc10-communication-assistant.html"class="wf-sidebar-link active">Communication Assistant</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Dispatch Operations</div>
+<div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
+ 420 sent · 84.2% open rate
+</div>
+</div>
+
+<details class="wf-sidebar-spec">
+<summary>Page Spec ↓</summary>
+<pre class="wf-spec-tree"><!-- poc10-communication-assistant -->
+AICommunicationOperationsCenter
+├── GlobalNav
+├── AppSidebar
+├── PageHeader
+├── AICommandCenter (Prompt & Preset Chips)
+├── AICommunicationEmptyState [INITIAL]
+├── AICommunicationStepperTerminalCard [PROGRESSIVE WORKFLOW]
+└── AICommunicationResultsWorkspace [HIDDEN UNTIL ANALYSIS]
+ ├── ExecutiveAICommunicationSummary
+ ├── AudienceSummaryKPIGrid
+ ├── MultiChannelPreviewTabs (Email, WhatsApp, SMS, Calendar)
+ ├── PersonalizedCommunicationQueueTable & BulkActions
+ ├── RecruiterFollowupWorkspace
+ ├── MonthlyPlacementNewsletterGenerator
+ ├── CommunicationAnalyticsKPIGrid
+ ├── EnterpriseCommunicationRecommendations
+ └── ExecutiveCommunicationReportExporter [TXT]
+[DOCUMENTATION ONLY]</pre>
+</details>
+</aside>
+
+<main class="wf-main-content">
+
+<header class="wf-page-header">
+<div>
+<div class="wf-breadcrumb">PlacementHub AI Solutions › AI Communication Assistant</div>
+<h1 class="wf-page-title">AI Communication Assistant</h1>
+<p class="wf-page-desc">Plan, generate, schedule, track, and optimize multi-channel placement communications using AI.</p>
+</div>
+<div class="wf-page-actions">
+<button class="wf-btn wf-btn-secondary"onclick="document.getElementById('comm-command-input').focus()">Draft Campaign</button>
+<button class="wf-btn wf-btn-primary"id="btn-run-comm-workflow">Run Communication Workflow</button>
+<button class="wf-btn wf-btn-secondary"onclick="document.getElementById('btn-download-comm-report').click()">Export Communication Report</button>
+</div>
+</header>
+
+<!-- SECTION 1: AI Command Center Workspace -->
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-surface); border: 1px solid var(--border-medium); margin-bottom: var(--space-md);">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xs);">
+<div style="display: flex; align-items: center; gap: var(--space-sm);">
+<span style="font-size: 16px;"></span>
+<strong style="font-size: 13px; color: var(--text-primary);">AI Placement Communication Command Center</strong>
+</div>
+<span style="font-size: 11px; color: var(--text-muted);">Multi-Channel Dispatch: Email · WhatsApp · SMS · Google Calendar</span>
+</div>
+
+<div style="display: flex; gap: var(--space-sm); margin-bottom: var(--space-sm);">
+<input type="text"id="comm-command-input"class="wf-input"placeholder="e.g. 'Invite all eligible CSE students for the Google placement drive next Monday'..."style="flex: 1; font-weight: 500;">
+<button class="wf-btn wf-btn-primary"id="btn-submit-comm-command">Run Communication Workflow</button>
+</div>
+
+<div>
+<span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; display: block; margin-bottom: 6px;">Preset Operational Prompts</span>
+<div style="display: flex; gap: 6px; flex-wrap: wrap;"id="comm-prompt-chips-container">
+<!-- JS Populated Preset Prompt Chips -->
+</div>
+</div>
+</section>
+
+<!-- Initial Empty Prompt Banner (Visible on Page Load) -->
+<section class="wf-card"id="comm-empty-state"style="padding: var(--space-2xl) var(--space-xl); text-align: center; background: var(--bg-surface); border: 1px dashed var(--border-medium); margin-bottom: var(--space-lg);">
+<div style="font-size: 36px; margin-bottom: var(--space-sm);"></div>
+<h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-xs) 0;">AI Communication Operations Analyst Standby</h3>
+<p style="font-size: 13px; color: var(--text-secondary); max-width: 580px; margin: 0 auto var(--space-md) auto; line-height: 1.5;">
+ Click<strong>"Run Communication Workflow"</strong>or select any preset operational prompt above to generate multi-channel personalized email, WhatsApp, and calendar invite campaigns.
+</p>
+<button class="wf-btn wf-btn-primary"id="btn-trigger-comm-empty-state">Run Communication Workflow</button>
+</section>
+
+<!-- Animated AI Stepper Terminal Card (Initially Hidden) -->
+<section class="wf-card"id="comm-stepper-card"style="display: none; padding: var(--space-md); background: var(--bg-dark-neutral); color: var(--text-inverse); border: 1px solid var(--border-dark-neutral); margin-bottom: var(--space-lg);">
+<div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-dark-hover); padding-bottom: var(--space-xs); margin-bottom: var(--space-sm);">
+<div style="display: flex; align-items: center; gap: 8px;">
+<span class="wf-status-dot"style="background: #22c55e;"></span>
+<span style="font-size: 13px; font-weight: 600; font-family: var(--font-mono);"id="comm-stepper-status-title">Initializing AI Communication Operations Engine v3.4...</span>
+</div>
+<span style="font-size: 11px; color: var(--text-inverse-muted); font-family: var(--font-mono);"id="comm-stepper-timer">0.0s</span>
+</div>
+<div id="comm-stepper-steps-list"style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-family: var(--font-mono);">
+<!-- Dynamic progressive steps inserted here -->
+</div>
+</section>
+
+<!-- Main Results Workspace (Initially Hidden, Revealed Post-Analysis) -->
+<div id="comm-results-workspace"style="display: none; opacity: 0; transition: opacity 0.4s ease;">
+
+<!-- SECTION 10: Executive AI Summary Hero Card -->
+<section class="wf-card"id="section-comm-exec-summary"style="padding: var(--space-lg); margin-bottom: var(--space-lg);">
+<!-- JS Populated Executive Summary -->
+</section>
+
+<!-- SECTION 3: Audience Summary KPI Cards -->
+<section style="margin-bottom: var(--space-lg);">
+<div style="margin-bottom: var(--space-xs); display: flex; justify-content: space-between; align-items: center;">
+<strong style="font-size: 14px; color: var(--text-primary);">Target Audience Segmentation Summary</strong>
+<span style="font-size: 11px; color: var(--text-muted);">Audience Engine Audit</span>
+</div>
+<div class="wf-kpi-grid"id="comm-audience-kpi-grid"style="grid-template-columns: repeat(6, 1fr);">
+<!-- JS Populated -->
+</div>
+</section>
+
+<!-- SECTION 4: Multi-Channel Communication Preview -->
+<section class="wf-card"style="padding: var(--space-lg); margin-bottom: var(--space-lg);">
+<div class="wf-card-header"style="border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Multi-Channel Generated Content Preview</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">AI-generated personalized messaging across Email, WhatsApp, SMS, and Google Calendar</p>
+</div>
+<div style="display: flex; gap: 6px;">
+<button class="wf-btn wf-btn-xs wf-btn-secondary"onclick="alert('Copied content to clipboard.')">Copy Content</button>
+<button class="wf-btn wf-btn-xs wf-btn-primary"onclick="alert('Approved campaign content for dispatch.')">✓ Approve & Dispatch Batch</button>
+</div>
+</div>
+
+<!-- Channel Preview Tabs -->
+<div style="display: flex; gap: 4px; border-bottom: 1px solid var(--border-subtle); margin-bottom: var(--space-md);">
+<button class="wf-btn wf-btn-xs wf-btn-ghost comm-tab-btn active"data-tab="email">Official Email</button>
+<button class="wf-btn wf-btn-xs wf-btn-ghost comm-tab-btn"data-tab="whatsapp">WhatsApp Broadcast</button>
+<button class="wf-btn wf-btn-xs wf-btn-ghost comm-tab-btn"data-tab="sms">SMS Alert</button>
+<button class="wf-btn wf-btn-xs wf-btn-ghost comm-tab-btn"data-tab="calendar">Google Calendar Invite</button>
+</div>
+
+<div id="comm-channel-preview-content">
+<!-- JS Populated Tab Content -->
+</div>
+</section>
+
+<!-- SECTION 5: Personalized Communication Queue Table -->
+<section class="wf-card"style="padding: 0; margin-bottom: var(--space-lg);">
+<div class="wf-card-header"style="padding: var(--space-md); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Personalized Communication Dispatch Queue</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Real-time delivery status, open tracking, and student response logs</p>
+</div>
+<span class="wf-badge wf-badge-dark">Dispatch Queue Active</span>
+</div>
+
+<!-- Filter Toolbar -->
+<div class="wf-toolbar"style="border: none; border-bottom: 1px solid var(--border-subtle); border-radius: 0; padding: var(--space-sm) var(--space-md);">
+<div class="wf-toolbar-row">
+<div class="wf-toolbar-group">
+<input type="text"class="wf-input"id="comm-queue-search"placeholder="Search student or roll no..."style="width: 220px;">
+<select class="wf-select"id="comm-queue-type">
+<option value="ALL">All Communication Types</option>
+<option value="Drive Invitation">Drive Invitation</option>
+<option value="Interview Reminder">Interview Reminder</option>
+<option value="Document Reminder">Document Reminder</option>
+<option value="Offer Acceptance">Offer Acceptance</option>
+</select>
+<select class="wf-select"id="comm-queue-status">
+<option value="ALL">All Statuses</option>
+<option value="Delivered">Delivered</option>
+<option value="Sent">Sent</option>
+</select>
+</div>
+</div>
+</div>
+
+<!-- Contextual Bulk Toolbar -->
+<div class="wf-bulk-toolbar"id="comm-bulk-toolbar"style="display: none; padding: 8px 14px; background: var(--bg-muted); border-bottom: 1px solid var(--border-subtle); align-items: center; gap: 8px;">
+<span style="font-size: 12px; font-weight: 600;"id="comm-bulk-count">0 recipients selected</span>
+<button class="wf-btn wf-btn-xs wf-btn-primary"onclick="alert('Sent bulk communication messages.')">Bulk Send</button>
+<button class="wf-btn wf-btn-xs wf-btn-secondary"onclick="alert('Retried bulk communication dispatch.')">Bulk Retry</button>
+<button class="wf-btn wf-btn-xs wf-btn-secondary"onclick="alert('Exported Selected Dispatch Queue CSV.')">Export Queue CSV</button>
+</div>
+
+<div class="wf-table-container">
+<table class="wf-table">
+<thead>
+<tr>
+<th style="width: 36px;"><input type="checkbox"id="select-all-comm"></th>
+<th>Recipient Candidate</th>
+<th>Role / Dept</th>
+<th>Eligibility Status</th>
+<th>Communication Type</th>
+<th>Channel</th>
+<th>Status</th>
+<th>Open Track</th>
+<th style="text-align: right;">Action</th>
+</tr>
+</thead>
+<tbody id="comm-queue-tbody">
+<!-- JS Populated -->
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- SECTION 7 & 8: Recruiter Follow-up Workspace & Monthly Newsletter Generator -->
+<div class="wf-split-pane"style="grid-template-columns: 1fr 1fr; margin-bottom: var(--space-lg);">
+
+<div>
+<div style="margin-bottom: var(--space-sm);">
+<h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0;">Recruiter Follow-up Operations Workspace</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">AI-assisted nudges for inactive recruiter leads</p>
+</div>
+<div id="section-recruiter-followups">
+<!-- JS Populated -->
+</div>
+</div>
+
+<div>
+<div style="margin-bottom: var(--space-sm);">
+<h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0;">Monthly Placement Newsletter Highlights</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Automated institutional highlights & statistics</p>
+</div>
+<div id="section-newsletter-preview">
+<!-- JS Populated -->
+</div>
+</div>
+
+</div>
+
+<!-- SECTION 9: Communication Analytics & Delivery KPIs -->
+<section style="margin-bottom: var(--space-lg);">
+<div style="margin-bottom: var(--space-xs); display: flex; justify-content: space-between; align-items: center;">
+<strong style="font-size: 14px; color: var(--text-primary);">Multi-Channel Dispatch Analytics</strong>
+<span style="font-size: 11px; color: var(--text-muted);">Real-time Telemetry</span>
+</div>
+<div class="wf-kpi-grid"id="comm-analytics-kpi-grid"style="grid-template-columns: repeat(4, 1fr);">
+<!-- JS Populated -->
+</div>
+</section>
+
+<!-- Split Pane 70/30: AI Recommendations Left, Report Exporter Right -->
+<div class="wf-split-pane-70-30">
+
+<!-- SECTION 6: AI Recommendations -->
+<section class="wf-card"style="padding: var(--space-lg);">
+<div class="wf-card-header"style="border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Communication AI Action Recommendations</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Automated campaign optimizations & follow-up prompts</p>
+</div>
+<span class="wf-badge wf-badge-dark">Action Engine Active</span>
+</div>
+
+<div id="comm-recommendations-list">
+<!-- JS Populated Recommendations -->
+</div>
+</section>
+
+<!-- Report Exporter -->
+<aside>
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-muted); border: 1px solid var(--border-medium);">
+<div style="display: flex; align-items: center; gap: 6px; margin-bottom: var(--space-xs);">
+<span style="font-size: 16px;"></span>
+<h4 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin: 0;">Communication Report Generator</h4>
+</div>
+<p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: var(--space-md);">
+ Generates an official, audited Board Executive Communication Report containing Dispatch Logs, Open Rates, and Recruiter Follow-ups.
+</p>
+<button class="wf-btn wf-btn-sm wf-btn-primary"style="width: 100%; font-weight: 600;"id="btn-download-comm-report">
+ Download Communication Report (.txt)
+</button>
+</section>
+</aside>
+
+</div>
+
+</div>
+
+</main>
+</div>
+
+<script type="module"src="js/main.js"></script>
+<script type="module"src="js/communication-assistant.js"></script>
+</body>
+</html>

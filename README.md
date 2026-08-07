@@ -52,14 +52,13 @@ The showcase presents interactive solution prototypes using realistic mock datas
 - **Cross-Solution Inline CTAs**: AI responses include direct action buttons (*"Open Candidate Matching →"*, *"Review Resume →"*, *"View Drives →"*) that navigate directly to corresponding solution pages.
 - **Collapsible Context Rail**: Right sidebar displaying active candidate details, linked context files, and quick navigation links.
 
-### 6. AI Student Career Coach (`poc5-career-coach.html`)
-- **6-Stage Readiness Roadmap**: Clickable stage stepper (*1. Baseline*, *2. Resume*, *3. Technical*, *4. System Design*, *5. Practice Interviews*, *6. Placement Clearance*) with locked/unlocked state progression.
-- **Active Stage Workspace**: Interactive checklist tasks that dynamically update the overall readiness score (e.g. `92.4%`).
-- **7-Day Weekly Planner**: Interactive day grid for tracking daily practice tasks.
-- **Sortable Skills Matrix**: Renders skill gap severities (High, Medium, None) with custom sorting options.
-- **Practice Interview Evaluator**: Interactive Q&A textareas with 1s simulated AI grading, score breakdown, and benchmark answers.
-- **Celebration Modal (🎉 Placement Ready!)**: Triggers a victory modal when all 6 stages are completed.
-- **`localStorage` Persistence**: Persists stage completion, weekly planner states, and readiness calculations.
+### 5. AI Student Participation Analyst (`poc6-student-participation.html`)
+- **Participation Anomaly Diagnostic**: Active AI reasoning canvas diagnosing ECE assessment drop-offs and schedule collisions.
+- **Predictive Disengagement Cohorts**: Identifies high-risk students before drop-off occurs.
+
+### 6. AI Hiring Performance Analyst (`poc7-hiring-performance.html`)
+- **Skill Selection Lift Matrix**: Calculates candidate skill multipliers (+94% selection lift for PyTorch).
+- **Predictive Demand & CTC Forecast**: 12-month demand shifts across tech domains with board package exporter.
 
 ---
 
@@ -68,7 +67,7 @@ The showcase presents interactive solution prototypes using realistic mock datas
 - **Core**: HTML5, Vanilla JavaScript (ES Modules, `type="module"`), Vanilla CSS (`wireframe.css`).
 - **Design System**: Monochrome typography, subtle borders, high-contrast dark badges, custom CSS variables (`--bg-surface`, `--text-primary`, `--border-medium`).
 - **State Management**: Centralized reactive state modules (`data/mockData.js`, `js/components.js`).
-- **Persistence**: Web Storage API (`localStorage`) for saved searches, copilot sessions, and career coach progress.
+- **Persistence**: Web Storage API (`localStorage`) for saved searches and copilot sessions.
 - **Zero Build Step**: No npm, webpack, Vite, or node_modules required — native static delivery.
 
 ---
@@ -82,7 +81,8 @@ PlacementHub-AI-Solutions/
 ├── poc2-resume-analyzer.html                  # Resume Analyzer Solution
 ├── poc3-placement-search.html                 # Placement Search Solution
 ├── poc4-placement-copilot.html                # Placement Copilot Solution
-├── poc5-career-coach.html                     # Career Coach Solution
+├── poc6-student-participation.html            # Student Participation Analyst Solution
+├── poc7-hiring-performance.html               # Hiring Performance Analyst Solution
 ├── dashboard.html                             # Legacy Standalone Analytics
 ├── wireframe.css                              # Shared Core Design System & CSS Rules
 ├── vercel.json                                # Vercel Static Deployment Configuration
@@ -97,7 +97,8 @@ PlacementHub-AI-Solutions/
     ├── resume-analyzer.js                     # Resume Analyzer Controller
     ├── placement-search.js                    # Placement Search Controller
     ├── placement-copilot.js                   # Placement Copilot Controller
-    └── career-coach.js                        # Career Coach Controller
+    ├── student-participation.js               # Student Participation Analyst Controller
+    └── hiring-performance.js                  # Hiring Performance Analyst Controller
 ```
 
 ---

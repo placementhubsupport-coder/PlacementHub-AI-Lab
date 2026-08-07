@@ -1,330 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PlacementHub AI Solutions Candidate Matching — AI-powered candidate skill alignment scoring, bulk shortlisting, and candidate evaluation.">
-  <title>PlacementHub AI Solutions — Candidate Matching</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='65' font-size='50' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>PH</text></svg>">
-  <link rel="stylesheet" href="wireframe.css">
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+<meta name="description"content="PlacementHub AI Solutions Candidate Matching — AI-powered candidate skill alignment scoring, bulk shortlisting, and candidate evaluation.">
+<title>PlacementHub AI Solutions — Candidate Matching</title>
+<link rel="icon"href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'viewBox='0 0 100 100'><rect width='100'height='100'rx='20'fill='%23111827'/><text x='50'y='65'font-size='50'font-weight='bold'font-family='sans-serif'fill='%23ffffff'text-anchor='middle'>PH</text></svg>">
+<link rel="stylesheet"href="wireframe.css">
 </head>
 <body>
 
-  <nav class="wf-nav">
-    <div class="wf-nav-brand">
-      <span class="wf-logo-badge">PH</span>
-      <span class="wf-nav-title">PlacementHub AI Solutions</span>
-    </div>
-    <div class="wf-nav-search">
-      <input type="text" class="wf-input" placeholder="Search candidates or drives… (⌘K)">
-    </div>
-    <div class="wf-nav-actions">
-      <span class="wf-status-indicator">
-        <span class="wf-status-dot"></span>
-        Matching engine · Online
-      </span>
-    </div>
-  </nav>
+<nav class="wf-nav">
+<div class="wf-nav-brand">
+<span class="wf-logo-badge">PH</span>
+<span class="wf-nav-title">PlacementHub AI Solutions</span>
+</div>
+<div class="wf-nav-search">
+<input type="text"class="wf-input"placeholder="Search candidates or drives… (⌘K)">
+</div>
+<div class="wf-nav-actions">
+<span class="wf-status-indicator">
+<span class="wf-status-dot"></span>
+ Matching engine · Online
+</span>
+</div>
+</nav>
 
-  <div class="app-shell">
+<div class="app-shell">
 
-    <aside class="wf-sidebar">
-      <div class="wf-sidebar-section">
-        <ul class="wf-sidebar-nav">
-          <li><a href="index.html" class="wf-sidebar-link">Home</a></li>
-        </ul>
-      </div>
+<aside class="wf-sidebar">
+<div class="wf-sidebar-section">
+<ul class="wf-sidebar-nav">
+<li><a href="index.html"class="wf-sidebar-link">Home</a></li>
+</ul>
+</div>
 
-      <div class="wf-sidebar-section">
-        <div class="wf-sidebar-label">AI Solutions</div>
-        <ul class="wf-sidebar-nav">
-          <li><a href="poc1-student-job-matching.html" class="wf-sidebar-link active">Candidate Matching</a></li>
-          <li><a href="poc2-resume-analyzer.html" class="wf-sidebar-link">Resume Analyzer</a></li>
-          <li><a href="poc3-placement-search.html" class="wf-sidebar-link">Placement Search</a></li>
-          <li><a href="poc4-placement-copilot.html" class="wf-sidebar-link">Placement Copilot</a></li>
-          <li><a href="poc5-career-coach.html" class="wf-sidebar-link">Career Coach</a></li>
-        </ul>
-      </div>
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Intelligence Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc1-student-job-matching.html"class="wf-sidebar-link active">Candidate Matching</a></li>
+<li><a href="poc2-resume-analyzer.html"class="wf-sidebar-link">Resume Review</a></li>
+<li><a href="poc3-placement-search.html"class="wf-sidebar-link">Placement Search</a></li>
+<li><a href="poc6-student-participation.html"class="wf-sidebar-link">Student Participation</a></li>
+<li><a href="poc7-hiring-performance.html"class="wf-sidebar-link">Hiring Performance</a></li>
+<li><a href="poc8-placement-analytics.html"class="wf-sidebar-link">Placement Analytics</a></li>
+</ul>
+</div>
 
-      <div class="wf-sidebar-section">
-        <div class="wf-sidebar-label">Index</div>
-        <!-- Monospace appropriate for technical spec values -->
-        <div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
-          1,248 candidates indexed
-        </div>
-      </div>
-      <details class="wf-sidebar-spec">
-        <summary>Page Spec ↓</summary>
-        <pre class="wf-spec-tree"><!-- poc1-student-job-matching -->
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Operations Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc4-placement-copilot.html"class="wf-sidebar-link">Placement Assistant</a></li>
+<li><a href="poc9-document-processing.html"class="wf-sidebar-link">Document Processing</a></li>
+<li><a href="poc10-communication-assistant.html"class="wf-sidebar-link">Communication Assistant</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Index</div>
+<!-- Monospace appropriate for technical spec values -->
+<div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
+ 1,248 candidates indexed
+</div>
+</div>
+<details class="wf-sidebar-spec">
+<summary>Page Spec ↓</summary>
+<pre class="wf-spec-tree"><!-- poc1-student-job-matching -->
 CandidateMatchingPage
 ├── GlobalNav
 ├── AppSidebar
 ├── PageHeader
 ├── KPISummary ×4
 ├── FilterToolbar (2-tier)
-│   └── BulkActionToolbar (conditional)
+│ └── BulkActionToolbar (conditional)
 ├── MatchResultsTable ×n
-│   └── RowHoverActions
+│ └── RowHoverActions
 ├── CandidateDetailSheet [RIGHT DRAWER]
 └── CompareDialog [MODAL]
 [DOCUMENTATION ONLY]</pre>
-      </details>
-    </aside>
+</details>
+</aside>
 
-    <main class="wf-main-content">
+<main class="wf-main-content">
 
-      <header class="wf-page-header">
-        <div>
-          <div class="wf-breadcrumb">PlacementHub AI Solutions › Candidate Matching</div>
-          <h1 class="wf-page-title">Candidate Matching</h1>
-          <p class="wf-page-desc">Rank candidates against job requirements using AI-powered skill alignment scoring.</p>
-        </div>
-        <div class="wf-page-actions">
-          <button class="wf-btn wf-btn-primary" id="btn-analyze-top">⚡ Analyze & Shortlist</button>
-          <button class="wf-btn-overflow">⋯</button>
-        </div>
-      </header>
+<header class="wf-page-header">
+<div>
+<div class="wf-breadcrumb">PlacementHub AI Solutions › Candidate Matching</div>
+<h1 class="wf-page-title">Candidate Matching</h1>
+<p class="wf-page-desc">Rank candidates against job requirements using AI-powered skill alignment scoring.</p>
+</div>
+<div class="wf-page-actions">
+<button class="wf-btn wf-btn-primary"id="btn-analyze-top">Analyze & Shortlist</button>
+<button class="wf-btn-overflow">⋯</button>
+</div>
+</header>
 
-      <!-- KPI Summary -->
-      <section class="wf-kpi-grid">
-        <div class="wf-kpi-card">
-          <div class="wf-kpi-header"><span class="wf-kpi-label">Candidates Evaluated</span></div>
-          <div class="wf-kpi-value" id="kpi-eval-count">148</div>
-          <div class="wf-kpi-subtext">Active 2026 batch</div>
-        </div>
-        <div class="wf-kpi-card">
-          <div class="wf-kpi-header">
-            <span class="wf-kpi-label">Strong Matches</span>
-            <span class="wf-badge wf-badge-outline">above 90%</span>
-          </div>
-          <div class="wf-kpi-value" id="kpi-strong-count">94</div>
-          <div class="wf-kpi-subtext">Ready for shortlisting</div>
-        </div>
-        <div class="wf-kpi-card">
-          <div class="wf-kpi-header"><span class="wf-kpi-label">Avg Match Score</span></div>
-          <div class="wf-kpi-value" id="kpi-avg-score">96.4%</div>
-          <div class="wf-kpi-subtext">AI confidence across batch</div>
-        </div>
-        <div class="wf-kpi-card">
-          <div class="wf-kpi-header"><span class="wf-kpi-label">Top Role</span></div>
-          <div class="wf-kpi-value" id="kpi-top-role">AI Research Eng.</div>
-          <div class="wf-kpi-subtext">TechCorp AI Drive</div>
-        </div>
-      </section>
+<!-- KPI Summary -->
+<section class="wf-kpi-grid">
+<div class="wf-kpi-card">
+<div class="wf-kpi-header"><span class="wf-kpi-label">Candidates Evaluated</span></div>
+<div class="wf-kpi-value"id="kpi-eval-count">148</div>
+<div class="wf-kpi-subtext">Active 2026 batch</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header">
+<span class="wf-kpi-label">Strong Matches</span>
+<span class="wf-badge wf-badge-outline">above 90%</span>
+</div>
+<div class="wf-kpi-value"id="kpi-strong-count">94</div>
+<div class="wf-kpi-subtext">Ready for shortlisting</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header"><span class="wf-kpi-label">Avg Match Score</span></div>
+<div class="wf-kpi-value"id="kpi-avg-score">96.4%</div>
+<div class="wf-kpi-subtext">AI confidence across batch</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header"><span class="wf-kpi-label">Top Role</span></div>
+<div class="wf-kpi-value"id="kpi-top-role">AI Research Eng.</div>
+<div class="wf-kpi-subtext">TechCorp AI Drive</div>
+</div>
+</section>
 
-      <!-- Two-Tier Filter Toolbar -->
-      <div class="wf-toolbar" id="filter-toolbar">
-        <div class="wf-toolbar-row">
-          <div class="wf-toolbar-group" style="flex: 1;">
-            <input type="text" class="wf-input" id="match-search-input" placeholder="Search by name or skill…" style="width: 220px;">
-            <select class="wf-select" id="match-role-select">
-              <option value="">All Roles</option>
-              <option value="AI Research Engineer">AI / ML Engineer</option>
-              <option value="Full Stack Developer">Full Stack</option>
-              <option value="Data Engineer">Data Engineer</option>
-              <option value="Frontend React">Frontend React</option>
-            </select>
-            <select class="wf-select" id="match-score-select">
-              <option value="">Min Score: All</option>
-              <option value="90">Above 90%</option>
-              <option value="80">Above 80%</option>
-              <option value="70">Above 70%</option>
-            </select>
-            <select class="wf-select" id="match-dept-select">
-              <option value="">Dept: All</option>
-              <option value="CSE">CSE</option>
-              <option value="IT">IT</option>
-              <option value="ECE">ECE</option>
-            </select>
-          </div>
-          <div class="wf-toolbar-group">
-            <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-apply-filters">Apply</button>
-            <button class="wf-btn wf-btn-sm wf-btn-ghost" id="btn-export-csv">Export CSV</button>
-          </div>
-        </div>
-        <!-- Active filter chips -->
-        <div class="wf-toolbar-row" id="match-chips-row" style="display: flex; align-items: center; gap: 6px;">
-          <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Filters:</span>
-          <div id="match-chips-container" style="display: inline-flex; gap: 6px; flex-wrap: wrap;"></div>
-          <button class="wf-btn-ghost wf-btn-xs" id="btn-reset-match-filters" style="font-size: 11px; color: var(--text-muted);">Reset filters</button>
-        </div>
-      </div>
+<!-- Contextual Inquiry Bar -->
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-surface); border: 1px solid var(--border-medium); margin-bottom: var(--space-md);">
+<div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-xs);">
+<span style="font-size: 14px;"></span>
+<strong style="font-size: 13px; color: var(--text-primary);">Contextual Candidate Match Inquiry</strong>
+</div>
+<div style="display: flex; gap: var(--space-sm);">
+<input type="text"class="wf-input"id="match-contextual-query"placeholder="Find candidates matching Python, PyTorch, CGPA >8.0 for TechCorp AI..."style="flex: 1; font-size: 13px;">
+<button class="wf-btn wf-btn-primary"id="btn-run-matching-analysis">Run Match Analysis</button>
+</div>
+</section>
 
-      <!-- Contextual bulk-action toolbar — replaces filter toolbar when ≥1 rows are selected -->
-      <div class="wf-bulk-toolbar" id="bulk-toolbar" style="display: none;">
-        <span class="wf-bulk-toolbar-count" id="bulk-count-label">0 candidates selected</span>
-        <button class="wf-btn wf-btn-sm" id="btn-bulk-compare">Compare</button>
-        <button class="wf-btn wf-btn-sm" id="btn-bulk-shortlist">Shortlist</button>
-        <button class="wf-btn wf-btn-sm" id="btn-bulk-export">Export</button>
-        <button class="wf-btn wf-btn-sm wf-btn-ghost" id="btn-bulk-clear">Clear selection</button>
-      </div>
+<!-- AI Stepper Reasoning Terminal (Initially Hidden) -->
+<section class="wf-card"id="match-stepper-card"style="display: none; padding: var(--space-md); background: var(--bg-dark-neutral); color: var(--text-inverse); border: 1px solid var(--border-dark-neutral); margin-bottom: var(--space-md);">
+<div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-dark-hover); padding-bottom: var(--space-xs); margin-bottom: var(--space-sm);">
+<div style="display: flex; align-items: center; gap: 8px;">
+<span class="wf-status-dot"style="background: #22c55e;"></span>
+<span style="font-size: 13px; font-weight: 600; font-family: var(--font-mono);"id="match-stepper-title">Candidate Matching AI Stepper...</span>
+</div>
+<span style="font-size: 11px; color: var(--text-inverse-muted); font-family: var(--font-mono);"id="match-stepper-timer">0.0s</span>
+</div>
+<div id="match-stepper-steps-list"style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-family: var(--font-mono);"></div>
+</section>
 
-      <!-- Match Results Table -->
-      <section class="wf-card">
-        <div class="wf-card-header">
-          <div>
-            <h3 class="wf-card-title">Match Results</h3>
-            <p class="wf-card-desc" id="match-results-desc">Ranked by AI match score · 148 candidates</p>
-          </div>
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <select class="wf-select" id="match-sort-select" style="height: 28px; font-size: 11px;">
-              <option value="score-desc">Sort: Match Score ↓</option>
-              <option value="score-asc">Sort: Match Score ↑</option>
-              <option value="cgpa-desc">Sort: CGPA ↓</option>
-              <option value="resume-desc">Sort: Resume Score ↓</option>
-            </select>
-          </div>
-        </div>
-        <div class="wf-card-body" style="padding: 0;">
-          <div class="wf-table-container" style="border: none; border-radius: 0;">
-            <table class="wf-table">
-              <thead>
-                <tr>
-                  <th style="width: 36px;"><input type="checkbox" id="select-all-checkbox"></th>
-                  <th>Candidate</th>
-                  <th>Education</th>
-                  <th>Resume Score</th>
-                  <th>Target Role</th>
-                  <th>Match Score</th>
-                  <th>Status</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="match-table-tbody">
-                <!-- Dynamically rendered -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="wf-card-footer">
-          <span style="font-size: 12px; color: var(--text-muted);" id="match-pagination-info">Showing 3 of 5 · 0 selected</span>
-          <div style="display: flex; gap: 4px;">
-            <button class="wf-btn wf-btn-sm" id="btn-match-prev" disabled>←</button>
-            <button class="wf-btn wf-btn-sm" id="btn-match-next">→</button>
-          </div>
-        </div>
-      </section>
+<!-- Two-Tier Filter Toolbar -->
+<div class="wf-toolbar"id="filter-toolbar">
+<div class="wf-toolbar-row">
+<div class="wf-toolbar-group"style="flex: 1;">
+<input type="text"class="wf-input"id="match-search-input"placeholder="Filter by candidate name or skill…"style="width: 220px;">
+<select class="wf-select"id="match-role-select">
+<option value="">All Roles</option>
+<option value="AI Research Engineer">AI / ML Engineer</option>
+<option value="Full Stack Developer">Full Stack</option>
+<option value="Data Engineer">Data Engineer</option>
+<option value="Frontend React">Frontend React</option>
+</select>
+<select class="wf-select"id="match-score-select">
+<option value="">Min Score: All</option>
+<option value="90">Above 90%</option>
+<option value="80">Above 80%</option>
+<option value="70">Above 70%</option>
+</select>
+<select class="wf-select"id="match-dept-select">
+<option value="">Dept: All</option>
+<option value="CSE">CSE</option>
+<option value="IT">IT</option>
+<option value="ECE">ECE</option>
+</select>
+</div>
+<div class="wf-toolbar-group">
+<button class="wf-btn wf-btn-sm wf-btn-primary"id="btn-apply-filters">Apply Filters</button>
+</div>
+</div>
+<!-- Active filter chips -->
+<div class="wf-toolbar-row"id="match-chips-row"style="display: flex; align-items: center; gap: 6px;">
+<span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Filters:</span>
+<div id="match-chips-container"style="display: inline-flex; gap: 6px; flex-wrap: wrap;"></div>
+<button class="wf-btn-ghost wf-btn-xs"id="btn-reset-match-filters"style="font-size: 11px; color: var(--text-muted);">Reset filters</button>
+</div>
+</div>
 
-      <!-- Candidate Detail Drawer Sheet -->
-      <article class="wf-drawer-sheet" id="candidate-detail-drawer" style="position: fixed; top: 52px; right: 0; bottom: 0; width: 440px; background: var(--bg-surface); border-left: 1px solid var(--border-medium); z-index: 8500; display: none; flex-direction: column; overflow-y: auto; padding: var(--space-md); gap: var(--space-md); transform: translateX(100%);">
-        <header class="wf-drawer-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
-          <div>
-            <span class="wf-drawer-tag" style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Right Drawer Sheet</span>
-            <h3 style="font-size: 18px; font-weight: 700; margin-top: 2px;" id="drawer-cand-name">Candidate Detail</h3>
-            <div style="font-size: 12px; color: var(--text-muted);" id="drawer-cand-sub">B.Tech CSE · CGPA 9.4</div>
-          </div>
-          <button class="wf-btn wf-btn-sm wf-btn-ghost" id="btn-close-drawer">✕ Close</button>
-        </header>
+<!-- Contextual bulk-action toolbar — replaces filter toolbar when ≥1 rows are selected -->
+<div class="wf-bulk-toolbar"id="bulk-toolbar"style="display: none;">
+<span class="wf-bulk-toolbar-count"id="bulk-count-label">0 candidates selected</span>
+<button class="wf-btn wf-btn-sm"id="btn-bulk-compare">Compare</button>
+<button class="wf-btn wf-btn-sm"id="btn-bulk-shortlist">Shortlist</button>
+<button class="wf-btn wf-btn-sm"id="btn-bulk-export">Export</button>
+<button class="wf-btn wf-btn-sm wf-btn-ghost"id="btn-bulk-clear">Clear selection</button>
+</div>
 
-        <div class="wf-tabs-header" id="drawer-tabs">
-          <div class="wf-tab active" data-dtab="why">Why matched</div>
-          <div class="wf-tab" data-dtab="skills">Matched Skills</div>
-          <div class="wf-tab" data-dtab="gaps">Gaps & Missing</div>
-          <div class="wf-tab" data-dtab="details">Score Details</div>
-        </div>
+<!-- Match Results Table -->
+<section class="wf-card">
+<div class="wf-card-header">
+<div>
+<h3 class="wf-card-title">Match Results</h3>
+<p class="wf-card-desc"id="match-results-desc">Ranked by AI match score · 148 candidates</p>
+</div>
+<div style="display: flex; align-items: center; gap: 8px;">
+<select class="wf-select"id="match-sort-select"style="height: 28px; font-size: 11px;">
+<option value="score-desc">Sort: Match Score ↓</option>
+<option value="score-asc">Sort: Match Score ↑</option>
+<option value="cgpa-desc">Sort: CGPA ↓</option>
+<option value="resume-desc">Sort: Resume Score ↓</option>
+</select>
+</div>
+</div>
+<div class="wf-card-body"style="padding: 0;">
+<div class="wf-table-container"style="border: none; border-radius: 0;">
+<table class="wf-table">
+<thead>
+<tr>
+<th style="width: 36px;"><input type="checkbox"id="select-all-checkbox"></th>
+<th>Candidate</th>
+<th>Education</th>
+<th>Resume Score</th>
+<th>Target Role</th>
+<th>Match Score</th>
+<th>Status</th>
+<th></th>
+</tr>
+</thead>
+<tbody id="match-table-tbody">
+<!-- Dynamically rendered -->
+</tbody>
+</table>
+</div>
+</div>
+<div class="wf-card-footer">
+<span style="font-size: 12px; color: var(--text-muted);"id="match-pagination-info">Showing 3 of 5 · 0 selected</span>
+<div style="display: flex; gap: 4px;">
+<button class="wf-btn wf-btn-sm"id="btn-match-prev"disabled>←</button>
+<button class="wf-btn wf-btn-sm"id="btn-match-next">→</button>
+</div>
+</div>
+</section>
 
-        <!-- Tab 1: Why Matched -->
-        <div id="dtab-content-why" class="dtab-content">
-          <div class="wf-card" style="background: var(--bg-muted); margin-bottom: 12px;">
-            <div class="wf-card-body" style="padding: 12px;">
-              <span class="wf-kpi-label">AI Alignment Match Score</span>
-              <div class="wf-kpi-value" style="font-size: 32px; margin-top: 2px;" id="drawer-match-score">96.4%</div>
-              <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;" id="drawer-rank-text">Rank #1 in batch · High confidence match</p>
-            </div>
-          </div>
+<!-- Candidate Detail Drawer Sheet -->
+<article class="wf-drawer-sheet"id="candidate-detail-drawer"style="position: fixed; top: 52px; right: 0; bottom: 0; width: 440px; background: var(--bg-surface); border-left: 1px solid var(--border-medium); z-index: 8500; display: none; flex-direction: column; overflow-y: auto; padding: var(--space-md); gap: var(--space-md); transform: translateX(100%);">
+<header class="wf-drawer-header"style="display: flex; justify-content: space-between; align-items: flex-start;">
+<div>
+<span class="wf-drawer-tag"style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Right Drawer Sheet</span>
+<h3 style="font-size: 18px; font-weight: 700; margin-top: 2px;"id="drawer-cand-name">Candidate Detail</h3>
+<div style="font-size: 12px; color: var(--text-muted);"id="drawer-cand-sub">B.Tech CSE · CGPA 9.4</div>
+</div>
+<button class="wf-btn wf-btn-sm wf-btn-ghost"id="btn-close-drawer">✕ Close</button>
+</header>
 
-          <div class="wf-card">
-            <div class="wf-card-header"><h4 class="wf-card-title" style="font-size: 13px;">Why this candidate matches</h4></div>
-            <div class="wf-card-body" style="font-size: 12px; display: flex; flex-direction: column; gap: 8px;" id="drawer-reasoning-list">
-              <!-- Dynamically populated -->
-            </div>
-          </div>
-        </div>
+<div class="wf-tabs-header"id="drawer-tabs">
+<div class="wf-tab active"data-dtab="why">Why matched</div>
+<div class="wf-tab"data-dtab="skills">Matched Skills</div>
+<div class="wf-tab"data-dtab="gaps">Gaps & Missing</div>
+<div class="wf-tab"data-dtab="details">Score Details</div>
+</div>
 
-        <!-- Tab 2: Matched Skills -->
-        <div id="dtab-content-skills" class="dtab-content" style="display: none;">
-          <div class="wf-card">
-            <div class="wf-card-header"><h4 class="wf-card-title" style="font-size: 13px;">Verified Skill Alignments</h4></div>
-            <div class="wf-card-body" style="display: flex; flex-wrap: wrap; gap: 6px;" id="drawer-matched-badges">
-              <!-- Badges -->
-            </div>
-          </div>
-        </div>
+<!-- Tab 1: Why Matched -->
+<div id="dtab-content-why"class="dtab-content">
+<div class="wf-card"style="background: var(--bg-muted); margin-bottom: 12px;">
+<div class="wf-card-body"style="padding: 12px;">
+<span class="wf-kpi-label">AI Alignment Match Score</span>
+<div class="wf-kpi-value"style="font-size: 32px; margin-top: 2px;"id="drawer-match-score">96.4%</div>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;"id="drawer-rank-text">Rank #1 in batch · High confidence match</p>
+</div>
+</div>
 
-        <!-- Tab 3: Gaps -->
-        <div id="dtab-content-gaps" class="dtab-content" style="display: none;">
-          <div class="wf-card">
-            <div class="wf-card-header"><h4 class="wf-card-title" style="font-size: 13px;">Identified Skill Gaps</h4></div>
-            <div class="wf-card-body" style="display: flex; flex-wrap: wrap; gap: 6px;" id="drawer-missing-badges">
-              <!-- Badges -->
-            </div>
-          </div>
-        </div>
+<div class="wf-card">
+<div class="wf-card-header"><h4 class="wf-card-title"style="font-size: 13px;">Why this candidate matches</h4></div>
+<div class="wf-card-body"style="font-size: 12px; display: flex; flex-direction: column; gap: 8px;"id="drawer-reasoning-list">
+<!-- Dynamically populated -->
+</div>
+</div>
+</div>
 
-        <!-- Tab 4: Score Details -->
-        <div id="dtab-content-details" class="dtab-content" style="display: none;">
-          <div class="wf-card">
-            <div class="wf-card-body" style="display: flex; flex-direction: column; gap: 10px; font-size: 12px;">
-              <div style="display: flex; justify-content: space-between;"><span>Resume Score</span><strong id="drawer-resume-score">94 / 100</strong></div>
-              <div style="display: flex; justify-content: space-between;"><span>CGPA</span><strong id="drawer-cgpa">9.4 / 10.0</strong></div>
-              <div style="display: flex; justify-content: space-between;"><span>Department</span><strong id="drawer-dept">CSE</strong></div>
-              <div style="display: flex; justify-content: space-between;"><span>Target Role</span><strong id="drawer-role">TechCorp AI Labs</strong></div>
-              <div style="display: flex; justify-content: space-between;"><span>Status</span><strong id="drawer-status">Shortlisted</strong></div>
-            </div>
-          </div>
-        </div>
+<!-- Tab 2: Matched Skills -->
+<div id="dtab-content-skills"class="dtab-content"style="display: none;">
+<div class="wf-card">
+<div class="wf-card-header"><h4 class="wf-card-title"style="font-size: 13px;">Verified Skill Alignments</h4></div>
+<div class="wf-card-body"style="display: flex; flex-wrap: wrap; gap: 6px;"id="drawer-matched-badges">
+<!-- Badges -->
+</div>
+</div>
+</div>
 
-        <div style="padding: 12px; background: var(--bg-muted); border-radius: var(--radius-md); font-size: 12px; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
-          <span>Fast-track to technical round?</span>
-          <a href="poc4-placement-copilot.html" class="wf-inline-action">Schedule via Placement Copilot →</a>
-        </div>
-      </article>
+<!-- Tab 3: Gaps -->
+<div id="dtab-content-gaps"class="dtab-content"style="display: none;">
+<div class="wf-card">
+<div class="wf-card-header"><h4 class="wf-card-title"style="font-size: 13px;">Identified Skill Gaps</h4></div>
+<div class="wf-card-body"style="display: flex; flex-wrap: wrap; gap: 6px;"id="drawer-missing-badges">
+<!-- Badges -->
+</div>
+</div>
+</div>
 
-      <!-- Compare Dialog Modal -->
-      <article class="wf-modal-dialog" id="compare-dialog" style="max-width: 680px;">
-        <header class="wf-drawer-header" style="border-bottom: 1px solid var(--border-subtle); padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            <h3 style="font-size: 16px; font-weight: 700;">Compare Candidates</h3>
-            <span style="font-size: 11px; color: var(--text-muted);" id="compare-modal-count">2 candidates selected</span>
-          </div>
-          <button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
-        </header>
+<!-- Tab 4: Score Details -->
+<div id="dtab-content-details"class="dtab-content"style="display: none;">
+<div class="wf-card">
+<div class="wf-card-body"style="display: flex; flex-direction: column; gap: 10px; font-size: 12px;">
+<div style="display: flex; justify-content: space-between;"><span>Resume Score</span><strong id="drawer-resume-score">94 / 100</strong></div>
+<div style="display: flex; justify-content: space-between;"><span>CGPA</span><strong id="drawer-cgpa">9.4 / 10.0</strong></div>
+<div style="display: flex; justify-content: space-between;"><span>Department</span><strong id="drawer-dept">CSE</strong></div>
+<div style="display: flex; justify-content: space-between;"><span>Target Role</span><strong id="drawer-role">TechCorp AI Labs</strong></div>
+<div style="display: flex; justify-content: space-between;"><span>Status</span><strong id="drawer-status">Shortlisted</strong></div>
+</div>
+</div>
+</div>
 
-        <div class="wf-card-body" style="padding: 16px;">
-          <div class="wf-table-container">
-            <table class="wf-table" id="compare-table">
-              <thead>
-                <tr id="compare-table-head-tr">
-                  <th>Criteria</th>
-                  <!-- Candidate headers populated dynamically -->
-                </tr>
-              </thead>
-              <tbody id="compare-table-tbody">
-                <!-- Dynamically populated -->
-              </tbody>
-            </table>
-          </div>
+<div style="padding: 12px; background: var(--bg-muted); border-radius: var(--radius-md); font-size: 12px; display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+<span>Fast-track to technical round?</span>
+<a href="poc4-placement-copilot.html"class="wf-inline-action">Schedule via Placement Copilot →</a>
+</div>
+</article>
 
-          <!-- AI Recommendation Box -->
-          <div style="margin-top: 14px; padding: 12px; background: var(--bg-muted); border: 1px solid var(--border-medium); border-radius: var(--radius-md); font-size: 12px;" id="compare-ai-recommendation">
-            <strong>🤖 AI Recommendation:</strong> Select candidates to generate side-by-side analysis.
-          </div>
-        </div>
+<!-- Compare Dialog Modal -->
+<article class="wf-modal-dialog"id="compare-dialog"style="max-width: 680px;">
+<header class="wf-drawer-header"style="border-bottom: 1px solid var(--border-subtle); padding: 14px 16px; display: flex; justify-content: space-between; align-items: center;">
+<div>
+<h3 style="font-size: 16px; font-weight: 700;">Compare Candidates</h3>
+<span style="font-size: 11px; color: var(--text-muted);"id="compare-modal-count">2 candidates selected</span>
+</div>
+<button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
+</header>
 
-        <div class="wf-card-footer" style="justify-content: flex-end; gap: var(--space-sm); padding: 12px 16px;">
-          <button class="wf-btn modal-close-trigger">Cancel</button>
-          <button class="wf-btn wf-btn-primary" id="btn-shortlist-both-compare">Shortlist All Compared</button>
-        </div>
-      </article>
+<div class="wf-card-body"style="padding: 16px;">
+<div class="wf-table-container">
+<table class="wf-table"id="compare-table">
+<thead>
+<tr id="compare-table-head-tr">
+<th>Criteria</th>
+<!-- Candidate headers populated dynamically -->
+</tr>
+</thead>
+<tbody id="compare-table-tbody">
+<!-- Dynamically populated -->
+</tbody>
+</table>
+</div>
 
-    </main>
-  </div>
+<!-- AI Recommendation Box -->
+<div style="margin-top: 14px; padding: 12px; background: var(--bg-muted); border: 1px solid var(--border-medium); border-radius: var(--radius-md); font-size: 12px;"id="compare-ai-recommendation">
+<strong>AI Recommendation:</strong>Select candidates to generate side-by-side analysis.
+</div>
+</div>
 
-  <footer class="wf-doc-footer">
-    PlacementHub AI Solutions — Interactive AI Solutions Showcase
-  </footer>
+<div class="wf-card-footer"style="justify-content: flex-end; gap: var(--space-sm); padding: 12px 16px;">
+<button class="wf-btn modal-close-trigger">Cancel</button>
+<button class="wf-btn wf-btn-primary"id="btn-shortlist-both-compare">Shortlist All Compared</button>
+</div>
+</article>
 
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/candidate-matching.js"></script>
+</main>
+</div>
+
+<footer class="wf-doc-footer">
+ PlacementHub AI Solutions — Interactive AI Solutions Showcase
+</footer>
+
+<script type="module"src="js/main.js"></script>
+<script type="module"src="js/candidate-matching.js"></script>
 </body>
 </html>

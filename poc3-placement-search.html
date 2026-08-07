@@ -1,241 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PlacementHub AI Solutions Placement Search — Search campus placement drives in plain English with AI filter extraction.">
-  <title>PlacementHub AI Solutions — Placement Search</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='65' font-size='50' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>PH</text></svg>">
-  <link rel="stylesheet" href="wireframe.css">
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+<meta name="description"content="PlacementHub AI Solutions Placement Search — Search campus placement drives in plain English with AI filter extraction.">
+<title>PlacementHub AI Solutions — Placement Search</title>
+<link rel="icon"href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'viewBox='0 0 100 100'><rect width='100'height='100'rx='20'fill='%23111827'/><text x='50'y='65'font-size='50'font-weight='bold'font-family='sans-serif'fill='%23ffffff'text-anchor='middle'>PH</text></svg>">
+<link rel="stylesheet"href="wireframe.css">
 </head>
 <body>
 
-  <nav class="wf-nav">
-    <div class="wf-nav-brand">
-      <span class="wf-logo-badge">PH</span>
-      <span class="wf-nav-title">PlacementHub AI Solutions</span>
-    </div>
-    <div class="wf-nav-search">
-      <input type="text" class="wf-input" placeholder="Search placement drives… (⌘K)">
-    </div>
-    <div class="wf-nav-actions">
-      <span class="wf-status-indicator">
-        <span class="wf-status-dot"></span>
-        Search engine · Online
-      </span>
-    </div>
-  </nav>
+<nav class="wf-nav">
+<div class="wf-nav-brand">
+<span class="wf-logo-badge">PH</span>
+<span class="wf-nav-title">PlacementHub AI Solutions</span>
+</div>
+<div class="wf-nav-search">
+<input type="text"class="wf-input"placeholder="Search placement drives… (⌘K)">
+</div>
+<div class="wf-nav-actions">
+<span class="wf-status-indicator">
+<span class="wf-status-dot"></span>
+ Search engine · Online
+</span>
+</div>
+</nav>
 
-  <div class="app-shell">
+<div class="app-shell">
 
-    <aside class="wf-sidebar">
-      <div class="wf-sidebar-section">
-        <ul class="wf-sidebar-nav">
-          <li><a href="index.html" class="wf-sidebar-link">Home</a></li>
-        </ul>
-      </div>
-      <div class="wf-sidebar-section">
-        <div class="wf-sidebar-label">AI Solutions</div>
-        <ul class="wf-sidebar-nav">
-          <li><a href="poc1-student-job-matching.html" class="wf-sidebar-link">Candidate Matching</a></li>
-          <li><a href="poc2-resume-analyzer.html" class="wf-sidebar-link">Resume Analyzer</a></li>
-          <li><a href="poc3-placement-search.html" class="wf-sidebar-link active">Placement Search</a></li>
-          <li><a href="poc4-placement-copilot.html" class="wf-sidebar-link">Placement Copilot</a></li>
-          <li><a href="poc5-career-coach.html" class="wf-sidebar-link">Career Coach</a></li>
-        </ul>
-      </div>
-      <div class="wf-sidebar-section">
-        <div class="wf-sidebar-label">Index</div>
-        <div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
-          42 drives · Pune, Remote, Bengaluru
-        </div>
-      </div>
-      <details class="wf-sidebar-spec">
-        <summary>Page Spec ↓</summary>
-        <pre class="wf-spec-tree"><!-- poc3-placement-search -->
+<aside class="wf-sidebar">
+<div class="wf-sidebar-section">
+<ul class="wf-sidebar-nav">
+<li><a href="index.html"class="wf-sidebar-link">Home</a></li>
+</ul>
+</div>
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Intelligence Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc1-student-job-matching.html"class="wf-sidebar-link">Candidate Matching</a></li>
+<li><a href="poc2-resume-analyzer.html"class="wf-sidebar-link">Resume Review</a></li>
+<li><a href="poc3-placement-search.html"class="wf-sidebar-link active">Placement Search</a></li>
+<li><a href="poc6-student-participation.html"class="wf-sidebar-link">Student Participation</a></li>
+<li><a href="poc7-hiring-performance.html"class="wf-sidebar-link">Hiring Performance</a></li>
+<li><a href="poc8-placement-analytics.html"class="wf-sidebar-link">Placement Analytics</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Operations Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc4-placement-copilot.html"class="wf-sidebar-link">Placement Assistant</a></li>
+<li><a href="poc9-document-processing.html"class="wf-sidebar-link">Document Processing</a></li>
+<li><a href="poc10-communication-assistant.html"class="wf-sidebar-link">Communication Assistant</a></li>
+</ul>
+</div>
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Index</div>
+<div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
+ 42 drives · Pune, Remote, Bengaluru
+</div>
+</div>
+<details class="wf-sidebar-spec">
+<summary>Page Spec ↓</summary>
+<pre class="wf-spec-tree"><!-- poc3-placement-search -->
 PlacementSearchPage
 ├── GlobalNav
 ├── AppSidebar
 ├── PageHeader
 ├── SearchBar
-│   └── SuggestionsRow (collapsible)
+│ └── SuggestionsRow (collapsible)
 ├── AIFilterBanner (editable chips)
 ├── ResultsToolbar (count + sort + view)
 ├── SplitPane (70/30)
-│   ├── DriveCardsGrid ×n
-│   └── DriveDetailSheet [RIGHT DRAWER]
+│ ├── DriveCardsGrid ×n
+│ └── DriveDetailSheet [RIGHT DRAWER]
 └── States
-    ├── EmptyState (no query)
-    ├── LoadingState (skeleton cards)
-    └── ZeroResultBanner
+ ├── EmptyState (no query)
+ ├── LoadingState (skeleton cards)
+ └── ZeroResultBanner
 [DOCUMENTATION ONLY]</pre>
-      </details>
-    </aside>
+</details>
+</aside>
 
-    <main class="wf-main-content">
+<main class="wf-main-content">
 
-      <header class="wf-page-header">
-        <div>
-          <div class="wf-breadcrumb">PlacementHub AI Solutions › Placement Search</div>
-          <h1 class="wf-page-title">Placement Search</h1>
-          <p class="wf-page-desc">Search placement drives in plain English — AI applies filters automatically. Edit any chip to refine your results.</p>
-        </div>
-        <div class="wf-page-actions">
-          <button class="wf-btn wf-btn-sm" id="btn-save-search">⭐ Save Search</button>
-          <button class="wf-btn wf-btn-sm" id="btn-view-saved">Saved Searches (<span id="saved-searches-count">0</span>)</button>
-          <button class="wf-btn wf-btn-sm wf-btn-ghost" id="btn-clear-search">Clear search</button>
-        </div>
-      </header>
+<header class="wf-page-header">
+<div>
+<div class="wf-breadcrumb">PlacementHub AI Solutions › Placement Search</div>
+<h1 class="wf-page-title">Placement Search</h1>
+<p class="wf-page-desc">Search placement drives in plain English — AI applies filters automatically. Edit any chip to refine your results.</p>
+</div>
+<div class="wf-page-actions">
+<button class="wf-btn wf-btn-sm"id="btn-save-search">⭐ Save Search</button>
+<button class="wf-btn wf-btn-sm"id="btn-view-saved">Saved Searches (<span id="saved-searches-count">0</span>)</button>
+<button class="wf-btn wf-btn-sm wf-btn-ghost"id="btn-clear-search">Clear search</button>
+</div>
+</header>
 
-      <!-- Search Bar -->
-      <div class="wf-card">
-        <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-sm);">
-          <div style="display: flex; gap: var(--space-sm);">
-            <input type="text" class="wf-input" id="drive-search-input" value="Find remote React internships in Pune with stipend above ₹20K and PPO opportunity" style="height: 44px; font-size: 13px; flex: 1;">
-            <button class="wf-btn wf-btn-primary" id="btn-run-search" style="height: 44px; padding: 0 20px;">Search</button>
-          </div>
+<!-- Search Bar -->
+<div class="wf-card">
+<div class="wf-card-body"style="display: flex; flex-direction: column; gap: var(--space-sm);">
+<div style="display: flex; gap: var(--space-sm);">
+<input type="text"class="wf-input"id="drive-search-input"value="Find remote React internships in Pune with stipend above ₹20K and PPO opportunity"style="height: 44px; font-size: 13px; flex: 1;">
+<button class="wf-btn wf-btn-primary"id="btn-run-search"style="height: 44px; padding: 0 20px;">Search</button>
+</div>
 
-          <!-- Collapsible suggestions row -->
-          <details open>
-            <summary style="font-size: 11px; font-weight: 600; color: var(--text-muted); cursor: pointer; user-select: none; list-style: none; padding: 2px 0;">Suggested searches</summary>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;" id="suggested-prompts-container">
-              <span class="wf-prompt-chip">Remote React internships in Pune above ₹20K</span>
-              <span class="wf-prompt-chip">Top AI Research drives with PPO above ₹12 LPA</span>
-              <span class="wf-prompt-chip">Python backend roles · CGPA above 8.0</span>
-              <span class="wf-prompt-chip">Hybrid Full Stack drives in Bengaluru</span>
-            </div>
-          </details>
-        </div>
-      </div>
+<!-- Collapsible suggestions row -->
+<details open>
+<summary style="font-size: 11px; font-weight: 600; color: var(--text-muted); cursor: pointer; user-select: none; list-style: none; padding: 2px 0;">Suggested searches</summary>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px;"id="suggested-prompts-container">
+<span class="wf-prompt-chip">Remote React internships in Pune above ₹20K</span>
+<span class="wf-prompt-chip">Top AI Research drives with PPO above ₹12 LPA</span>
+<span class="wf-prompt-chip">Python backend roles · CGPA above 8.0</span>
+<span class="wf-prompt-chip">Hybrid Full Stack drives in Bengaluru</span>
+</div>
+</details>
+</div>
+</div>
 
-      <!-- Editable AI Filter Banner -->
-      <div class="wf-toolbar" id="ai-filter-banner">
-        <div class="wf-toolbar-row">
-          <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-right: var(--space-sm); flex-shrink: 0;">Filters from your search:</div>
-          <div class="wf-toolbar-group" id="editable-chips-container" style="flex: 1;">
-            <!-- Dynamically rendered editable chips -->
-          </div>
-          <div class="wf-toolbar-group">
-            <button class="wf-btn wf-btn-sm wf-btn-ghost" id="btn-reset-drive-filters">Reset</button>
-          </div>
-        </div>
-        <div class="wf-toolbar-row" style="font-size: 11px; color: var(--text-muted); font-style: italic;" id="ai-interpretation-summary">
-          🤖 AI understood query: Filtered React/Frontend drives in Pune & Remote with stipend ≥ ₹20k/mo and PPO.
-        </div>
-      </div>
+<!-- Editable AI Filter Banner -->
+<div class="wf-toolbar"id="ai-filter-banner">
+<div class="wf-toolbar-row">
+<div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-right: var(--space-sm); flex-shrink: 0;">Filters from your search:</div>
+<div class="wf-toolbar-group"id="editable-chips-container"style="flex: 1;">
+<!-- Dynamically rendered editable chips -->
+</div>
+<div class="wf-toolbar-group">
+<button class="wf-btn wf-btn-sm wf-btn-ghost"id="btn-reset-drive-filters">Reset</button>
+</div>
+</div>
+<div class="wf-toolbar-row"style="font-size: 11px; color: var(--text-muted); font-style: italic;"id="ai-interpretation-summary">
+ AI understood query: Filtered React/Frontend drives in Pune & Remote with stipend ≥ ₹20k/mo and PPO.
+</div>
+</div>
 
-      <!-- Results Area -->
-      <div class="wf-split-pane-70-30">
+<!-- Results Area -->
+<div class="wf-split-pane-70-30">
 
-        <!-- Left: Results -->
-        <div style="display: flex; flex-direction: column; gap: var(--space-md);">
+<!-- Left: Results -->
+<div style="display: flex; flex-direction: column; gap: var(--space-md);">
 
-          <!-- Results toolbar -->
-          <div style="display: flex; align-items: center; justify-content: space-between;">
-            <span style="font-size: 14px; font-weight: 600;" id="drives-count-label">2 drives found</span>
-            <div style="display: flex; align-items: center; gap: var(--space-sm);">
-              <select class="wf-select" id="drive-sort-select" style="height: 28px; font-size: 12px;">
-                <option value="match-desc">Sort: Best match</option>
-                <option value="stipend-desc">Sort: Highest stipend</option>
-                <option value="deadline-asc">Sort: Deadline</option>
-              </select>
-              <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-view-grid">Grid</button>
-              <button class="wf-btn wf-btn-sm" id="btn-view-table">Table</button>
-            </div>
-          </div>
+<!-- Results toolbar -->
+<div style="display: flex; align-items: center; justify-content: space-between;">
+<span style="font-size: 14px; font-weight: 600;"id="drives-count-label">2 drives found</span>
+<div style="display: flex; align-items: center; gap: var(--space-sm);">
+<select class="wf-select"id="drive-sort-select"style="height: 28px; font-size: 12px;">
+<option value="match-desc">Sort: Best match</option>
+<option value="stipend-desc">Sort: Highest stipend</option>
+<option value="deadline-asc">Sort: Deadline</option>
+</select>
+<button class="wf-btn wf-btn-sm wf-btn-primary"id="btn-view-grid">Grid</button>
+<button class="wf-btn wf-btn-sm"id="btn-view-table">Table</button>
+</div>
+</div>
 
-          <!-- Zero Results Banner -->
-          <div class="wf-zero-result-banner" id="zero-results-banner" style="display: none; padding: 16px; background: var(--bg-muted); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); text-align: center;">
-            <strong style="font-size: 14px;">No placement drives match your query</strong>
-            <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Try expanding location parameters or lowering stipend constraints.</p>
-            <button class="wf-btn wf-btn-xs wf-btn-primary" id="btn-expand-filters" style="margin-top: 8px;">Expand filters</button>
-          </div>
+<!-- Zero Results Banner -->
+<div class="wf-zero-result-banner"id="zero-results-banner"style="display: none; padding: 16px; background: var(--bg-muted); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); text-align: center;">
+<strong style="font-size: 14px;">No placement drives match your query</strong>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Try expanding location parameters or lowering stipend constraints.</p>
+<button class="wf-btn wf-btn-xs wf-btn-primary"id="btn-expand-filters"style="margin-top: 8px;">Expand filters</button>
+</div>
 
-          <!-- Drive Cards Container -->
-          <div class="wf-grid-2" id="drives-results-container">
-            <!-- Dynamically rendered -->
-          </div>
-        </div>
+<!-- Drive Cards Container -->
+<div class="wf-grid-2"id="drives-results-container">
+<!-- Dynamically rendered -->
+</div>
+</div>
 
-        <!-- Right: Drive Detail Sheet Drawer -->
-        <article class="wf-drawer-sheet" id="drive-detail-drawer" style="position: fixed; top: 52px; right: 0; bottom: 0; width: 440px; background: var(--bg-surface); border-left: 1px solid var(--border-medium); z-index: 8500; display: none; flex-direction: column; overflow-y: auto; padding: var(--space-md); gap: var(--space-md); transform: translateX(100%);">
-          <header class="wf-drawer-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
-            <div>
-              <span class="wf-drawer-tag" style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Drive Detail Sheet</span>
-              <h3 style="font-size: 16px; font-weight: 700; margin-top: 2px;" id="drawer-company-name">PuneTech Innovations</h3>
-              <div style="font-size: 12px; color: var(--text-secondary);" id="drawer-drive-code">PT-2026-01</div>
-            </div>
-            <button class="wf-btn wf-btn-sm wf-btn-ghost" id="btn-close-drive-drawer">✕</button>
-          </header>
+<!-- Right: Drive Detail Sheet Drawer -->
+<article class="wf-drawer-sheet"id="drive-detail-drawer"style="position: fixed; top: 52px; right: 0; bottom: 0; width: 440px; background: var(--bg-surface); border-left: 1px solid var(--border-medium); z-index: 8500; display: none; flex-direction: column; overflow-y: auto; padding: var(--space-md); gap: var(--space-md); transform: translateX(100%);">
+<header class="wf-drawer-header"style="display: flex; justify-content: space-between; align-items: flex-start;">
+<div>
+<span class="wf-drawer-tag"style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Drive Detail Sheet</span>
+<h3 style="font-size: 16px; font-weight: 700; margin-top: 2px;"id="drawer-company-name">PuneTech Innovations</h3>
+<div style="font-size: 12px; color: var(--text-secondary);"id="drawer-drive-code">PT-2026-01</div>
+</div>
+<button class="wf-btn wf-btn-sm wf-btn-ghost"id="btn-close-drive-drawer">✕</button>
+</header>
 
-          <div style="font-size: 12px; color: var(--text-secondary);" id="drawer-job-title-sub">Frontend React Engineering Intern · Deadline Aug 20</div>
+<div style="font-size: 12px; color: var(--text-secondary);"id="drawer-job-title-sub">Frontend React Engineering Intern · Deadline Aug 20</div>
 
-          <div class="wf-card" style="background: var(--bg-muted);">
-            <div class="wf-card-body" style="padding: 10px;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span style="font-size: 12px; color: var(--text-muted);">Stipend</span><strong id="drawer-stipend">₹25,000 / month</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span style="font-size: 12px; color: var(--text-muted);">PPO Offer</span><strong id="drawer-ppo">₹8.5 – 12 LPA</strong>
-              </div>
-              <div style="display: flex; justify-content: space-between;">
-                <span style="font-size: 12px; color: var(--text-muted);">Location</span><strong id="drawer-location">Pune / Remote</strong>
-              </div>
-            </div>
-          </div>
+<div class="wf-card"style="background: var(--bg-muted);">
+<div class="wf-card-body"style="padding: 10px;">
+<div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+<span style="font-size: 12px; color: var(--text-muted);">Stipend</span><strong id="drawer-stipend">₹25,000 / month</strong>
+</div>
+<div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+<span style="font-size: 12px; color: var(--text-muted);">PPO Offer</span><strong id="drawer-ppo">₹8.5 – 12 LPA</strong>
+</div>
+<div style="display: flex; justify-content: space-between;">
+<span style="font-size: 12px; color: var(--text-muted);">Location</span><strong id="drawer-location">Pune / Remote</strong>
+</div>
+</div>
+</div>
 
-          <!-- AI Match Reasoning -->
-          <div class="wf-card">
-            <div class="wf-card-header" style="padding: 10px 12px;"><span style="font-size: 13px; font-weight: 700;">AI Alignment Summary</span></div>
-            <div class="wf-card-body" style="font-size: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px;" id="drawer-ai-summary">
-              <div>✓ Matches React &amp; Frontend skills</div>
-              <div>✓ Stipend exceeds ₹20k minimum threshold</div>
-              <div>✓ Includes full PPO opportunity</div>
-            </div>
-          </div>
+<!-- AI Match Reasoning -->
+<div class="wf-card">
+<div class="wf-card-header"style="padding: 10px 12px;"><span style="font-size: 13px; font-weight: 700;">AI Alignment Summary</span></div>
+<div class="wf-card-body"style="font-size: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px;"id="drawer-ai-summary">
+<div>✓ Matches React &amp; Frontend skills</div>
+<div>✓ Stipend exceeds ₹20k minimum threshold</div>
+<div>✓ Includes full PPO opportunity</div>
+</div>
+</div>
 
-          <!-- Selection process as numbered steps -->
-          <div class="wf-card">
-            <div class="wf-card-header" style="padding: 10px 12px;">
-              <span style="font-size: 13px; font-weight: 700;">Selection Process</span>
-              <span style="font-size: 12px; color: var(--text-muted);">3 rounds</span>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 0;" id="drawer-rounds-list">
-              <!-- Dynamically rendered -->
-            </div>
-          </div>
+<!-- Selection process as numbered steps -->
+<div class="wf-card">
+<div class="wf-card-header"style="padding: 10px 12px;">
+<span style="font-size: 13px; font-weight: 700;">Selection Process</span>
+<span style="font-size: 12px; color: var(--text-muted);">3 rounds</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 0;"id="drawer-rounds-list">
+<!-- Dynamically rendered -->
+</div>
+</div>
 
-          <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
-            <button class="wf-btn wf-btn-sm" id="btn-save-drive" style="flex: 1;">⭐ Save Drive</button>
-            <a href="poc1-student-job-matching.html" class="wf-btn wf-btn-sm" style="flex: 1; text-align: center; text-decoration: none;">View Matches →</a>
-            <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-apply-drive-candidates" style="flex: 2;">Apply Candidates to Drive</button>
-          </div>
-        </article>
+<div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
+<button class="wf-btn wf-btn-sm"id="btn-save-drive"style="flex: 1;">⭐ Save Drive</button>
+<a href="poc1-student-job-matching.html"class="wf-btn wf-btn-sm"style="flex: 1; text-align: center; text-decoration: none;">View Matches →</a>
+<button class="wf-btn wf-btn-sm wf-btn-primary"id="btn-apply-drive-candidates"style="flex: 2;">Apply Candidates to Drive</button>
+</div>
+</article>
 
-      </div>
+</div>
 
-    </main>
-  </div>
+</main>
+</div>
 
-  <!-- MODAL: Saved Searches -->
-  <div class="wf-modal-dialog" id="modal-saved-searches">
-    <div class="wf-card-header">
-      <h3 class="wf-card-title">Saved Searches</h3>
-      <button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
-    </div>
-    <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-md);" id="saved-searches-list">
-      <!-- Dynamically populated from localStorage -->
-    </div>
-    <div class="wf-card-footer" style="justify-content: flex-end;">
-      <button class="wf-btn wf-btn-sm modal-close-trigger">Close</button>
-    </div>
-  </div>
+<!-- MODAL: Saved Searches -->
+<div class="wf-modal-dialog"id="modal-saved-searches">
+<div class="wf-card-header">
+<h3 class="wf-card-title">Saved Searches</h3>
+<button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
+</div>
+<div class="wf-card-body"style="display: flex; flex-direction: column; gap: var(--space-md);"id="saved-searches-list">
+<!-- Dynamically populated from localStorage -->
+</div>
+<div class="wf-card-footer"style="justify-content: flex-end;">
+<button class="wf-btn wf-btn-sm modal-close-trigger">Close</button>
+</div>
+</div>
 
-  <footer class="wf-doc-footer">
-    PlacementHub AI Solutions — Interactive AI Solutions Showcase
-  </footer>
+<footer class="wf-doc-footer">
+ PlacementHub AI Solutions — Interactive AI Solutions Showcase
+</footer>
 
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/placement-search.js"></script>
+<script type="module"src="js/main.js"></script>
+<script type="module"src="js/placement-search.js"></script>
 </body>
 </html>

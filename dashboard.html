@@ -1,66 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PlacementHub AI Lab Operations Dashboard — Platform metrics, candidate placement trends, and real-time activity tracking.">
-  <title>PlacementHub AI Lab — Operations Dashboard</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23111827'/><text x='50' y='65' font-size='50' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>PH</text></svg>">
-  <link rel="stylesheet" href="wireframe.css">
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+<meta name="description"content="PlacementHub AI Lab Operations Dashboard — Platform metrics, candidate placement trends, and real-time activity tracking.">
+<title>PlacementHub AI Lab — Operations Dashboard</title>
+<link rel="icon"href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'viewBox='0 0 100 100'><rect width='100'height='100'rx='20'fill='%23111827'/><text x='50'y='65'font-size='50'font-weight='bold'font-family='sans-serif'fill='%23ffffff'text-anchor='middle'>PH</text></svg>">
+<link rel="stylesheet"href="wireframe.css">
 </head>
 <body>
 
-  <nav class="wf-nav">
-    <div class="wf-nav-brand">
-      <span class="wf-logo-badge">PH</span>
-      <span class="wf-nav-title">PlacementHub AI Lab</span>
-    </div>
-    <div class="wf-nav-search">
-      <input type="text" class="wf-input" placeholder="Search candidates, drives, or events… (⌘K)">
-    </div>
-    <div class="wf-nav-actions">
-      <span class="wf-status-indicator">
-        <span class="wf-status-dot"></span>
-        All systems operational
-      </span>
-    </div>
-  </nav>
+<nav class="wf-nav">
+<div class="wf-nav-brand">
+<span class="wf-logo-badge">PH</span>
+<span class="wf-nav-title">PlacementHub AI Lab</span>
+</div>
+<div class="wf-nav-search">
+<input type="text"class="wf-input"placeholder="Search candidates, drives, or events… (⌘K)">
+</div>
+<div class="wf-nav-actions">
+<span class="wf-status-indicator">
+<span class="wf-status-dot"></span>
+ All systems operational
+</span>
+</div>
+</nav>
 
-  <div class="app-shell">
+<div class="app-shell">
 
-    <aside class="wf-sidebar">
-      <div class="wf-sidebar-section">
-        <div class="wf-sidebar-label">Platform</div>
-        <ul class="wf-sidebar-nav">
-          <li><a href="index.html" class="wf-sidebar-link">Home</a></li>
-          <li><a href="dashboard.html" class="wf-sidebar-link active">Dashboard</a></li>
-        </ul>
-      </div>
+<aside class="wf-sidebar">
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Platform</div>
+<ul class="wf-sidebar-nav">
+<li><a href="index.html"class="wf-sidebar-link">Home</a></li>
+<li><a href="dashboard.html"class="wf-sidebar-link active">Dashboard</a></li>
+</ul>
+</div>
 
-      <div class="wf-sidebar-section">
-        <div class="wf-sidebar-label">Tools</div>
-        <ul class="wf-sidebar-nav">
-          <li><a href="poc1-student-job-matching.html" class="wf-sidebar-link">Candidate Matching</a></li>
-          <li><a href="poc2-resume-analyzer.html" class="wf-sidebar-link">Resume Review</a></li>
-          <li><a href="poc3-placement-search.html" class="wf-sidebar-link">Placement Search</a></li>
-          <li><a href="poc4-placement-copilot.html" class="wf-sidebar-link">Placement Assistant</a></li>
-          <li><a href="poc5-career-coach.html" class="wf-sidebar-link">Career Coach</a></li>
-        </ul>
-      </div>
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Intelligence Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc1-student-job-matching.html"class="wf-sidebar-link">Candidate Matching</a></li>
+<li><a href="poc2-resume-analyzer.html"class="wf-sidebar-link">Resume Review</a></li>
+<li><a href="poc3-placement-search.html"class="wf-sidebar-link">Placement Search</a></li>
+<li><a href="poc6-student-participation.html"class="wf-sidebar-link">Student Participation</a></li>
+<li><a href="poc7-hiring-performance.html"class="wf-sidebar-link">Hiring Performance</a></li>
+<li><a href="poc8-placement-analytics.html"class="wf-sidebar-link">Placement Analytics</a></li>
+</ul>
+</div>
 
-      <div class="wf-sidebar-section">
-        <div class="wf-sidebar-label">System</div>
-        <div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
-          <span class="wf-badge wf-badge-dark" style="margin-right: 4px;">Online</span>
-          14 ms · 42% capacity
-          <br>
-          <a href="#health-panel" style="font-size: 11px; color: var(--text-muted); text-decoration: underline; margin-top: 4px; display: inline-block;">View system health →</a>
-        </div>
-      </div>
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Operations Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc4-placement-copilot.html"class="wf-sidebar-link">Placement Assistant</a></li>
+<li><a href="poc9-document-processing.html"class="wf-sidebar-link">Document Processing</a></li>
+<li><a href="poc10-communication-assistant.html"class="wf-sidebar-link">Communication Assistant</a></li>
+</ul>
+</div>
 
-      <details class="wf-sidebar-spec">
-        <summary>Page Spec ↓</summary>
-        <pre class="wf-spec-tree">DashboardPage
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">System</div>
+<div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
+<span class="wf-badge wf-badge-dark"style="margin-right: 4px;">Online</span>
+ 14 ms · 42% capacity
+<br>
+<a href="#health-panel"style="font-size: 11px; color: var(--text-muted); text-decoration: underline; margin-top: 4px; display: inline-block;">View system health →</a>
+</div>
+</div>
+
+<details class="wf-sidebar-spec">
+<summary>Page Spec ↓</summary>
+<pre class="wf-spec-tree">DashboardPage
 ├── GlobalNav
 ├── AppSidebar
 ├── PageHeader (title + status)
@@ -70,294 +80,294 @@
 ├── SystemHealthPanel (30%)
 └── RecentActivityTable
 [DOCUMENTATION ONLY]</pre>
-      </details>
-    </aside>
+</details>
+</aside>
 
-    <main class="wf-main-content">
+<main class="wf-main-content">
 
-      <header class="wf-page-header">
-        <div>
-          <div class="wf-breadcrumb">PlacementHub AI Lab › Dashboard</div>
-          <h1 class="wf-page-title">Dashboard</h1>
-          <div class="wf-page-status">
-            <span class="wf-badge wf-badge-dark">Online</span>
-            Matching engine active · 1,248 candidates indexed · 42 active drives
-          </div>
-        </div>
-        <div class="wf-page-actions">
-          <button class="wf-btn-overflow">⋯</button>
-          <a href="poc4-placement-copilot.html" class="wf-btn wf-btn-primary">Open Assistant</a>
-        </div>
-      </header>
+<header class="wf-page-header">
+<div>
+<div class="wf-breadcrumb">PlacementHub AI Lab › Dashboard</div>
+<h1 class="wf-page-title">Dashboard</h1>
+<div class="wf-page-status">
+<span class="wf-badge wf-badge-dark">Online</span>
+ Matching engine active · 1,248 candidates indexed · 42 active drives
+</div>
+</div>
+<div class="wf-page-actions">
+<button class="wf-btn-overflow">⋯</button>
+<a href="poc4-placement-copilot.html"class="wf-btn wf-btn-primary">Open Assistant</a>
+</div>
+</header>
 
-      <!-- Workspace Toolbar — page-level actions, not navigation links -->
-      <div class="wf-toolbar">
-        <div class="wf-toolbar-row">
-          <div class="wf-toolbar-group" style="flex: 1;">
-            <button class="wf-btn wf-btn-sm" id="btn-import-candidates">Import Candidates</button>
-            <button class="wf-btn wf-btn-sm" id="btn-new-eval">New Evaluation</button>
-            <button class="wf-btn wf-btn-sm" id="btn-schedule-drive">Schedule Drive</button>
-            <button class="wf-btn wf-btn-sm" id="btn-refresh-data">Refresh Data</button>
-          </div>
-          <div class="wf-toolbar-group">
-            <button class="wf-btn wf-btn-sm wf-btn-ghost" id="btn-download-report">Download Report</button>
-          </div>
-        </div>
-      </div>
+<!-- Workspace Toolbar — page-level actions, not navigation links -->
+<div class="wf-toolbar">
+<div class="wf-toolbar-row">
+<div class="wf-toolbar-group"style="flex: 1;">
+<button class="wf-btn wf-btn-sm"id="btn-import-candidates">Import Candidates</button>
+<button class="wf-btn wf-btn-sm"id="btn-new-eval">New Evaluation</button>
+<button class="wf-btn wf-btn-sm"id="btn-schedule-drive">Schedule Drive</button>
+<button class="wf-btn wf-btn-sm"id="btn-refresh-data">Refresh Data</button>
+</div>
+<div class="wf-toolbar-group">
+<button class="wf-btn wf-btn-sm wf-btn-ghost"id="btn-download-report">Download Report</button>
+</div>
+</div>
+</div>
 
-      <!-- KPI Grid -->
-      <section class="wf-kpi-grid">
-        <div class="wf-kpi-card">
-          <div class="wf-kpi-header">
-            <span class="wf-kpi-label">Total Candidates</span>
-            <span class="wf-badge wf-badge-outline">+12% this month</span>
-          </div>
-          <div class="wf-kpi-value" id="kpi-total-candidates">1,248</div>
-          <div class="wf-kpi-subtext" id="kpi-candidates-subtext">Registered · updated 2 mins ago</div>
-        </div>
-        <div class="wf-kpi-card">
-          <div class="wf-kpi-header">
-            <span class="wf-kpi-label">Avg Resume Score</span>
-          </div>
-          <div class="wf-kpi-value" id="kpi-avg-resume-score">88.4</div>
-          <div class="wf-kpi-subtext">Across 450 reviewed resumes</div>
-        </div>
-        <div class="wf-kpi-card">
-          <div class="wf-kpi-header">
-            <span class="wf-kpi-label">Avg Match Score</span>
-          </div>
-          <div class="wf-kpi-value" id="kpi-avg-match-score">96.4%</div>
-          <div class="wf-kpi-subtext" id="kpi-evals-subtext">AI confidence · 148 evaluations</div>
-        </div>
-        <div class="wf-kpi-card">
-          <div class="wf-kpi-header">
-            <span class="wf-kpi-label">Active Drives</span>
-            <span class="wf-badge wf-badge-outline">8 new</span>
-          </div>
-          <div class="wf-kpi-value" id="kpi-active-drives">42</div>
-          <div class="wf-kpi-subtext">Open · targeting 2026 batch</div>
-        </div>
-      </section>
+<!-- KPI Grid -->
+<section class="wf-kpi-grid">
+<div class="wf-kpi-card">
+<div class="wf-kpi-header">
+<span class="wf-kpi-label">Total Candidates</span>
+<span class="wf-badge wf-badge-outline">+12% this month</span>
+</div>
+<div class="wf-kpi-value"id="kpi-total-candidates">1,248</div>
+<div class="wf-kpi-subtext"id="kpi-candidates-subtext">Registered · updated 2 mins ago</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header">
+<span class="wf-kpi-label">Avg Resume Score</span>
+</div>
+<div class="wf-kpi-value"id="kpi-avg-resume-score">88.4</div>
+<div class="wf-kpi-subtext">Across 450 reviewed resumes</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header">
+<span class="wf-kpi-label">Avg Match Score</span>
+</div>
+<div class="wf-kpi-value"id="kpi-avg-match-score">96.4%</div>
+<div class="wf-kpi-subtext"id="kpi-evals-subtext">AI confidence · 148 evaluations</div>
+</div>
+<div class="wf-kpi-card">
+<div class="wf-kpi-header">
+<span class="wf-kpi-label">Active Drives</span>
+<span class="wf-badge wf-badge-outline">8 new</span>
+</div>
+<div class="wf-kpi-value"id="kpi-active-drives">42</div>
+<div class="wf-kpi-subtext">Open · targeting 2026 batch</div>
+</div>
+</section>
 
-      <!-- Analytics + System Health -->
-      <div class="wf-split-pane-70-30">
+<!-- Analytics + System Health -->
+<div class="wf-split-pane-70-30">
 
-        <!-- Analytics Chart -->
-        <div class="wf-card">
-          <div class="wf-card-header">
-            <div>
-              <h3 class="wf-card-title">Placement Trends</h3>
-              <p class="wf-card-desc" id="chart-desc">Monthly placements vs targets — 2026 batch</p>
-            </div>
-            <div class="wf-tabs-header" id="chart-tabs-header" style="margin-bottom: 0; border: none;">
-              <div class="wf-tab active" data-tab="placements">Placements</div>
-              <div class="wf-tab" data-tab="resume-scores">Resume Scores</div>
-              <div class="wf-tab" data-tab="response-time">Response Time</div>
-            </div>
-          </div>
-          <div class="wf-card-body">
-            <div class="wf-chart-container">
-              <div class="wf-chart-bars" id="chart-bars">
-                <div class="wf-chart-bar-group"><div class="wf-chart-bar" style="height:60px;"></div><span class="wf-chart-label">Jan</span></div>
-                <div class="wf-chart-bar-group"><div class="wf-chart-bar" style="height:85px;"></div><span class="wf-chart-label">Feb</span></div>
-                <div class="wf-chart-bar-group"><div class="wf-chart-bar" style="height:110px;"></div><span class="wf-chart-label">Mar</span></div>
-                <div class="wf-chart-bar-group"><div class="wf-chart-bar" style="height:95px;"></div><span class="wf-chart-label">Apr</span></div>
-                <div class="wf-chart-bar-group"><div class="wf-chart-bar" style="height:130px;"></div><span class="wf-chart-label">May</span></div>
-                <div class="wf-chart-bar-group"><div class="wf-chart-bar" style="height:140px;"></div><span class="wf-chart-label">Jun</span></div>
-              </div>
-              <div style="font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; margin-top: 8px;">
-                <span style="font-style: italic;" id="chart-type-label">Bar chart — Recharts BarChart component</span>
-                <span id="chart-legend">■ Placed &nbsp; □ Pending</span>
-              </div>
-            </div>
-          </div>
-        </div>
+<!-- Analytics Chart -->
+<div class="wf-card">
+<div class="wf-card-header">
+<div>
+<h3 class="wf-card-title">Placement Trends</h3>
+<p class="wf-card-desc"id="chart-desc">Monthly placements vs targets — 2026 batch</p>
+</div>
+<div class="wf-tabs-header"id="chart-tabs-header"style="margin-bottom: 0; border: none;">
+<div class="wf-tab active"data-tab="placements">Placements</div>
+<div class="wf-tab"data-tab="resume-scores">Resume Scores</div>
+<div class="wf-tab"data-tab="response-time">Response Time</div>
+</div>
+</div>
+<div class="wf-card-body">
+<div class="wf-chart-container">
+<div class="wf-chart-bars"id="chart-bars">
+<div class="wf-chart-bar-group"><div class="wf-chart-bar"style="height:60px;"></div><span class="wf-chart-label">Jan</span></div>
+<div class="wf-chart-bar-group"><div class="wf-chart-bar"style="height:85px;"></div><span class="wf-chart-label">Feb</span></div>
+<div class="wf-chart-bar-group"><div class="wf-chart-bar"style="height:110px;"></div><span class="wf-chart-label">Mar</span></div>
+<div class="wf-chart-bar-group"><div class="wf-chart-bar"style="height:95px;"></div><span class="wf-chart-label">Apr</span></div>
+<div class="wf-chart-bar-group"><div class="wf-chart-bar"style="height:130px;"></div><span class="wf-chart-label">May</span></div>
+<div class="wf-chart-bar-group"><div class="wf-chart-bar"style="height:140px;"></div><span class="wf-chart-label">Jun</span></div>
+</div>
+<div style="font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; margin-top: 8px;">
+<span style="font-style: italic;"id="chart-type-label">Bar chart — Recharts BarChart component</span>
+<span id="chart-legend">■ Placed &nbsp; □ Pending</span>
+</div>
+</div>
+</div>
+</div>
 
-        <!-- System Health Panel -->
-        <div class="wf-card" id="health-panel">
-          <div class="wf-card-header">
-            <h3 class="wf-card-title">System Health</h3>
-            <span class="wf-badge wf-badge-dark" id="health-status-badge">Online</span>
-          </div>
-          <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-md);">
-            <div>
-              <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
-                <span>AI Engine Load</span><strong id="health-engine-load">42%</strong>
-              </div>
-              <div class="wf-progress-track"><div class="wf-progress-fill" id="health-engine-bar" style="width: 42%;"></div></div>
-            </div>
-            <div>
-              <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
-                <span>Search Index Memory</span><strong id="health-memory">68% · 1.2 GB</strong>
-              </div>
-              <div class="wf-progress-track"><div class="wf-progress-fill" id="health-memory-bar" style="width: 68%;"></div></div>
-            </div>
-            <div>
-              <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
-                <span>Response Latency</span><strong id="health-latency">14 ms avg</strong>
-              </div>
-              <div class="wf-progress-track"><div class="wf-progress-fill" id="health-latency-bar" style="width: 25%;"></div></div>
-            </div>
-            <!-- API endpoint statuses — monospace appropriate for URLs/technical identifiers -->
-            <div style="font-size: 11px; color: var(--text-muted); padding: 8px; background: var(--bg-muted); border-radius: var(--radius-sm); line-height: 1.8; font-family: var(--font-mono);">
-              ✓ Embedding service<br>
-              ✓ Language model<br>
-              ✓ Vector index
-            </div>
-          </div>
-        </div>
+<!-- System Health Panel -->
+<div class="wf-card"id="health-panel">
+<div class="wf-card-header">
+<h3 class="wf-card-title">System Health</h3>
+<span class="wf-badge wf-badge-dark"id="health-status-badge">Online</span>
+</div>
+<div class="wf-card-body"style="display: flex; flex-direction: column; gap: var(--space-md);">
+<div>
+<div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+<span>AI Engine Load</span><strong id="health-engine-load">42%</strong>
+</div>
+<div class="wf-progress-track"><div class="wf-progress-fill"id="health-engine-bar"style="width: 42%;"></div></div>
+</div>
+<div>
+<div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+<span>Search Index Memory</span><strong id="health-memory">68% · 1.2 GB</strong>
+</div>
+<div class="wf-progress-track"><div class="wf-progress-fill"id="health-memory-bar"style="width: 68%;"></div></div>
+</div>
+<div>
+<div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+<span>Response Latency</span><strong id="health-latency">14 ms avg</strong>
+</div>
+<div class="wf-progress-track"><div class="wf-progress-fill"id="health-latency-bar"style="width: 25%;"></div></div>
+</div>
+<!-- API endpoint statuses — monospace appropriate for URLs/technical identifiers -->
+<div style="font-size: 11px; color: var(--text-muted); padding: 8px; background: var(--bg-muted); border-radius: var(--radius-sm); line-height: 1.8; font-family: var(--font-mono);">
+ ✓ Embedding service<br>
+ ✓ Language model<br>
+ ✓ Vector index
+</div>
+</div>
+</div>
 
-      </div>
+</div>
 
-      <!-- Recent Activity Table -->
-      <section class="wf-card">
-        <div class="wf-card-header">
-          <div>
-            <h3 class="wf-card-title">Recent Activity</h3>
-            <p class="wf-card-desc">Candidate evaluations and AI actions from today</p>
-          </div>
-        </div>
+<!-- Recent Activity Table -->
+<section class="wf-card">
+<div class="wf-card-header">
+<div>
+<h3 class="wf-card-title">Recent Activity</h3>
+<p class="wf-card-desc">Candidate evaluations and AI actions from today</p>
+</div>
+</div>
 
-        <!-- Filter strip -->
-        <div class="wf-toolbar" style="border: none; border-bottom: 1px solid var(--border-subtle); border-radius: 0;">
-          <div class="wf-toolbar-row">
-            <div class="wf-toolbar-group" style="flex: 1;">
-              <input type="text" class="wf-input" id="activity-search-input" placeholder="Filter by candidate or status…" style="width: 260px;">
-              <select class="wf-select" id="activity-tool-select">
-                <option value="">All Tools</option>
-                <option value="Candidate Matching">Candidate Matching</option>
-                <option value="Resume Review">Resume Review</option>
-                <option value="Placement Search">Placement Search</option>
-                <option value="Career Coach">Career Coach</option>
-              </select>
-              <select class="wf-select" id="activity-status-select">
-                <option value="">All Statuses</option>
-                <option value="Shortlisted">Shortlisted</option>
-                <option value="Reviewed">Reviewed</option>
-                <option value="3 drives found">3 drives found</option>
-                <option value="Stage 3 Active">Stage 3 Active</option>
-              </select>
-            </div>
-            <div class="wf-toolbar-group">
-              <button class="wf-btn wf-btn-sm" id="activity-filter-btn">Filter</button>
-            </div>
-          </div>
-          <!-- Active filter chips -->
-          <div class="wf-toolbar-row" id="activity-chips-row" style="display: flex; align-items: center; gap: 6px;">
-            <span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Filters:</span>
-            <div id="activity-chips-container" style="display: inline-flex; gap: 6px; flex-wrap: wrap;"></div>
-            <button class="wf-btn-ghost wf-btn-xs" id="btn-reset-filters" style="font-size: 11px; color: var(--text-muted);">Reset filters</button>
-          </div>
-        </div>
+<!-- Filter strip -->
+<div class="wf-toolbar"style="border: none; border-bottom: 1px solid var(--border-subtle); border-radius: 0;">
+<div class="wf-toolbar-row">
+<div class="wf-toolbar-group"style="flex: 1;">
+<input type="text"class="wf-input"id="activity-search-input"placeholder="Filter by candidate or status…"style="width: 260px;">
+<select class="wf-select"id="activity-tool-select">
+<option value="">All Tools</option>
+<option value="Candidate Matching">Candidate Matching</option>
+<option value="Resume Review">Resume Review</option>
+<option value="Placement Search">Placement Search</option>
+</select>
+<select class="wf-select"id="activity-status-select">
+<option value="">All Statuses</option>
+<option value="Shortlisted">Shortlisted</option>
+<option value="Reviewed">Reviewed</option>
+<option value="3 drives found">3 drives found</option>
+<option value="Stage 3 Active">Stage 3 Active</option>
+</select>
+</div>
+<div class="wf-toolbar-group">
+<button class="wf-btn wf-btn-sm"id="activity-filter-btn">Filter</button>
+<button class="wf-btn wf-btn-sm wf-btn-secondary"id="btn-export-audit-csv"onclick="alert('Exported Audit Log CSV.')">Export Audit CSV</button>
+</div>
+</div>
+<!-- Active filter chips -->
+<div class="wf-toolbar-row"id="activity-chips-row"style="display: flex; align-items: center; gap: 6px;">
+<span style="font-size: 11px; color: var(--text-muted); font-weight: 500;">Filters:</span>
+<div id="activity-chips-container"style="display: inline-flex; gap: 6px; flex-wrap: wrap;"></div>
+<button class="wf-btn-ghost wf-btn-xs"id="btn-reset-filters"style="font-size: 11px; color: var(--text-muted);">Reset filters</button>
+</div>
+</div>
 
-        <div class="wf-card-body" style="padding: 0;">
-          <div class="wf-table-container" style="border: none; border-radius: 0;">
-            <table class="wf-table">
-              <thead>
-                <tr>
-                  <th>Time</th>
-                  <th>Candidate</th>
-                  <th>Tool</th>
-                  <th>Action</th>
-                  <th>Status</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="activity-table-tbody">
-                <!-- Dynamically populated -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="wf-card-footer">
-          <span style="font-size: 12px; color: var(--text-muted);" id="activity-pagination-info">Showing 4 of 148 events today</span>
-          <div style="display: flex; gap: 4px;">
-            <button class="wf-btn wf-btn-sm" id="btn-page-prev" disabled>←</button>
-            <button class="wf-btn wf-btn-sm" id="btn-page-next">→</button>
-          </div>
-        </div>
-      </section>
+<div class="wf-card-body"style="padding: 0;">
+<div class="wf-table-container"style="border: none; border-radius: 0;">
+<table class="wf-table">
+<thead>
+<tr>
+<th>Time</th>
+<th>Candidate</th>
+<th>Tool</th>
+<th>Action</th>
+<th>Status</th>
+<th></th>
+</tr>
+</thead>
+<tbody id="activity-table-tbody">
+<!-- Dynamically populated -->
+</tbody>
+</table>
+</div>
+</div>
+<div class="wf-card-footer">
+<span style="font-size: 12px; color: var(--text-muted);"id="activity-pagination-info">Showing 4 of 148 events today</span>
+<div style="display: flex; gap: 4px;">
+<button class="wf-btn wf-btn-sm"id="btn-page-prev"disabled>←</button>
+<button class="wf-btn wf-btn-sm"id="btn-page-next">→</button>
+</div>
+</div>
+</section>
 
-    </main>
-  </div>
+</main>
+</div>
 
-  <!-- MODAL: Import Candidates -->
-  <div class="wf-modal-dialog" id="modal-import-candidates">
-    <div class="wf-card-header">
-      <h3 class="wf-card-title">Import Candidates</h3>
-      <button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
-    </div>
-    <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-md);">
-      <div id="import-dropzone" style="border: 2px dashed var(--border-medium); padding: var(--space-lg); text-align: center; border-radius: var(--radius-md); cursor: pointer; background: var(--bg-muted);">
-        <strong style="font-size: 14px;">Drag & drop CSV or Excel file</strong>
-        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Supports candidate profiles, CGPA, and department records.</p>
-        <button class="wf-btn wf-btn-sm" style="margin-top: 8px;">Select File</button>
-      </div>
-      <div style="font-size: 11px; color: var(--text-muted);">Sample columns: Full Name, Email, Department, CGPA, Batch 2026</div>
-    </div>
-    <div class="wf-card-footer" style="justify-content: flex-end; gap: var(--space-sm);">
-      <button class="wf-btn wf-btn-sm modal-close-trigger">Cancel</button>
-      <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-confirm-import">Import Batch (+50 Candidates)</button>
-    </div>
-  </div>
+<!-- MODAL: Import Candidates -->
+<div class="wf-modal-dialog"id="modal-import-candidates">
+<div class="wf-card-header">
+<h3 class="wf-card-title">Import Candidates</h3>
+<button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
+</div>
+<div class="wf-card-body"style="display: flex; flex-direction: column; gap: var(--space-md);">
+<div id="import-dropzone"style="border: 2px dashed var(--border-medium); padding: var(--space-lg); text-align: center; border-radius: var(--radius-md); cursor: pointer; background: var(--bg-muted);">
+<strong style="font-size: 14px;">Drag & drop CSV or Excel file</strong>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Supports candidate profiles, CGPA, and department records.</p>
+<button class="wf-btn wf-btn-sm"style="margin-top: 8px;">Select File</button>
+</div>
+<div style="font-size: 11px; color: var(--text-muted);">Sample columns: Full Name, Email, Department, CGPA, Batch 2026</div>
+</div>
+<div class="wf-card-footer"style="justify-content: flex-end; gap: var(--space-sm);">
+<button class="wf-btn wf-btn-sm modal-close-trigger">Cancel</button>
+<button class="wf-btn wf-btn-sm wf-btn-primary"id="btn-confirm-import">Import Batch (+50 Candidates)</button>
+</div>
+</div>
 
-  <!-- MODAL: New Evaluation -->
-  <div class="wf-modal-dialog" id="modal-new-evaluation">
-    <div class="wf-card-header">
-      <h3 class="wf-card-title">Run AI Evaluation</h3>
-      <button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
-    </div>
-    <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-md);">
-      <div>
-        <label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Select Candidate</label>
-        <select class="wf-select" id="eval-candidate-select" style="width: 100%;">
-          <!-- Options populated dynamically -->
-        </select>
-      </div>
-      <div>
-        <label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Select Placement Drive</label>
-        <select class="wf-select" id="eval-drive-select" style="width: 100%;">
-          <!-- Options populated dynamically -->
-        </select>
-      </div>
-    </div>
-    <div class="wf-card-footer" style="justify-content: flex-end; gap: var(--space-sm);">
-      <button class="wf-btn wf-btn-sm modal-close-trigger">Cancel</button>
-      <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-confirm-eval">Run Evaluation</button>
-    </div>
-  </div>
+<!-- MODAL: New Evaluation -->
+<div class="wf-modal-dialog"id="modal-new-evaluation">
+<div class="wf-card-header">
+<h3 class="wf-card-title">Run AI Evaluation</h3>
+<button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
+</div>
+<div class="wf-card-body"style="display: flex; flex-direction: column; gap: var(--space-md);">
+<div>
+<label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Select Candidate</label>
+<select class="wf-select"id="eval-candidate-select"style="width: 100%;">
+<!-- Options populated dynamically -->
+</select>
+</div>
+<div>
+<label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Select Placement Drive</label>
+<select class="wf-select"id="eval-drive-select"style="width: 100%;">
+<!-- Options populated dynamically -->
+</select>
+</div>
+</div>
+<div class="wf-card-footer"style="justify-content: flex-end; gap: var(--space-sm);">
+<button class="wf-btn wf-btn-sm modal-close-trigger">Cancel</button>
+<button class="wf-btn wf-btn-sm wf-btn-primary"id="btn-confirm-eval">Run Evaluation</button>
+</div>
+</div>
 
-  <!-- MODAL: Schedule Drive -->
-  <div class="wf-modal-dialog" id="modal-schedule-drive">
-    <div class="wf-card-header">
-      <h3 class="wf-card-title">Schedule Placement Drive</h3>
-      <button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
-    </div>
-    <div class="wf-card-body" style="display: flex; flex-direction: column; gap: var(--space-md);">
-      <div>
-        <label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Company Name</label>
-        <input type="text" class="wf-input" id="drive-company-input" placeholder="e.g. QuantumScale AI">
-      </div>
-      <div>
-        <label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Job Title</label>
-        <input type="text" class="wf-input" id="drive-title-input" placeholder="e.g. Machine Learning Engineer Intern">
-      </div>
-      <div>
-        <label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Stipend / PPO Package</label>
-        <input type="text" class="wf-input" id="drive-stipend-input" placeholder="e.g. ₹35,000 / mo · PPO ₹14 LPA">
-      </div>
-    </div>
-    <div class="wf-card-footer" style="justify-content: flex-end; gap: var(--space-sm);">
-      <button class="wf-btn wf-btn-sm modal-close-trigger">Cancel</button>
-      <button class="wf-btn wf-btn-sm wf-btn-primary" id="btn-confirm-drive">Publish Drive</button>
-    </div>
-  </div>
+<!-- MODAL: Schedule Drive -->
+<div class="wf-modal-dialog"id="modal-schedule-drive">
+<div class="wf-card-header">
+<h3 class="wf-card-title">Schedule Placement Drive</h3>
+<button class="wf-btn wf-btn-sm wf-btn-ghost modal-close-trigger">✕</button>
+</div>
+<div class="wf-card-body"style="display: flex; flex-direction: column; gap: var(--space-md);">
+<div>
+<label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Company Name</label>
+<input type="text"class="wf-input"id="drive-company-input"placeholder="e.g. QuantumScale AI">
+</div>
+<div>
+<label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Job Title</label>
+<input type="text"class="wf-input"id="drive-title-input"placeholder="e.g. Machine Learning Engineer Intern">
+</div>
+<div>
+<label style="font-size: 11px; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px;">Stipend / PPO Package</label>
+<input type="text"class="wf-input"id="drive-stipend-input"placeholder="e.g. ₹35,000 / mo · PPO ₹14 LPA">
+</div>
+</div>
+<div class="wf-card-footer"style="justify-content: flex-end; gap: var(--space-sm);">
+<button class="wf-btn wf-btn-sm modal-close-trigger">Cancel</button>
+<button class="wf-btn wf-btn-sm wf-btn-primary"id="btn-confirm-drive">Publish Drive</button>
+</div>
+</div>
 
-  <footer class="wf-doc-footer">
-    PlacementHub AI Solutions — Legacy Standalone Analytics
-  </footer>
+<footer class="wf-doc-footer">
+ PlacementHub AI Solutions — Legacy Standalone Analytics
+</footer>
 
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/dashboard.js"></script>
+<script type="module"src="js/main.js"></script>
+<script type="module"src="js/dashboard.js"></script>
 </body>
 </html>

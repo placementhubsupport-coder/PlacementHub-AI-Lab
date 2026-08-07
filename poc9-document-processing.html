@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, initial-scale=1.0">
+<meta name="description"content="PlacementHub AI Solutions — AI Document Processing. Extract, validate, compare, and organize placement documents using AI-powered document intelligence.">
+<title>PlacementHub AI Solutions — AI Document Processing</title>
+<link rel="icon"href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'viewBox='0 0 100 100'><rect width='100'height='100'rx='20'fill='%23111827'/><text x='50'y='65'font-size='50'font-weight='bold'font-family='sans-serif'fill='%23ffffff'text-anchor='middle'>PH</text></svg>">
+<link rel="stylesheet"href="wireframe.css">
+</head>
+<body>
+
+<nav class="wf-nav">
+<div class="wf-nav-brand">
+<span class="wf-logo-badge">PH</span>
+<span class="wf-nav-title">PlacementHub AI Solutions</span>
+</div>
+<div class="wf-nav-search">
+<input type="text"class="wf-input"placeholder="Search document intelligence or verified schemas… (⌘K)">
+</div>
+<div class="wf-nav-actions">
+<span class="wf-status-indicator">
+<span class="wf-status-dot"></span>
+ Document Intelligence Engine · Standby
+</span>
+</div>
+</nav>
+
+<div class="app-shell">
+
+<aside class="wf-sidebar">
+<div class="wf-sidebar-section">
+<ul class="wf-sidebar-nav">
+<li><a href="index.html"class="wf-sidebar-link">Home</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Intelligence Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc1-student-job-matching.html"class="wf-sidebar-link">Candidate Matching</a></li>
+<li><a href="poc2-resume-analyzer.html"class="wf-sidebar-link">Resume Review</a></li>
+<li><a href="poc3-placement-search.html"class="wf-sidebar-link">Placement Search</a></li>
+<li><a href="poc6-student-participation.html"class="wf-sidebar-link">Student Participation</a></li>
+<li><a href="poc7-hiring-performance.html"class="wf-sidebar-link">Hiring Performance</a></li>
+<li><a href="poc8-placement-analytics.html"class="wf-sidebar-link">Placement Analytics</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">AI Operations Suite</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc4-placement-copilot.html"class="wf-sidebar-link">Placement Assistant</a></li>
+<li><a href="poc9-document-processing.html"class="wf-sidebar-link active">Document Processing</a></li>
+<li><a href="poc10-communication-assistant.html"class="wf-sidebar-link">Communication Assistant</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Document Queue</div>
+<div style="padding: 6px 8px; font-size: 12px; color: var(--text-secondary);">
+ 6 uploaded · 88% verified
+</div>
+</div>
+
+<details class="wf-sidebar-spec">
+<summary>Page Spec ↓</summary>
+<pre class="wf-spec-tree"><!-- poc9-document-processing -->
+AIDocumentProcessingWorkspace
+├── GlobalNav
+├── AppSidebar
+├── PageHeader
+├── StrategicDocumentInquiryWorkspace
+├── AIDocumentEmptyState [INITIAL]
+├── AIDocumentStepperTerminalCard [PROGRESSIVE WORKFLOW]
+└── AIDocumentResultsWorkspace [HIDDEN UNTIL ANALYSIS]
+ ├── ExecutiveDocumentAISummary
+ ├── DocumentQueueTable & BulkActions
+ ├── ExtractedEntitySchemas (Resume, Marksheet, Offer Letter)
+ ├── AIValidationCenterMatrix
+ ├── SplitScreenDocumentComparison
+ ├── NeuralDuplicateDetection
+ ├── MissingDocumentChecklist
+ ├── EnterpriseDocumentRecommendations
+ └── ExecutiveVerificationReportExporter [TXT/PDF]
+[DOCUMENTATION ONLY]</pre>
+</details>
+</aside>
+
+<main class="wf-main-content">
+
+<header class="wf-page-header">
+<div>
+<div class="wf-breadcrumb">PlacementHub AI Solutions › AI Document Processing</div>
+<h1 class="wf-page-title">AI Document Processing</h1>
+<p class="wf-page-desc">Extract, validate, compare, and organize placement documents using AI-powered document intelligence.</p>
+</div>
+<div class="wf-page-actions">
+<button class="wf-btn wf-btn-secondary"onclick="alert('Drag & drop or upload files to document workspace.')">Upload Documents</button>
+<button class="wf-btn wf-btn-primary"id="btn-run-doc-intelligence">Run Document Intelligence</button>
+<button class="wf-btn wf-btn-secondary"onclick="document.getElementById('btn-download-verification-report').click()">Export Verification Report</button>
+</div>
+</header>
+
+<!-- SECTION 1: Strategic AI Document Workspace & Dropzone -->
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-surface); border: 1px solid var(--border-medium); margin-bottom: var(--space-md);">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xs);">
+<div style="display: flex; align-items: center; gap: var(--space-sm);">
+<span style="font-size: 16px;"></span>
+<strong style="font-size: 13px; color: var(--text-primary);">Contextual Document Intelligence Workspace</strong>
+</div>
+<span style="font-size: 11px; color: var(--text-muted);">Supported: Resumes, Marksheets, Certificates, Offer Letters, Identity Proofs</span>
+</div>
+
+<div style="border: 2px dashed var(--border-medium); border-radius: var(--radius-md); padding: var(--space-lg); text-align: center; background: var(--bg-muted); margin-bottom: var(--space-sm);">
+<div style="font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">Drag & Drop Placement Document Here</div>
+<strong style="font-size: 13px; color: var(--text-primary); display: block;">or click to browse</strong>
+<span style="font-size: 11px; color: var(--text-muted);">PDF, DOCX, PNG, JPG supported · Automatic neural OCR parsing</span>
+</div>
+
+<div style="display: flex; gap: var(--space-sm);">
+<input type="text"id="doc-query-input"class="wf-input"placeholder="Search or process placement documents e.g. 'Verify Arjun Verma's marksheets and offer letter'..."style="flex: 1; font-size: 13px;">
+<button class="wf-btn wf-btn-primary"id="btn-submit-doc-query">Process Intelligence</button>
+</div>
+</section>
+
+<!-- Initial Empty Prompt Banner (Visible on Page Load) -->
+<section class="wf-card"id="doc-empty-state"style="padding: var(--space-2xl) var(--space-xl); text-align: center; background: var(--bg-surface); border: 1px dashed var(--border-medium); margin-bottom: var(--space-lg);">
+<div style="font-size: 36px; margin-bottom: var(--space-sm);"></div>
+<h3 style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 0 0 var(--space-xs) 0;">AI Document Intelligence Analyst Standby</h3>
+<p style="font-size: 13px; color: var(--text-secondary); max-width: 580px; margin: 0 auto var(--space-md) auto; line-height: 1.5;">
+ Click<strong>"Run Document Intelligence"</strong>to extract entities, validate academic marksheets, detect vector duplicate resumes, and verify offer letters against university placement ledgers.
+</p>
+<button class="wf-btn wf-btn-primary"id="btn-trigger-doc-empty-state">Run Document Intelligence</button>
+</section>
+
+<!-- Animated AI Stepper Terminal Card (Initially Hidden) -->
+<section class="wf-card"id="doc-stepper-card"style="display: none; padding: var(--space-md); background: var(--bg-dark-neutral); color: var(--text-inverse); border: 1px solid var(--border-dark-neutral); margin-bottom: var(--space-lg);">
+<div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-dark-hover); padding-bottom: var(--space-xs); margin-bottom: var(--space-sm);">
+<div style="display: flex; align-items: center; gap: 8px;">
+<span class="wf-status-dot"style="background: #22c55e;"></span>
+<span style="font-size: 13px; font-weight: 600; font-family: var(--font-mono);"id="doc-stepper-status-title">Initializing Document Intelligence Engine v3.4...</span>
+</div>
+<span style="font-size: 11px; color: var(--text-inverse-muted); font-family: var(--font-mono);"id="doc-stepper-timer">0.0s</span>
+</div>
+<div id="doc-stepper-steps-list"style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-family: var(--font-mono);">
+<!-- Dynamic progressive steps inserted here -->
+</div>
+</section>
+
+<!-- Main Results Workspace (Initially Hidden, Revealed Post-Analysis) -->
+<div id="doc-results-workspace"style="display: none; opacity: 0; transition: opacity 0.4s ease;">
+
+<!-- SECTION 8: Executive AI Summary Hero Card -->
+<section class="wf-card"id="section-doc-exec-summary"style="padding: var(--space-lg); margin-bottom: var(--space-lg);">
+<!-- JS Populated Executive Summary -->
+</section>
+
+<!-- SECTION 1 & 10: Document Queue Table & Bulk Actions -->
+<section class="wf-card"style="padding: 0; margin-bottom: var(--space-lg);">
+<div class="wf-card-header"style="padding: var(--space-md); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Uploaded Document Processing Queue</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Real-time layout detection, OCR extraction status, and verification badges</p>
+</div>
+<span class="wf-badge wf-badge-dark">Document Neural Engine</span>
+</div>
+
+<!-- Table Filter & Search Toolbar -->
+<div class="wf-toolbar"style="border: none; border-bottom: 1px solid var(--border-subtle); border-radius: 0; padding: var(--space-sm) var(--space-md);">
+<div class="wf-toolbar-row">
+<div class="wf-toolbar-group">
+<input type="text"class="wf-input"id="doc-search-input"placeholder="Search file name or candidate..."style="width: 240px;">
+<select class="wf-select"id="doc-type-filter">
+<option value="ALL">All Document Types</option>
+<option value="Resume">Resume</option>
+<option value="Marksheet">Marksheet</option>
+<option value="Certificate">Certificate</option>
+<option value="Offer Letter">Offer Letter</option>
+<option value="Job Description">Job Description</option>
+</select>
+<select class="wf-select"id="doc-status-filter">
+<option value="ALL">All Statuses</option>
+<option value="Verified">Verified</option>
+<option value="Duplicate">Duplicate</option>
+<option value="Flagged">Flagged</option>
+</select>
+</div>
+</div>
+</div>
+
+<!-- Contextual Bulk Toolbar -->
+<div class="wf-bulk-toolbar"id="doc-bulk-toolbar"style="display: none; padding: 8px 14px; background: var(--bg-muted); border-bottom: 1px solid var(--border-subtle); align-items: center; gap: 8px;">
+<span style="font-size: 12px; font-weight: 600;"id="doc-bulk-count">0 documents selected</span>
+<button class="wf-btn wf-btn-xs wf-btn-primary"onclick="alert('Bulk Verified selected documents.')">Bulk Verify</button>
+<button class="wf-btn wf-btn-xs wf-btn-secondary"onclick="alert('Bulk Flagged selected documents.')">Bulk Reject</button>
+<button class="wf-btn wf-btn-xs wf-btn-secondary"onclick="alert('Exported Selected Documents Zip.')">Bulk Export</button>
+</div>
+
+<div class="wf-table-container">
+<table class="wf-table">
+<thead>
+<tr>
+<th style="width: 36px;"><input type="checkbox"id="select-all-docs"></th>
+<th>Document Name</th>
+<th>Type</th>
+<th>Candidate / Owner</th>
+<th>Status</th>
+<th>Confidence</th>
+<th style="text-align: right;">Action</th>
+</tr>
+</thead>
+<tbody id="doc-queue-tbody">
+<!-- JS Populated -->
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- SECTION 3: AI Extraction Results Cards -->
+<section class="wf-card"style="padding: var(--space-lg); margin-bottom: var(--space-lg);">
+<div class="wf-card-header"style="border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Extracted Entity Schemas</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Structured JSON entities parsed from unstructured resumes, marksheets, and offer letters</p>
+</div>
+<span class="wf-badge wf-badge-dark">Schema Parser v3.4</span>
+</div>
+
+<div id="section-extraction-results">
+<!-- JS Populated Extraction Cards -->
+</div>
+</section>
+
+<!-- SECTION 4: AI Validation Center Matrix -->
+<section class="wf-card"style="padding: 0; margin-bottom: var(--space-lg);">
+<div class="wf-card-header"style="padding: var(--space-md); border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">AI Validation & Compliance Center Matrix</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Cross-referencing extracted document attributes with PlacementHub database & university ledger</p>
+</div>
+<span class="wf-badge wf-badge-outline">Compliance Audit Active</span>
+</div>
+
+<div class="wf-table-container">
+<table class="wf-table">
+<thead>
+<tr>
+<th>Compliance Check Item</th>
+<th>Extracted Attribute</th>
+<th>Official Ledger Record</th>
+<th style="text-align: right;">Verification Status</th>
+</tr>
+</thead>
+<tbody id="validation-matrix-tbody">
+<!-- JS Populated -->
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- SECTION 5: Split-Screen Document Comparison -->
+<section class="wf-card"style="padding: var(--space-lg); margin-bottom: var(--space-lg);">
+<div class="wf-card-header"style="border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Split-Screen Document Intelligence Comparison</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Comparing extracted resume competencies vs job requirements and offer terms vs approved drive CTC</p>
+</div>
+<span class="wf-badge wf-badge-dark">Split Comparison Mode</span>
+</div>
+
+<div id="section-doc-comparison">
+<!-- JS Populated Split Comparison -->
+</div>
+</section>
+
+<!-- SECTION 6: Duplicate Detection & SECTION 7: Missing Documents Checklist -->
+<div class="wf-split-pane"style="grid-template-columns: 1fr 1fr; margin-bottom: var(--space-lg);">
+
+<div>
+<div style="margin-bottom: var(--space-sm);">
+<h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0;">Neural Duplicate Detection</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Vector similarity detection across document uploads</p>
+</div>
+<div id="section-duplicate-detection">
+<!-- JS Populated -->
+</div>
+</div>
+
+<div>
+<div style="margin-bottom: var(--space-sm);">
+<h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 0;">Missing Document Checklist</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Candidate onboarding compliance status</p>
+</div>
+<div id="section-missing-checklist">
+<!-- JS Populated -->
+</div>
+</div>
+
+</div>
+
+<!-- Split Pane 70/30: AI Recommendations Left, Verification Report Exporter Right -->
+<div class="wf-split-pane-70-30">
+
+<!-- SECTION 9: Enterprise Recommendations -->
+<section class="wf-card"style="padding: var(--space-lg);">
+<div class="wf-card-header"style="border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm); margin-bottom: var(--space-md); display: flex; align-items: center; justify-content: space-between;">
+<div>
+<h3 class="wf-card-title"style="font-size: 15px; font-weight: 700;">Document Intelligence Action Recommendations</h3>
+<p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Automated resolutions for missing documents and duplicate index conflicts</p>
+</div>
+<span class="wf-badge wf-badge-dark">Action Engine Active</span>
+</div>
+
+<div id="doc-recommendations-list">
+<!-- JS Populated Recommendations -->
+</div>
+</section>
+
+<!-- SECTION 11: Executive Report Exporter -->
+<aside>
+<section class="wf-card"style="padding: var(--space-md); background: var(--bg-muted); border: 1px solid var(--border-medium);">
+<div style="display: flex; align-items: center; gap: 6px; margin-bottom: var(--space-xs);">
+<span style="font-size: 16px;"></span>
+<h4 style="font-size: 14px; font-weight: 700; color: var(--text-primary); margin: 0;">Verification Report Exporter</h4>
+</div>
+<p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4; margin-bottom: var(--space-md);">
+ Generates an official, audited Executive Verification Report containing Document Extractions, Validation Matrix, and Audit Logs.
+</p>
+<button class="wf-btn wf-btn-sm wf-btn-primary"style="width: 100%; font-weight: 600;"id="btn-download-verification-report">
+ Download Verification Report (.txt)
+</button>
+</section>
+</aside>
+
+</div>
+
+</div>
+
+</main>
+</div>
+
+<script type="module"src="js/main.js"></script>
+<script type="module"src="js/document-processing.js"></script>
+</body>
+</html>
