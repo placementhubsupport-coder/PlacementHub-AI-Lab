@@ -9,18 +9,27 @@ import { showToast, asyncSimulateApiCall } from'./components.js';
 let isAnalyzing = false;
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('[POC 6] Student Participation Analytics initialized');
- renderKpis();
- renderParticipationFunnel();
- renderPredictiveCohortTable();
- initActionHandlers();
+  init();
 });
+
+function init() {
+  console.log('[POC6] init()');
+  renderKpis();
+  renderParticipationFunnel();
+  renderLedger();
+  initFilters();
+  initActionHandlers();
+  console.log('[POC 6] Student Participation Analytics initialized');
+}
 
 // ============================================================================
 // LAYER 1: DETERMINISTIC ANALYTICS DASHBOARD RENDER
 // ============================================================================
 function renderKpis() {
  const data = mockStudentParticipationData.kpis;
+ if (!data) {
+   throw new Error('mockStudentParticipationData.kpis is undefined');
+ }
  document.getElementById('kpi-total-registered').textContent = data.totalRegistered;
  document.getElementById('kpi-assessment-rate').textContent = data.assessmentAttendanceRate;
  document.getElementById('kpi-interview-rate').textContent = data.interviewConversionRate;
@@ -30,20 +39,25 @@ function renderKpis() {
 
 function renderParticipationFunnel() {
  const container = document.getElementById('participation-funnel-container');
- if (!container) return;
+ if (!container) {
+   throw new Error('Missing required element #participation-funnel-container');
+ }
 
  const funnel = mockStudentParticipationData.funnel;
+ if (!funnel) {
+   throw new Error('mockStudentParticipationData.funnel is undefined');
+ }
 
  let html = '<div style="display: flex; flex-direction: column; gap: 8px;">';
- funnel.forEach(stage =>{
+ funnel.forEach(stage => {
  html += `
 <div>
 <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px;">
 <span><strong style="color: var(--text-primary);">${stage.stage}</strong>(${stage.count} students)</span>
-<span style="color: var(--text-muted); font-family: var(--font-mono);">${stage.conversion} Conversion</span>
+<span style="color: var(--text-muted); font-family: var(--font-mono);">${stage.percentage} · Drop ${stage.drop}</span>
 </div>
 <div style="width: 100%; height: 10px; background: var(--bg-muted); border-radius: 4px; overflow: hidden;">
-<div style="height: 100%; width: ${stage.conversion}; background: var(--bg-dark-neutral);"></div>
+<div style="height: 100%; width: ${stage.percentage}; background: var(--bg-dark-neutral);"></div>
 </div>
 </div>
  `;
@@ -53,37 +67,93 @@ function renderParticipationFunnel() {
  container.innerHTML = html;
 }
 
-function renderPredictiveCohortTable() {
- const tbody = document.getElementById('predictive-cohort-tbody');
- if (!tbody) return;
+function renderLedger() {
+ renderPredictiveCohortTable(mockStudentParticipationData.predictiveCohort);
+}
 
- const cohort = mockStudentParticipationData.predictiveCohort;
+function renderPredictiveCohortTable(cohortData) {
+ const tbody = document.getElementById('predictive-cohort-tbody');
+ if (!tbody) {
+   throw new Error('Missing required element #predictive-cohort-tbody');
+ }
+
+ const cohort = cohortData || mockStudentParticipationData.predictiveCohort;
+ if (!cohort) {
+   throw new Error('mockStudentParticipationData.predictiveCohort is undefined');
+ }
 
  let html = '';
- cohort.forEach(c =>{
- const badgeClass = c.riskScore >75 ? 'wf-badge-outline' : 'wf-badge-dark';
+ cohort.forEach(c => {
+ const riskNumeric = parseInt(String(c.riskScore), 10);
+ const badgeClass = riskNumeric > 75 ? 'wf-badge-outline' : 'wf-badge-dark';
  html += `
 <tr>
-<td><strong style="font-size: 13px; color: var(--text-primary);">${c.name}</strong></td>
+<td>
+<strong style="font-size: 13px; color: var(--text-primary); display: block;">${c.name}</strong>
+<span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">${c.rollNo || ''}</span>
+</td>
 <td><span class="wf-badge wf-badge-dark">${c.department}</span></td>
 <td><span style="font-size: 12px; font-family: var(--font-mono);">${c.cgpa}</span></td>
-<td><span class="wf-badge ${badgeClass}">${c.riskScore}% Risk</span></td>
-<td><span style="font-size: 12px; color: var(--text-secondary);">${c.predictedDropOffStage}</span></td>
+<td><span class="wf-badge ${badgeClass}">${c.riskScore}</span></td>
+<td><span style="font-size: 12px; color: var(--text-secondary);">${c.predictedStage}</span></td>
 <td><span style="font-size: 11px; color: var(--text-muted);">${c.rootCause}</span></td>
 <td style="text-align: right;">
-<button class="wf-btn wf-btn-xs wf-btn-secondary"onclick="alert('Sent attendance nudge to ${c.name}')">Send Nudge →</button>
+<button class="wf-btn wf-btn-xs wf-btn-secondary" data-action="dispatch-intervention" data-student="${c.name}">Send Nudge →</button>
 </td>
 </tr>
  `;
  });
 
  tbody.innerHTML = html;
+
+ tbody.querySelectorAll('[data-action="dispatch-intervention"]').forEach(btn => {
+   btn.addEventListener('click', () => {
+     const name = btn.getAttribute('data-student');
+     showToast(`Intervention alert & remedial invitation dispatched to ${name}.`, 'success');
+   });
+ });
+}
+
+function initFilters() {
+  const searchInput = document.getElementById('participation-search-input');
+  const deptFilter = document.getElementById('participation-dept-filter');
+  const riskFilter = document.getElementById('participation-risk-filter');
+
+  if (!searchInput) {
+    throw new Error('Missing required element #participation-search-input');
+  }
+  if (!deptFilter) {
+    throw new Error('Missing required element #participation-dept-filter');
+  }
+  if (!riskFilter) {
+    throw new Error('Missing required element #participation-risk-filter');
+  }
+
+  const applyFilters = () => {
+    const query = searchInput.value.trim().toLowerCase();
+    const dept = deptFilter.value;
+    const risk = riskFilter.value;
+    const filtered = mockStudentParticipationData.predictiveCohort.filter(c => {
+      const matchesQuery = !query
+        || c.name.toLowerCase().includes(query)
+        || String(c.rollNo || '').toLowerCase().includes(query);
+      const matchesDept = dept === 'ALL' || c.department === dept;
+      const matchesRisk = risk === 'ALL' || String(c.riskScore).includes(risk.replace(' Risk', '')) || String(c.riskScore).includes(risk);
+      return matchesQuery && matchesDept && matchesRisk;
+    });
+    renderPredictiveCohortTable(filtered);
+  };
+
+  searchInput.addEventListener('input', applyFilters);
+  deptFilter.addEventListener('change', applyFilters);
+  riskFilter.addEventListener('change', applyFilters);
 }
 
 // ============================================================================
 // LAYER 2: AI REPORT ASSISTANT WORKFLOW SIMULATION
 // ============================================================================
 async function runAiReportAssistant(reportType = 'Executive Summary') {
+  console.log('[POC6] Generate AI Report clicked');
   console.log(`[POC 6] Generate Report button clicked: ${reportType}`);
  if (isAnalyzing) return;
  isAnalyzing = true;
@@ -94,8 +164,15 @@ async function runAiReportAssistant(reportType = 'Executive Summary') {
  const stepperTimer = document.getElementById('stepper-timer');
  const stepperTitle = document.getElementById('stepper-status-title');
 
- if (stepperCard) stepperCard.style.display = 'block';
- if (outputPanel) outputPanel.style.display = 'none';
+ if (!stepperCard) {
+   throw new Error('Missing required element #ai-stepper-card');
+ }
+ if (!outputPanel) {
+   throw new Error('Missing required element #ai-report-output-panel');
+ }
+
+ stepperCard.style.display = 'block';
+ outputPanel.style.display = 'none';
 
  if (stepperTitle) stepperTitle.textContent = `Generating ${reportType}...`;
  if (stepperList) stepperList.innerHTML = '';
@@ -125,9 +202,8 @@ async function runAiReportAssistant(reportType = 'Executive Summary') {
  }
 
  clearInterval(timerInterval);
- if (stepperCard) stepperCard.style.display = 'none';
+ stepperCard.style.display = 'none';
 
- if (outputPanel) {
  outputPanel.style.display = 'block';
  outputPanel.innerHTML = `
 <div style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 6px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
@@ -155,7 +231,6 @@ async function runAiReportAssistant(reportType = 'Executive Summary') {
 <button class="wf-btn wf-btn-xs wf-btn-primary"onclick="document.getElementById('btn-generate-exec-brief').click()">Download Brief</button>
 </div>
  `;
- }
 
  isAnalyzing = false;
  showToast(`AI Report Assistant generated ${reportType}.`, 'success');
@@ -451,9 +526,35 @@ function renderRecommendations() {
 // EVENT HANDLERS
 // ============================================================================
 function initActionHandlers() {
- document.getElementById('btn-run-ai-diagnostic')?.addEventListener('click', () =>{
- runSteppedDiagnosticWorkflow();
-  document.getElementById('btn-export-participation-csv')?.addEventListener('click', () => {
+  console.log('[POC6] initActionHandlers()');
+
+  const btnExportCsv = document.getElementById('btn-export-participation-csv');
+  const btnRunSummary = document.getElementById('btn-run-ai-summary');
+  const btnGenExecSummary = document.getElementById('btn-gen-exec-summary');
+  const btnExplainTrends = document.getElementById('btn-explain-trends');
+  const btnRecommendActions = document.getElementById('btn-recommend-actions');
+  const btnGenerateBrief = document.getElementById('btn-generate-exec-brief');
+
+  if (!btnRunSummary) {
+    throw new Error('Missing required element #btn-run-ai-summary');
+  }
+  if (!btnGenExecSummary) {
+    throw new Error('Missing required element #btn-gen-exec-summary');
+  }
+  if (!btnExplainTrends) {
+    throw new Error('Missing required element #btn-explain-trends');
+  }
+  if (!btnRecommendActions) {
+    throw new Error('Missing required element #btn-recommend-actions');
+  }
+  if (!btnGenerateBrief) {
+    throw new Error('Missing required element #btn-generate-exec-brief');
+  }
+  if (!btnExportCsv) {
+    throw new Error('Missing required element #btn-export-participation-csv');
+  }
+
+  btnExportCsv.addEventListener('click', () => {
     const csvContent = [
       "Department,Total Registered,OA Attendance %,Interview Conversion %,Offer Acceptance %,PPOs",
       "CSE,160,98.2%,74.5%,92.1%,18",
@@ -471,37 +572,54 @@ function initActionHandlers() {
     showToast('Exported Student Participation Analytics to CSV.', 'success');
   });
 
-  document.getElementById('btn-run-ai-summary')?.addEventListener('click', () => {
+  btnRunSummary.addEventListener('click', () => {
     runAiReportAssistant('Executive Summary');
   });
 
-  document.getElementById('btn-gen-exec-summary')?.addEventListener('click', () => {
+  btnGenExecSummary.addEventListener('click', () => {
     runAiReportAssistant('Executive Summary');
   });
 
-  document.getElementById('btn-explain-trends')?.addEventListener('click', () => {
+  // Alias ID used in docs/tests (maps to executive summary control when present)
+  const btnGenParticipationSummary = document.getElementById('btn-gen-participation-summary');
+  if (btnGenParticipationSummary) {
+    btnGenParticipationSummary.addEventListener('click', () => {
+      runAiReportAssistant('Executive Summary');
+    });
+  }
+
+  btnExplainTrends.addEventListener('click', () => {
     runAiReportAssistant('Participation Trend Breakdown');
   });
 
-  document.getElementById('btn-recommend-actions')?.addEventListener('click', () => {
+  btnRecommendActions.addEventListener('click', () => {
     runAiReportAssistant('Committee Action Recommendations');
   });
 
-  document.getElementById('btn-run-ai-audit')?.addEventListener('click', () => {
-    runAiSteppedAnalysis();
-  });
+  const btnRunAudit = document.getElementById('btn-run-ai-audit');
+  if (btnRunAudit) {
+    btnRunAudit.addEventListener('click', () => {
+      runAiSteppedAnalysis();
+    });
+  }
 
-  document.getElementById('btn-trigger-empty-state')?.addEventListener('click', () => {
-    runAiSteppedAnalysis();
-  });
+  const btnTriggerEmpty = document.getElementById('btn-trigger-empty-state');
+  if (btnTriggerEmpty) {
+    btnTriggerEmpty.addEventListener('click', () => {
+      runAiSteppedAnalysis();
+    });
+  }
 
-  document.getElementById('btn-submit-query')?.addEventListener('click', () => {
-    const input = document.getElementById('ai-query-input');
-    const text = input?.value.trim();
-    runAiSteppedAnalysis(text);
-  });
+  const btnSubmitQuery = document.getElementById('btn-submit-query');
+  if (btnSubmitQuery) {
+    btnSubmitQuery.addEventListener('click', () => {
+      const input = document.getElementById('ai-query-input');
+      const text = input ? input.value.trim() : '';
+      runAiSteppedAnalysis(text);
+    });
+  }
 
-  document.getElementById('btn-generate-exec-brief')?.addEventListener('click', () => {
+  btnGenerateBrief.addEventListener('click', () => {
     const briefText = `
 PLACEMENTHUB EXECUTIVE COMMITTEE BRIEF — STUDENT PARTICIPATION ANALYTICS
 ==================================================================================
@@ -546,4 +664,6 @@ Signed: Student Participation Analytics Assistant (PlacementHub Enterprise v3.4)
 
     showToast('Executive Committee Brief downloaded successfully.', 'success');
   });
+
+  console.log('[POC6] initActionHandlers() completed successfully');
 }
