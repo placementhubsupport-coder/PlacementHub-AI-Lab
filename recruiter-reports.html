@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PlacementHub AI Solutions — Recruiter Reports. Traditional institutional reports for TPOs, committees, and administrators.">
+<title>PlacementHub AI Solutions — 12. Recruiter Reports</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234F46E5'/><text x='50' y='65' font-size='50' font-weight='bold' font-family='sans-serif' fill='%23ffffff' text-anchor='middle'>PH</text></svg>">
+<link rel="stylesheet" href="wireframe.css">
+</head>
+<body data-report-page="recruiter">
+
+<nav class="wf-nav">
+<div class="wf-nav-brand">
+<span class="wf-logo-badge">PH</span>
+<span class="wf-nav-title">PlacementHub AI Solutions</span>
+</div>
+<div class="wf-nav-search">
+<input type="text" class="wf-input" placeholder="Search recruiter reports… (⌘K)">
+</div>
+<div class="wf-nav-actions">
+<span class="wf-status-indicator">
+<span class="wf-status-dot"></span>
+ Reports · Recruiter Ready
+</span>
+</div>
+</nav>
+
+<div class="app-shell">
+
+<aside class="wf-sidebar">
+<div class="wf-sidebar-section">
+<ul class="wf-sidebar-nav">
+<li><a href="index.html" class="wf-sidebar-link">Home</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Tools</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc1-student-job-matching.html" class="wf-sidebar-link">1. Candidate Matching</a></li>
+<li><a href="poc2-resume-analyzer.html" class="wf-sidebar-link">2. Resume Review</a></li>
+<li><a href="poc3-placement-search.html" class="wf-sidebar-link">3. Job Search</a></li>
+<li><a href="poc6-student-participation.html" class="wf-sidebar-link">4. Student Participation</a></li>
+<li><a href="poc7-hiring-performance.html" class="wf-sidebar-link">5. Hiring Performance</a></li>
+<li><a href="poc8-placement-analytics.html" class="wf-sidebar-link">6. Placement Analytics</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Assistants</div>
+<ul class="wf-sidebar-nav">
+<li><a href="poc4-placement-copilot.html" class="wf-sidebar-link">7. Placement Assistant</a></li>
+<li><a href="poc9-document-processing.html" class="wf-sidebar-link">8. Document Processing</a></li>
+<li><a href="poc10-communication-assistant.html" class="wf-sidebar-link">9. Communication Assistant</a></li>
+</ul>
+</div>
+
+<div class="wf-sidebar-section">
+<div class="wf-sidebar-label">Reports</div>
+<ul class="wf-sidebar-nav">
+<li><a href="placement-reports.html" class="wf-sidebar-link">10. Placement Reports</a></li>
+<li><a href="student-reports.html" class="wf-sidebar-link">11. Student Reports</a></li>
+<li><a href="recruiter-reports.html" class="wf-sidebar-link active">12. Recruiter Reports</a></li>
+<li><a href="hiring-reports.html" class="wf-sidebar-link">13. Hiring Reports</a></li>
+<li><a href="export-center.html" class="wf-sidebar-link">14. Export Center</a></li>
+</ul>
+</div>
+</aside>
+
+<main class="wf-main-content">
+
+<header class="wf-page-header">
+<div>
+<div class="wf-breadcrumb">PlacementHub AI Solutions › Reports › Recruiter Reports</div>
+<h1 class="wf-page-title">12. Recruiter Reports</h1>
+<p class="wf-page-desc">Visit logs, engagement indexes, offer status, and feedback summaries for partnership desk reviews.</p>
+</div>
+<span class="wf-badge wf-badge-dark">Generated from Demo Dataset</span>
+</header>
+
+
+<div class="wf-kpi-grid" style="margin-bottom: var(--space-lg);">
+<div class="wf-kpi-card"><div class="wf-kpi-label">Active Partners</div><div class="wf-kpi-value">42</div><div class="wf-kpi-subtext">Campus drives this year</div></div>
+<div class="wf-kpi-card"><div class="wf-kpi-label">Visits Logged</div><div class="wf-kpi-value">68</div><div class="wf-kpi-subtext">On-campus + virtual</div></div>
+<div class="wf-kpi-card"><div class="wf-kpi-label">Offers Live</div><div class="wf-kpi-value">15</div><div class="wf-kpi-subtext">Pending acceptance</div></div>
+<div class="wf-kpi-card"><div class="wf-kpi-label">Engagement</div><div class="wf-kpi-value">8.6</div><div class="wf-kpi-subtext">Avg partner index</div></div>
+</div>
+
+<section class="wf-card" style="margin-bottom: var(--space-lg);">
+<div class="wf-card-body" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+<input type="search" id="report-search-input" class="wf-input" placeholder="Search company, role, or location…" style="flex:1;min-width:200px;">
+
+
+</div>
+</section>
+
+<div class="wf-split-pane" style="margin-bottom: var(--space-lg);">
+<div class="wf-card">
+<div class="wf-card-header"><h3 class="wf-card-title">Partner Engagement Index</h3><span class="wf-badge wf-badge-outline">Chart</span></div>
+<div class="wf-card-body"><div id="report-demo-chart" class="wf-chart-container" style="min-height: 220px;"></div></div>
+</div>
+<section class="wf-card" style="margin-bottom: var(--space-lg);">
+<div class="wf-card-header">
+<h3 class="wf-card-title">Report Pack</h3>
+<span class="wf-badge wf-badge-outline">Preview Available</span>
+</div>
+<div class="wf-card-body" style="display:flex;flex-direction:column;gap:10px;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+<span>Recruiter Visit Log (Excel)</span>
+<span>
+<button class="wf-btn wf-btn-xs wf-btn-secondary" type="button" data-report-preview="recruiter-visits">Preview</button>
+<button class="wf-btn wf-btn-xs wf-btn-primary" type="button" data-report-download="recruiter-visits">Download</button>
+</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+<span>Active Recruiters (PDF)</span>
+<span>
+<button class="wf-btn wf-btn-xs wf-btn-secondary" type="button" data-report-preview="recruiter-active">Preview</button>
+<button class="wf-btn wf-btn-xs wf-btn-primary" type="button" data-report-download="recruiter-active">Download</button>
+</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+<span>Company Engagement (Excel)</span>
+<span>
+<button class="wf-btn wf-btn-xs wf-btn-secondary" type="button" data-report-preview="recruiter-engagement">Preview</button>
+<button class="wf-btn wf-btn-xs wf-btn-primary" type="button" data-report-download="recruiter-engagement">Download</button>
+</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+<span>Offer Status (PDF)</span>
+<span>
+<button class="wf-btn wf-btn-xs wf-btn-secondary" type="button" data-report-preview="recruiter-offers">Preview</button>
+<button class="wf-btn wf-btn-xs wf-btn-primary" type="button" data-report-download="recruiter-offers">Download</button>
+</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+<span>Recruiter Feedback (PDF)</span>
+<span>
+<button class="wf-btn wf-btn-xs wf-btn-secondary" type="button" data-report-preview="recruiter-feedback">Preview</button>
+<button class="wf-btn wf-btn-xs wf-btn-primary" type="button" data-report-download="recruiter-feedback">Download</button>
+</span>
+</div>
+</div>
+</section>
+</div>
+
+<section class="wf-card">
+<div class="wf-card-header">
+<div>
+<span style="font-size:12px;color:var(--text-muted);font-weight:600;">Live Table</span>
+<h3 class="wf-card-title" style="margin-top:4px;">Active Drive Partners</h3>
+</div>
+<span class="wf-badge wf-badge-outline">Demo Dataset</span>
+</div>
+<div class="wf-table-container">
+<table class="wf-table">
+<thead>
+<tr><th>Company</th><th>Role / Drive</th><th>Location</th><th>Deadline</th><th>Batch</th><th>Fit</th></tr>
+</thead>
+<tbody id="report-main-tbody"></tbody>
+</table>
+</div>
+</section>
+
+
+</main>
+</div>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/traditional-reports.js"></script>
+</body>
+</html>
