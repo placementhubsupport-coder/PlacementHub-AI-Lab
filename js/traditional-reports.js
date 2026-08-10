@@ -153,13 +153,14 @@ document.addEventListener('DOMContentLoaded', () => {
   bindFilters(page);
 });
 
-/** Build visible static demo bars (px heights — % heights collapse in wireframe chart groups). */
+/** Visual-only demo chart renderer for Reports pages (markup/styling; no report logic). */
 function renderDemoChart(page) {
   const mount = document.getElementById('report-demo-chart');
   if (!mount) return;
 
   let items = [];
   let caption = 'Demo chart';
+  let unit = 'percent';
 
   if (page === 'placement' || page === 'hiring') {
     caption = page === 'placement' ? 'Placement rate by department' : 'Hiring conversion by department';
@@ -178,7 +179,7 @@ function renderDemoChart(page) {
     items = Object.keys(buckets).map((dept) => {
       const vals = buckets[dept];
       const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
-      return { label: dept, value: avg, tip: `${avg.toFixed(0)} / 100` };
+      return { label: dept, value: avg, tip: `${avg.toFixed(0)}` };
     });
     if (!items.length) {
       items = (mockStudentParticipationData.funnel || []).slice(0, 5).map((f) => ({
@@ -196,6 +197,7 @@ function renderDemoChart(page) {
     }));
   } else if (page === 'export') {
     caption = 'Export packages by format';
+    unit = 'count';
     const counts = { PDF: 0, Excel: 0, CSV: 0 };
     Object.values(REPORT_CATALOG).forEach((meta) => {
       if (counts[meta.type] != null) counts[meta.type] += 1;
@@ -203,7 +205,7 @@ function renderDemoChart(page) {
     items = Object.entries(counts).map(([label, value]) => ({
       label,
       value,
-      tip: `${value} packs`
+      tip: String(value)
     }));
   }
 
@@ -212,21 +214,50 @@ function renderDemoChart(page) {
     return;
   }
 
-  const max = Math.max(...items.map((i) => i.value), 1);
-  const bars = items
+  const rawMax = Math.max(...items.map((i) => i.value), 1);
+  const scaleMax = unit === 'percent' ? 100 : Math.max(5, Math.ceil(rawMax / 5) * 5);
+  const yTicks = [scaleMax, scaleMax * 0.8, scaleMax * 0.6, scaleMax * 0.4, scaleMax * 0.2, 0].map((n) =>
+    unit === 'percent' ? String(Math.round(n)) : String(Math.round(n))
+  );
+
+  const ranked = [...items].sort((a, b) => b.value - a.value);
+  const tierFor = (item) => {
+    const rank = ranked.findIndex((r) => r.label === item.label && r.value === item.value);
+    if (rank <= 0) return 1;
+    if (rank === 1) return 2;
+    if (rank >= ranked.length - 1 || rank >= 3) return 4;
+    return 3;
+  };
+
+  const cols = items
     .map((item, idx) => {
-      const px = Math.max(28, Math.round((item.value / max) * 120));
-      const secondary = idx >= Math.ceil(items.length / 2) ? ' secondary' : '';
-      return `<div class="wf-chart-bar-group">
-<div class="wf-chart-bar${secondary}" style="height:${px}px;" title="${item.tip || item.value}"></div>
-<span class="wf-chart-label">${item.label}</span>
-<span class="wf-chart-label" style="color:var(--text-secondary);">${item.tip || item.value}</span>
+      const pct = Math.max(2, Math.min(100, (item.value / scaleMax) * 100));
+      const tier = tierFor(item);
+      const valueLabel =
+        unit === 'percent'
+          ? (Number.isInteger(item.value) ? `${item.value}%` : `${item.value.toFixed(1)}%`)
+          : item.tip;
+      return `<div class="wf-report-chart-col">
+<span class="wf-report-chart-value">${valueLabel}</span>
+<div class="wf-report-chart-bar-track">
+<div class="wf-report-chart-bar wf-report-chart-bar--tier${tier}" style="--bar-h:${pct.toFixed(2)}%; animation-delay:${idx * 70}ms;" title="${item.tip || item.value}"></div>
+</div>
+<span class="wf-report-chart-cat">${item.label}</span>
 </div>`;
     })
     .join('');
 
-  mount.innerHTML = `<div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">${caption}</div>
-<div class="wf-chart-bars">${bars}</div>`;
+  mount.style.minHeight = '300px';
+  mount.innerHTML = `<div class="wf-report-chart" role="img" aria-label="${caption}">
+<div class="wf-report-chart-title">${caption}</div>
+<div class="wf-report-chart-plot">
+<div class="wf-report-chart-yaxis">${yTicks.map((t) => `<span>${t}</span>`).join('')}</div>
+<div class="wf-report-chart-canvas">
+<div class="wf-report-chart-grid" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+<div class="wf-report-chart-bars">${cols}</div>
+</div>
+</div>
+</div>`;
 }
 
 function deriveRollNo(candidate, index) {
