@@ -153,6 +153,42 @@ document.addEventListener('DOMContentLoaded', () => {
   bindFilters(page);
 });
 
+/** Escape text for safe chart label HTML (layout helper only). */
+function escapeChartText(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/** Prefer two-line wrap; abbreviate long tokens so labels stay inside the category band. */
+function formatChartCategory(raw) {
+  const full = String(raw || '').trim();
+  if (!full) return { html: '', title: '' };
+
+  const shorten = (token, max) => {
+    if (token.length <= max) return token;
+    return `${token.slice(0, Math.max(3, max - 1))}…`;
+  };
+
+  const words = full.split(/\s+/).filter(Boolean);
+  if (words.length === 1) {
+    const line = shorten(words[0], 11);
+    return {
+      html: `<span class="wf-report-chart-cat-line">${escapeChartText(line)}</span>`,
+      title: full
+    };
+  }
+
+  const first = shorten(words[0], 12);
+  const rest = shorten(words.slice(1).join(' '), 14);
+  return {
+    html: `<span class="wf-report-chart-cat-line">${escapeChartText(first)}</span><span class="wf-report-chart-cat-line">${escapeChartText(rest)}</span>`,
+    title: full
+  };
+}
+
 /** Visual-only demo chart renderer for Reports pages (markup/styling; no report logic). */
 function renderDemoChart(page) {
   const mount = document.getElementById('report-demo-chart');
@@ -191,7 +227,7 @@ function renderDemoChart(page) {
   } else if (page === 'recruiter') {
     caption = 'Drive fit score by company';
     items = (mockDrives || []).slice(0, 5).map((d) => ({
-      label: String(d.company).split(' ')[0].slice(0, 8),
+      label: d.company,
       value: Number(d.matchScore) || 0,
       tip: `${d.matchScore}%`
     }));
@@ -217,7 +253,7 @@ function renderDemoChart(page) {
   const rawMax = Math.max(...items.map((i) => i.value), 1);
   const scaleMax = unit === 'percent' ? 100 : Math.max(5, Math.ceil(rawMax / 5) * 5);
   const yTicks = [scaleMax, scaleMax * 0.8, scaleMax * 0.6, scaleMax * 0.4, scaleMax * 0.2, 0].map((n) =>
-    unit === 'percent' ? String(Math.round(n)) : String(Math.round(n))
+    String(Math.round(n))
   );
 
   const ranked = [...items].sort((a, b) => b.value - a.value);
@@ -237,19 +273,20 @@ function renderDemoChart(page) {
         unit === 'percent'
           ? (Number.isInteger(item.value) ? `${item.value}%` : `${item.value.toFixed(1)}%`)
           : item.tip;
+      const cat = formatChartCategory(item.label);
       return `<div class="wf-report-chart-col">
-<span class="wf-report-chart-value">${valueLabel}</span>
+<span class="wf-report-chart-value">${escapeChartText(valueLabel)}</span>
 <div class="wf-report-chart-bar-track">
-<div class="wf-report-chart-bar wf-report-chart-bar--tier${tier}" style="--bar-h:${pct.toFixed(2)}%; animation-delay:${idx * 70}ms;" title="${item.tip || item.value}"></div>
+<div class="wf-report-chart-bar wf-report-chart-bar--tier${tier}" style="--bar-h:${pct.toFixed(2)}%; animation-delay:${idx * 70}ms;" title="${escapeChartText(item.tip || item.value)}"></div>
 </div>
-<span class="wf-report-chart-cat">${item.label}</span>
+<span class="wf-report-chart-cat" title="${escapeChartText(cat.title)}">${cat.html}</span>
 </div>`;
     })
     .join('');
 
-  mount.style.minHeight = '300px';
-  mount.innerHTML = `<div class="wf-report-chart" role="img" aria-label="${caption}">
-<div class="wf-report-chart-title">${caption}</div>
+  mount.style.minHeight = '380px';
+  mount.innerHTML = `<div class="wf-report-chart" role="img" aria-label="${escapeChartText(caption)}">
+<div class="wf-report-chart-title">${escapeChartText(caption)}</div>
 <div class="wf-report-chart-plot">
 <div class="wf-report-chart-yaxis">${yTicks.map((t) => `<span>${t}</span>`).join('')}</div>
 <div class="wf-report-chart-canvas">
